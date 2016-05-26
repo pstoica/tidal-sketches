@@ -1,0 +1,46 @@
+bps (80/120)
+
+m1 $ silence
+m2 $ silence
+m3 $ silence
+
+hush
+
+d2 $ sound "bd"
+
+d1 $ stack [
+  density 3 $
+    sound "bd:3 ~ bd:6 bd:8"
+    |+| gain "3"
+    |+| shape "0.8"
+    |+| dur "0.9"
+    |+| speed (slow 16 "[0.8 1.3]"),
+  sound "hc:4*6" # speed "0.5" # gain (scale 0.3 0.8 $ (density 3.5 sine1)),
+  sound "chink:1*4" # pan "0.7" # speed "4" # gain "3",
+  every 2 (density 2) $ sound "lighter*12" # pan "0.7" # speed "0.8 1.2" # gain "3",
+  striate 2 $ jux (density 2 . rev) $ sound "[hc:1*6]"
+    |+| pan "0.25 0.8"
+    |+| speed (scale 1 3 $ slow 8 tri1)
+    |+| gain "3"
+]
+
+m1 $ note ((+12) <$> "{63*2, {72*3}, {79 82}%3, {89}%1/4}%2")
+
+m2 $ note ((+0) <$> "{{48 51}%2, {43 55}%3, {39 34}%6}") # dur "0.5"
+
+m3 $ ((1/3) <~)
+$ slow 4
+$ note ((+12) <$> "{{48 51}%2, {43 55}%3, {39 34}%6}")
+|+| dur (scale 0.5 4 $ (slow 4 sine1))
+
+
+m3 $ jux (((1/6) <~) . rev)
+$ foldEvery [2] (density 1.5)
+$ note (rev "{63 67 65 70}")
+|+| dur (scale 0.01 0.02 $ (slow 4 sine1))
+|+| vel "0.05"
+|+| rampatk (scale 0 0.5 $ (slow 2 sine1))
+|+| ramprelease (scale 0.1 0.3 $ slow 3 sine1)
+|+| rlpcutoff (scale 0.1 0.9 $ (density 2 sine1))
+
+m1 $ note "{63*2, {72*3}, {79 82}%3, {89}%1/4}%2"
