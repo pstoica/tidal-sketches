@@ -1,10 +1,12 @@
 import Sound.Tidal.MIDI.Output
 import Sound.Tidal.MIDI.Control
-import Sound.Tidal.System1M
+import qualified Sound.Tidal.SimpleSynth
+import Sound.Tidal.SimpleSynth as K
+import Sound.Tidal.System1M as M hiding (note, vel, dur)
 
-keyStreams <- midiproxy 1 "IAC Driver Bus 1" [(system1m, 1),(system1m, 2),(system1m, 3),(system1m, 4),(system1m, 5),(system1m, 6),(system1m, 7),(system1m, 8),(system1m, 9),(system1m, 10),(system1m, 11),(system1m, 12),(system1m, 13),(system1m, 14),(system1m, 15),(system1m, 16)]
+keyStreams <- midiproxy 1 "IAC Driver Bus 1" [(keys, 1), (keys, 2), (keys, 3), (keys, 4), (system1m, 5),(system1m, 6),(system1m, 7),(system1m, 8)]
 
-[m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12,m13,m14,m15,m16] <- sequence keyStreams
+[k1, k2, k3, k4, m1,m2,m3,m4] <- sequence keyStreams
 
 -- eval the functions below first, then you can do this:
 

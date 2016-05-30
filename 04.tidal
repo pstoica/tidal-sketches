@@ -1,0 +1,72 @@
+
+bps (100/120)
+
+d1 $ sound "hc"
+
+
+d1 $ stack [
+  slow 2 $ sound "bd:3*3" # pan "0.2" # speed "2.5" # gain "1.2"
+  ,
+  slowspread ($) [density 1, slow 2]
+    $ sound (preplace(1, 1) (density 2 "x x [~ x] [~ x]") "bd:6")
+    # speed "1 1 0.9 2"
+    # gain (scale 0.2 1.4 (density 1 sine1))
+  ,
+  ((1/4) <~)
+    $ stut 6 0.1 0.11
+    $ slow 2
+    $ sound (preplace(1,1) "{x x x ~ x x x ~}%2" "hc:1")
+    # speed "0.8"
+    # end "0.7 0.5"
+    # gain (scale 0.5 0.9 (density 2 sine1)) # pan "0.8"
+  ,
+  sound "clak:1*4"
+    # end "0.4 0.8"
+    # speed "0.7"
+    # pan "[0.2 0.5]*2"
+    # gain (scale 1 2 (slow 2 $ sine1))
+]
+
+m1
+$ slow 2
+$ K.note "[66*7, 59*3, 44*8]"
+|+| K.vel (scale 0.6 0.9 tri1)
+|+| rosc1color (scale 0.0 0.3 (slow 4 $ sine1))
+|+| rlpcutoff (scale 0.5 0.7 (slow 2 $ sine1))
+|+| rosc1range (scale 0.1 0.7 (density 4 $ sine1))
+|+| rdelay (scale 0.3 0.5 (slow 8 $ sine1))
+|+| rdelaytime (scale 0.2 0.4 (slow 16 $ sine1))
+
+m2
+$ K.note "[68*3, [59*2 61], 44*4]"
+|+| K.vel (scale 0.6 0.9 tri1)
+|+| rosc1color (scale 0.0 0.6 (density 8 $ sine1))
+|+| rlpcutoff (scale 0.5 0.7 (slow 2 $ sine1))
+|+| rosc1range (scale 0.1 0.7 (density 4 $ sine1))
+
+m3 $ K.note "[56, [~ ~ ~ 46], [~ 32]]" # dur "1.5"
+|+| rosc1color (scale 0.0 0.6 (density 8 $ sine1))
+|+| rlpcutoff (scale 0.1 0.4 (slow 2 $ sine1))
+|+| rosc1range (scale 0.1 0.5 (density 4 $ sine1))
+
+
+
+
+k1 $ stack [
+  degradeBy 0.1 $ K.note "38*16" # K.vel (scale 0.1 0.9 (density 2 sine1)) ,
+  degradeBy 0.3 $ slowspread ($) [density 2, striate 2] $ K.note "46*32" # K.vel (scale 0.1 0.9 (density 2 sine1)) ,
+  ((1/8) <~) $ slow 2 $ K.note "44*24" # K.vel (scale 0.1 0.9 (density 2 sine1))
+]
+
+k1 $ K.note "[43*3]/2"
+
+k1 $ silence
+
+d1 $ sound "hc"
+
+
+m1
+$ striate 4
+$ slow 2
+$ K.note "[44(2,3), 52(2,4), 59(3,4), 68]"
+|+| K.vel (scale 0.4 0.9 tri1)
