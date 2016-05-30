@@ -2,7 +2,9 @@ import Sound.Tidal.MIDI.Output
 import Sound.Tidal.MIDI.Control
 import qualified Sound.Tidal.SimpleSynth
 import Sound.Tidal.SimpleSynth as K
-import Sound.Tidal.System1M as M hiding (note, vel, dur)
+import Sound.Tidal.System1M as K
+
+--import Sound.Tidal.System1M as M hiding (note, vel, dur)
 
 keyStreams <- midiproxy 1 "IAC Driver Bus 1" [(keys, 1), (keys, 2), (keys, 3), (keys, 4), (system1m, 5),(system1m, 6),(system1m, 7),(system1m, 8)]
 

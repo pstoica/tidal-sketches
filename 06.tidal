@@ -1,0 +1,90 @@
+bps (135/120)
+
+$ note "70 68 67 63 65? 72"
+
+m1
+$ density 1
+$ striate 2
+$ note "68 63 72 61 49 48"
+|+| dur "0.5"
+|+| rlpcutoff (slow 8 $ scale 0.4 0.6 sine1)
+|+| ramprelease (slow 8 $ scale 0.3 0.5 sine1)
+|+| rosc1color (slow 8 $ scale 0.2 0.7 $ tri1)
+|+| rosc1range (slow 8 $ scale 0.3 0.7 $ tri1)
+|+| rdelay (slow 8 $ scale 0.4 1 tri1)
+
+m2 $ silence
+
+m2
+$ striate' 2 (1/4)
+$ slowcat [
+  note "44 49 63 [70 61]",
+  note "44 49 63 [70 61]",
+  note "44 48 63 [72 61]",
+  note "44 48 63 [70 61]",
+  note "44 43 63 [70 61]",
+  note "44 43 63 [70 61]",
+  note "44 41 63 [75 61]",
+  note "42 46 63 [75 61]"
+]
+|+| dur "0.8"
+|+| rampatk (slow 8 $ scale 0.0 0.2 sine1)
+|+| rlpcutoff (slow 8 $ scale 0.3 0.6 sine1)
+|+| rres (slow 2 $ scale 0.3 0.6 tri1)
+|+| rdelay (slow 2 $ scale 0.0 0.6 tri1)
+|+| rosc1color "0 0.2 0.4"
+|+| rosc1xmod "[0 0.4 0.7]/4"
+|+| vel (slow 32 $ scale 0.8 1 sine1)
+
+  note "[44 48 39]*2",
+  note "[41 65 39]*2",
+  note "[44 48 39]*2",
+  note "[41 63 39]*2"
+
+m3
+$ density 2
+$ note "44 63 46"
+|+| dur "0.8"
+|+| rampatk (slow 8 $ scale 0.0 0.2 sine1)
+|+| rlpcutoff (slow 2 $ scale 0.3 0.6 tri1)
+|+| rres (slow 2 $ scale 0.3 0.4 tri1)
+|+| rdelay (slow 16 $ scale 0.0 0.6 tri1)
+|+| rosc1color "0 0.2 0.4"
+|+| vel (slow 4 $ scale 0.0 0.8 sine1)
+|+| rosc1 (slow 16 $ scale 0.0 1 sine1)
+|+| rsub (slow 16 $ scale 0.0 1 sine1)
+
+d1 $ stack [
+  gap 12
+    $ sound "metal*4"
+    # speed "0.5"
+    # end "0.4"
+    # gain (slow 16 $ scale 0.4 1.5 sine1)
+  ,
+  density 2
+    $ sound (preplace(1, 1) ("x x [~ x] [~ x?]") "bd:6")
+    # pan "0.3 0.7 [~ 0.6] [~ 0.2]"
+    # gain (slow 16 $ scale 0.6 2 sine1)
+  ,
+  (juxBy 0.8 (rev . density 2)
+    $ striate' 2 (1/8)
+    $ sound (preplace(1, 1) "x x [~ x] x" "hc:1")
+    |+| speed "0.7 0.8 1 -1")
+    # gain (slow 2 $ scale 0.3 1 sine1),
+  (
+    juxBy 0.7 (rev . density 2)
+      $ sound (preplace(1, 1) "x x [~ x] x" "hc:1")
+      |+| speed "0.8 1 -0.9 -1.6"
+      # cutoff "0.8")
+      # gain (slow 8 $ scale 0.3 1.4 $ sine1)
+]
+
+d2 $ silence
+
+
+m1 $ silence
+m2 $ silence
+m3 $ silence
+
+
+m3 $ silence
