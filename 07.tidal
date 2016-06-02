@@ -1,0 +1,26 @@
+bps (135/120)
+
+m1 $ note "72 70 68 67 63 65?"
+
+
+m1 $ (
+slowspread ($) [
+  striate' 3 (1/24), striate' 2 (1/16), density 2, density 2.5, palindrome
+]
+$ slow 2 $ stack [
+  note "51 ~ 53 ~ 58 ~ 60 ~ 43",
+  slow 2.5 $ note "~ 43 ~ 46 ~ 48 ~ 55",
+  slow 1 $ note "39",
+  slow 8 $ note "72 ~ 70",
+  slow 3.5 $ note "79 ~ 75"
+])
+|+| rosc1 (slow 4.3 $ scale 0.2 1 $ sine1)
+|+| rosc1color (slow 4.3 $ scale 0.0 1 $ sine1)
+|+| rosc2 (slow 8.5 $ scale 0.2 0.8 $ sine1)
+|+| rosc2color (slow 3.7 $ scale 0.0 1 $ sine1)
+|+| rsub (slow 5.5 $ scale 0.2 1 $ sine1)
+|+| rnoise (slow 10.5 $ scale 0 0.4 $ sine1)
+|+| rampatk (slow 4 $ scale 0.3 0.4 $ sine1)
+|+| rampsustain (slow 4.5 $ scale 0.0 0.4 $ sine1)
+
+|+| rport (slow 9.5 $ scale 0 0.05 $ sine1)
