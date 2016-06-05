@@ -12,6 +12,8 @@ d1 $ slow 3 $ stack [
   sound "hc:1*16" # gain (scale 0.5 0.8 sine1)
 ]
 
+hush
+
 m1 $ density 2 $ striate' 2 (1/8) $ slow 4 $ stack [
   note "[40 43, 45 [40 47 52]]"
 ] # dur "0.5" # vel "0.7"
