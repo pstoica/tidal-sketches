@@ -1,0 +1,147 @@
+m1 $ silence
+m2 $ silence
+m3 $ silence
+m4 $ silence
+hush
+
+bps (80/120)
+
+
+m2 $ silence
+
+d1 $ silence
+
+d1
+$ slow 2
+$ every 2 (striate' 3 (1/4))
+$ every 3 (striate' 2 (1/4))
+$ stack [
+stut 2 0.3 (0.5) $ striate' 2 (1/8) $ sound "hh:0*6" # speed "0.5 1 -1 -1"
+|+| gain (slow 2 $ scale 0.2 1 $ sine1),
+sound "[bd:5 bd:5*2 bd:5 bd:5*3 bd:5 bd:5*3 bd:5 bd:5*3]"
+|+| gain (slow 16 $ scale 0.5 0.6 $ sine1),
+sound "[~ ~ ~ cp:5]" # shape "1" # end "0.2"
+]
+
+
+m2
+$ slow 4
+$ striate' 2 (1/16)
+$ slowcat [
+note "[62*1 [48*3 52 [55 57*2]], [59*2 59 62*2 59]]"
+]
+|+| rosc1color (slow 4 $ scale 0.3 1 sine1)
+|+| rosc1range (slow 4 $ scale 0.2 0.7 sine1)
+|+| rampatk (slow 8 $ scale 0.15 0.25 sine1)
+|+| rosc2color (slow 2 $ scale 0.8 1 sine1)
+|+| rosc2range (slow 2 $ scale 0.5 0.9 sine1)
+|+| rdelay "0.6"
+|+| rdelaytime "0.5"
+
+m2 $ striate' 2 (1/6) $ note "[50 62 71, 40*3, 52*3, ~ ~ 59]"
+|+| rampatk "0.5"
+|+| rampdecay "0.01"
+|+| rampsustain "0.05"
+|+| ramprelease "0.3"
+|+| rlfopitch "0.6"
+|+| rlforate (slow 8 $ scale 0.35 0.45 sine1)
+|+| rosc1range (slow 8 $ scale 0.2 0.9 sine1)
+|+| rosc2range (slow 8 $ scale 0.2 0.9 sine1)
+|+| dur "0.15"
+
+
+
+
+
+m1 $ slowcat [
+  note "44*8"
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+d1 $ slow 2 $ stack [
+sound "bd:6*12",
+sound "[~ ~ ~ cp]" # pan "0.2" # shape "1" # end "0.4",
+sound "hc hc hc hc*2 hc hc hc*2 hc hc hc hc*2 hc" # pan "0.3" # speed "[1 1.2 0.9]*6",
+sound "hc:3*3" # pan "0.6" # speed "0.9"
+]
+
+m1 $ slowcat [
+  note "44*8"
+]
+
+m1 $ slowcat [
+note "[44*8, 37*8]",
+note "[44*12, 34*6]",
+note "[41*8, 37*6]",
+note "[41*6, 41*6]",
+note "[42*12, 39*4]",
+note "[42*6, 37*6]",
+note "[46*8, 42*6]",
+note "[44*12, 37*4]"
+] # dur "0.2" # vel "0.8"
+
+
+m1 $ slowcat [
+note "[42 44 51 [65 63 61], 68 63 61, 77*5, 78*2]",
+note "[42 44 51 [65 63 61], 68 63 61, 77*5, 78*2]",
+note "[49 53 54 [56 60 61], 73 70 68, 75*5, 82*2]",
+note "[44 51 54 [58 63 61], 78 72 68, 73*5, 85*2]"
+]
+
+m2 $ slowcat [
+note "[42 44 51 [65 63 61], 68 63 61, 77*5, 78*2]",
+note "[42 44 51 [65 63 61], 68 63 61, 77*5, 78*2]",
+note "[49 53 54 [56 60 61], 73 70 68, 75*5, 82*2]",
+note "[44 51 54 [58 63 61], 78 72 68, 73*5, 85*2]"
+]
+
+m3 $ slowcat [
+note "[56, 61*3, 63*5]"
+] # dur "0.2" # vel "0.6"
+
+m4 $ note "[[56, 65] ~ [51] ~ [53, 44] ~ [53 ~ ~ 65] 54]/4" # dur "0.8" # vel "0.8"
+
+
+
+
+
+
+
+
+
+m2 $ slowcat [
+note "[44*6, 37*4]",
+note "[42 42*2 42 42 42 42*2 42 42 42 42 42 42, 34*4]",
+note "[42*3, 34*4]",
+note "[41*6, 32*4]"
+]
+
+
+m2 $ slowcat [
+note "[44*6, 37*4]",
+note "[42 42*2 42 42 42 42*2 42 42 42 42 42 42, 34*4]",
+note "[42*3, 34*4]",
+note "[41*6, 32*4]"
+]

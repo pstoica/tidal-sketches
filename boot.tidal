@@ -1,8 +1,8 @@
 import Sound.Tidal.MIDI.Output
 import Sound.Tidal.MIDI.Control
 import qualified Sound.Tidal.SimpleSynth
-import Sound.Tidal.SimpleSynth as K
-import Sound.Tidal.System1M as K
+import Sound.Tidal.SimpleSynth
+import Sound.Tidal.System1M hiding (note)
 
 --import Sound.Tidal.System1M as M hiding (note, vel, dur)
 

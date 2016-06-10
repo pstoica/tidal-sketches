@@ -1,0 +1,147 @@
+cps 0.6
+
+m1 $ silence
+m2 $ silence
+m3 $ silence
+
+m1
+$ density 1
+$ note "[[42 44 47 49 51 56 59 52]/8, [59 61 63 68 71]/5]"
+|+| dur "0.5"
+|+| vel (slow 19 $ scale 0.7 0.9 sine1)
+|+| ramprelease (slow 4 $ scale 0.1 0.5 sine1)
+|+| rosc1color (slow 7 $ scale 0.1 0.9 sine1)
+|+| rosc1range (slow 9 $ scale 0.2 0.5 sine1)
+|+| rlforate (slow 16 $ scale 0.55 0.65 sine1)
+|+| rlpcutoff (slow 12 $ scale 0.25 0.30 sine1)
+|+| rosc1 (slow 12.4 $ scale 0.0 0.35 sine1)
+|+| rosc2 (slow 8.5 $ scale 0.3 0.9 sine1)
+|+| rpitchatk (slow 15 $ scale 0.0 0.2 sine1)
+|+| rampsustain (slow 30 $ scale 0.3 0.6 sine1)
+
+
+m2 $ stack [
+note "[52 54 59 63 [66 68] [71 73 [75 68]/2]]/3",
+note "[71 73 80 83 95]/3"
+]
+|+| rosc1 (slow 12.4 $ scale 0.0 0.35 sine1)
+|+| rosc2 (slow 8.5 $ scale 0.3 0.9 sine1)
+|+| rosc1range (slow 9 $ scale 0.1 0.5 sine1)
+|+| rosc2range (slow 2 $ scale 0.1 0.6 sine1)
+|+| rampsustain (slow 30 $ scale 0.3 0.6 sine1)
+|+| rlpcutoff (slow 3 $ scale 0.3 0.6 tri1)
+
+
+m3 $ stack [
+  note "[73 81 [83 85]/2 [62 66 64]/2]/4",
+  note "[[42 42 45 38]/4 40 49*3]/4",
+  note "[[78 76 71]/3 33*3 38]/2"
+]
+|+| ramptone (slow 16 $ scale 0 0.9 sine1)
+|+| rlforate (slow 14 $ scale 0.3 0.4 sine1)
+|+| rosc1 (slow 10 $ scale 0.0 1 sine1)
+|+| rosc2 (slow 18 $ scale 0.0 0.6 sine1)
+|+| ramprelease (slow 10 $ scale 0.2 0.6 sine1)
+
+m3 $ note "52"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+m1
+$ density 1
+$ note "[[42 44 47 49 51 56 59 52]/8, [59 61 63 68 71]/5]"
+|+| dur "0.5"
+|+| ramprelease (slow 4 $ scale 0.1 0.5 sine1)
+|+| rosc1color (slow 7 $ scale 0.1 0.9 sine1)
+|+| rosc1range (slow 9 $ scale 0.2 0.7 sine1)
+|+| rlforate (slow 16 $ scale 0.55 0.65 sine1)
+|+| rlpcutoff (slow 12 $ scale 0.25 0.35 sine1)
+
+
+
+m3
+$ density 1
+$ striate 3 (slow 2 (note "70*3 72*3 [75 79]"))
+|+| dur (scale 0.1 0.5 sine1)
+|+| ramprelease (scale 0.1 0.6 (slow 8 $ sine1))
+|+| rosc1color (scale 0.1 0.9 (slow 8 $ sine1))
+|+| rosc1range (scale 0.2 0.7 (slow 4 $ tri1))
+|+| vel (slow 4 $ scale 0.5 0.9 sine1)
+|+| rdelay (scale 0.1 0.5 (slow 8 $ sine1))
+|+| rdelaytime "0.3"
+|+| rnoise (scale 0.0 0.5 (slow 8 $ sine1))
+|+| rpitchatk (scale 0.0 0.02 (slow 8 $ sine1))
+
+m2
+$ slow 2
+$ striate 3 (slow 2 (note "58*3 74 53*2 63 65*2"))
+|+| rosc1range (scale 0.2 0.7 (slow 4 $ tri1))
+|+| rosc1color (scale 0.1 0.9 (slow 8 $ sine1))
+|+| ramprelease (scale 0.2 0.6 (slow 8 $ sine1))
+|+| rpitchatk "0"
+
+
+m2
+$ slow 2
+$ striate 3 (slow 2 (note "58*3 74 53*2 63 65*2"))
+|+| rosc1range (scale 0.2 0.7 (slow 4 $ tri1))
+|+| rosc1color (scale 0.1 0.9 (slow 8 $ sine1))
+|+| ramprelease (scale 0.2 0.6 (slow 8 $ sine1))
+|+| rpitchatk "0"
+
+
+
+
+
+
+
+m1 $ slow 2 $ note "{50 74 71, 52 55}" # dur "1"
+
+m2
+$ slow 3
+$ note "[[64 60 55]/3 [74 71]/2, 43*4]"
+|+| vel (slow 9 $ scale 0.5 0.9 sine1)
+|+| dur "1"
+|+| rfilterenv (slow 2 $ scale 0.5 0.6 sine1)
+|+| rres (slow 3 $ scale 0.5 0.8 sine1)
+|+| rlpcutoff (slow 5 $ scale 0.3 1.0 sine1)
+|+| rosc1color (slow 3 $ scale 0.0 0.5 sine1)
+|+| rosc2color (slow 4 $ scale 0.0 1 sine1)
+|+| rnoise "0.0 0.1 0.2 0.2 0.1"
+|+| rosc1xmod (slow 15 $ scale 0.0 0.01 sine1)
+|+| rlfopitch (slow 4 $ scale 0.5 0.6 sine1)
+|+| rlforate (slow 3 $ scale 0.4 0.6 sine1)
+
+
+m3 $ (
+  slowspread ($) [striate 2, rev, density 1.5, density 1]
+    $ note "[52*3 69*3 71*6]/3"
+) |+| vel (slow 4 $ "0.5 0.6 0.7 0.9")
+|+| dur "1"
+|+| rosc1range (slow 9 $ scale 0.7 0.8 sine1)
+|+| rosc2range (slow 5 $ scale 0.3 0.5 tri1)
+|+| rampatk (slow 5 $ scale 0.0 0.6 sine1)
+
+
+
+
+
+
+m1 $ slow 2 $ striate 2 $ slowcat [
+  note "[51 46]/2 [58 62]/2 [43 [72 ~ 67]/2]",
+  note "{[51 [58 44] 63]*2}"
+]
+
+m1 $ silence

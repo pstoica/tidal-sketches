@@ -1,0 +1,44 @@
+cps 0.8
+
+m1 $ silence
+m2 $ silence
+m3 $ silence
+
+m1 $ slow 3 $ note "[50, 52, 55]" # dur "1"
+
+m2
+$ slow 3
+$ note "[[64 60 55]/3 [74 71]/2, 43*4]"
+|+| vel (slow 9 $ scale 0.5 0.9 sine1)
+|+| dur "1"
+|+| rfilterenv (slow 2 $ scale 0.5 0.6 sine1)
+|+| rres (slow 3 $ scale 0.5 0.8 sine1)
+|+| rlpcutoff (slow 5 $ scale 0.3 1.0 sine1)
+|+| rosc1color (slow 3 $ scale 0.0 0.5 sine1)
+|+| rosc2color (slow 4 $ scale 0.0 1 sine1)
+|+| rnoise "0.0 0.1 0.2 0.2 0.1"
+|+| rosc1xmod (slow 15 $ scale 0.0 0.01 sine1)
+|+| rlfopitch (slow 4 $ scale 0.5 0.6 sine1)
+|+| rlforate (slow 3 $ scale 0.4 0.6 sine1)
+
+
+m3 $ (
+  slowspread ($) [striate 2, rev, density 1.5, density 1]
+    $ note "[52*3 69*3 71*6]/3"
+) |+| vel (slow 4 $ "0.5 0.6 0.7 0.9")
+|+| dur "1"
+|+| rosc1range (slow 9 $ scale 0.7 0.8 sine1)
+|+| rosc2range (slow 5 $ scale 0.3 0.5 tri1)
+|+| rampatk (slow 5 $ scale 0.0 0.6 sine1)
+
+
+
+
+
+
+m1 $ slow 2 $ striate 2 $ slowcat [
+  note "[51 46]/2 [58 62]/2 [43 [72 ~ 67]/2]",
+  note "{[51 [58 44] 63]*2}"
+]
+
+m1 $ silence
