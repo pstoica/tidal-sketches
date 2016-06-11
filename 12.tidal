@@ -37,11 +37,11 @@ m3 $ stack [
   note "[[42 42 45 38]/4 40 49*3]/4",
   note "[[78 76 71]/3 33*3 38]/2"
 ]
-|+| ramptone (slow 16 $ scale 0 0.9 sine1)
+|+| ramptone (slow 16 $ scale 0 0.4 sine1)
 |+| rlforate (slow 14 $ scale 0.3 0.4 sine1)
-|+| rosc1 (slow 10 $ scale 0.0 1 sine1)
-|+| rosc2 (slow 18 $ scale 0.0 0.6 sine1)
-|+| ramprelease (slow 10 $ scale 0.2 0.6 sine1)
+|+| rosc1 (slow 10 $ scale 0.5 1 sine1)
+|+| rosc2 (slow 18 $ scale 0.2 0.2 sine1)
+|+| ramprelease (slow 10 $ scale 0.4 0.6 sine1)
 
 m3 $ note "52"
 

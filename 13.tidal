@@ -1,0 +1,60 @@
+note "[73 81 [83 85]/2 [62 66 64]/2]/4",
+note "[[42 42 45 38]/4 40 49*3]/4",
+
+  note "[[73 76 71 83 83 88]/3 [[49] [73 54 68] [40 52]] 38]/2"
+
+
+  note "[73 81 [83 85]/2 [62 66 64]/2]/4",
+
+
+
+note "[[78 76 71 76 69]/5 [28 33 35 33 45 47]/6 [38 42 30 28]/4]"
+  note "[[73 76 71 83 83 88]/5 [[49 54]/2 [73 54 68]/3 [40 52]] 38]/2"
+
+
+
+
+
+m2 $ stack [
+  note "[73 81 [83 85]/2 [62 66 64]/2]/4",
+  note "[[42 42 45 38]/4 40 49*3]/4",
+  note "[[78 76 71]/3 33*3 38]/2"
+]
+
+m3 $ stack [
+  note "[73 81 [83 85]/2 [62 66 64]/2]/4",
+  note "[[42 42 45 38]/4 40 49*3]/4",
+  note "[[78 76 71]/3 33*3 38]/2"
+]
+|+| ramptone (slow 16 $ scale 0.0 0.5 sine1)
+|+| rlpcutoff (slow 18 $ scale 0.5 0.6 tri1)
+|+| rlforate (slow 14 $ scale 0.3 0.4 sine1)
+|+| rosc1type "0.2"
+|+| rosc1color "[0.4 0.5 0.55 0.3 0.4 0.3]/7"
+|+| rosc1 (slow 10 $ scale 0.8 1 sine1)
+|+| rosc2 (slow 18 $ scale 0.5 1 sine1)
+|+| rosc2color "[0.4 0.5 0.55 0.3 1 0.88 0.3]/3"
+|+| rampatk (slow 5 $ scale 0.25 0.4 sine1)
+|+| ramprelease (slow 10 $ scale 0.2 0.4 sine1)
+|+| rdelaytime "[0.44 0.53 0.50 0.45 0.43 0.48]/15"
+|+| rpitchenv (slow 23 $ scale 0.48 0.5 sine1)
+|+| rfilterenv (slow 18 $ scale 0.35 0.5 sine1)
+|+| rreverb "[0 0.4 0.2 0.5 0.7]/10"
+
+
+
+m3 $ stack [ note "[ [58*4 60*4 69*3]/1 [46*3 45*3 43*2 45*3]/2 [48*6 48*6 53*5 [53*2 55 55*2 57]]/2 [41*4 38*3 34*3 31*4]/2 ]/2" ]
+|+| ramptone (slow 16 $ scale 0.0 0.5 sine1)
+|+| rlpcutoff (slow 18 $ scale 0.6 0.8 tri1)
+|+| rlforate (slow 14 $ scale 0.3 0.4 sine1)
+|+| rosc1type "0.2"
+|+| rosc1color "[0.4 0.5 0.55 0.3 0.4 0.3]/7"
+|+| rosc1 (slow 10 $ scale 0.8 1 sine1)
+|+| rosc2 (slow 18 $ scale 0.5 1 sine1)
+|+| rosc2color "[0.4 0.5 0.55 0.3 1 0.88 0.3]/3"
+|+| rampatk (slow 12 $ scale 0.0 0.0 sine1)
+|+| ramprelease (slow 10 $ scale 0.4 0.5 sine1)
+|+| rdelaytime "[0.44 0.53 0.50 0.45 0.43 0.48]/15"
+|+| rpitchenv (slow 23 $ scale 0.48 0.5 sine1)
+|+| rfilterenv (slow 18 $ scale 0.35 0.5 sine1)
+|+| rreverb "[0 0.4 0.2 0.5 0.7]/10"

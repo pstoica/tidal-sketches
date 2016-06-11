@@ -1,0 +1,66 @@
+d1 $ sound "[bd:5*3, sn*4, hc*7]"
+|=| speed "0.5"
+|=| gain (slow 4 $ scale 0 0.5 sine1)
+|=| pan (slow 3 $ scale 0.2 0.8 tri1)
+
+d2 $ sound "hc:4*5" # shape "0.8" # speed "1.0"
+
+  note "[73*12, 66*10]",
+  note "[73*12, 66*10]",
+  note "[76*13, 61*10]",
+  note "[76*11, 61*10]",
+  note "[69*10, 52*8]",
+  note "[69*9, 52*4]"
+
+m2 $ slow 2 $ slowcat [
+  note "[73*6 [83*5 64*12] 66*6 78*3]",
+  note "[81*3 [42*3 45*8] 38*6 40*6]",
+  note "[49*3 [52*3 50*8] 45*6 40*6]"
+]
+|=| vel (slow 8 $ scale 0.3 1 sine1)
+
+m3 $ slowcat [
+  note "[73*6 [83*5 64*12] 66*6 78*3]",
+  note "[81*3 [42*3 45*8] 38*6 40*6]",
+  note "[49*3 [52*3 50*8] 45*6 40*6]"
+]
+|+| ramptone (slow 16 $ scale 0.0 0.5 sine1)
+|+| rlpcutoff (slow 18 $ scale 0.5 0.6 tri1)
+|+| rlforate (slow 14 $ scale 0.3 0.4 sine1)
+|+| rosc1type "0.2"
+|+| rosc1color "[0.4 0.5 0.55 0.3 0.4 0.3]/7"
+|+| rosc1 (slow 10 $ scale 0.8 1 sine1)
+|+| rosc2 (slow 18 $ scale 0.5 1 sine1)
+|+| rosc2color "[0.4 0.5 0.55 0.3 1 0.88 0.3]/3"
+|+| rampatk (slow 5 $ scale 0.25 0.4 sine1)
+|+| ramprelease (slow 10 $ scale 0.2 0.4 sine1)
+|+| rdelaytime "[0.44 0.53 0.50 0.45 0.43 0.48]/15"
+|+| rpitchenv (slow 23 $ scale 0.48 0.5 sine1)
+|+| rfilterenv (slow 18 $ scale 0.35 0.5 sine1)
+|+| rreverb "[0 0.4 0.2 0.5 0.7]/10"
+
+
+
+
+
+
+
+m3 $ stack [
+  note "[73 81 [83 85]/2 [62 66 64]/2]/4",
+  note "[[42 42 45 38]/4 40 49*3]/4",
+  note "[[78 76 71]/3 33*3 38]/2"
+]
+|+| ramptone (slow 16 $ scale 0.0 0.5 sine1)
+|+| rlpcutoff (slow 18 $ scale 0.5 0.6 tri1)
+|+| rlforate (slow 14 $ scale 0.3 0.4 sine1)
+|+| rosc1type "0.2"
+|+| rosc1color "[0.4 0.5 0.55 0.3 0.4 0.3]/7"
+|+| rosc1 (slow 10 $ scale 0.8 1 sine1)
+|+| rosc2 (slow 18 $ scale 0.5 1 sine1)
+|+| rosc2color "[0.4 0.5 0.55 0.3 1 0.88 0.3]/3"
+|+| rampatk (slow 5 $ scale 0.25 0.4 sine1)
+|+| ramprelease (slow 10 $ scale 0.2 0.4 sine1)
+|+| rdelaytime "[0.44 0.53 0.50 0.45 0.43 0.48]/15"
+|+| rpitchenv (slow 23 $ scale 0.48 0.5 sine1)
+|+| rfilterenv (slow 18 $ scale 0.35 0.5 sine1)
+|+| rreverb "[0 0.4 0.2 0.5 0.7]/10"
