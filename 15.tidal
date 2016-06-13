@@ -1,0 +1,30 @@
+cps (0.8)
+
+
+cps 1
+
+d1 $ every 16 (density 24 . (|+| midinote "24") . (# sustain "0.3") . (# attack "0.05"))
+  $ s "supercomparator/4" # midinote (fmap (+24) $ irand 24) # sustain "8" # attack "0.5" # hold "4" # release "4" # voice "0.5" # resonance "0.9" # lfo "1" # speed "30" # pitch1 "4"
+
+
+d1 $ jux (# accelerate "-0.1") $ s "supermandolin*4" # midinote "[80!6 78]/4" # sustain "1 0.25 2 1"
+
+
+d1 $ sound "feel!3 feel:1 feel:2" # speed "0.9"
+
+t1 (wash (chop 8) 4) $ sound "feel*4 [feel:2 sn:2]"
+
+
+m1
+$ (|+| n "c4")
+$ n "[[c5 e6 g4 f4*2 f5*3]/5 [d7!2, [[d6!2 e6 c6] [d6*2 e6 c6]]/2], ~ a6!2]"
+|=| rosc1range (slow 9 $ scale 0 1 sine1)
+|=| rosc2range (slow 14 $ scale 0 1 sine1)
+|=| rpitchenv (slow 18 $ scale 0.4 0.5 sine1)
+
+d1
+$ (|+| n "c4")
+$ n "[[c5 e6 g4 f4*2 f5*3]/5 [d7!2, [[d6!2 e6 c6] [d6*2 e6 c6]]/2], ~ a6!2]"
+|=| s "superpiano"
+
+# s "tutorial3" # sustain "0.1"
