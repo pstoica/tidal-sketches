@@ -1,30 +1,60 @@
-cps (0.8)
+cps (0.9)
 
 
-cps 1
-
-d1 $ every 16 (density 24 . (|+| midinote "24") . (# sustain "0.3") . (# attack "0.05"))
-  $ s "supercomparator/4" # midinote (fmap (+24) $ irand 24) # sustain "8" # attack "0.5" # hold "4" # release "4" # voice "0.5" # resonance "0.9" # lfo "1" # speed "30" # pitch1 "4"
-
-
-d1 $ jux (# accelerate "-0.1") $ s "supermandolin*4" # midinote "[80!6 78]/4" # sustain "1 0.25 2 1"
-
-
-d1 $ sound "feel!3 feel:1 feel:2" # speed "0.9"
-
-t1 (wash (chop 8) 4) $ sound "feel*4 [feel:2 sn:2]"
-
+m1 $ silence
+m2 $ silence
+m3 $ silence
 
 m1
-$ (|+| n "c4")
+$ (|+| n "+12")
 $ n "[[c5 e6 g4 f4*2 f5*3]/5 [d7!2, [[d6!2 e6 c6] [d6*2 e6 c6]]/2], ~ a6!2]"
 |=| rosc1range (slow 9 $ scale 0 1 sine1)
 |=| rosc2range (slow 14 $ scale 0 1 sine1)
 |=| rpitchenv (slow 18 $ scale 0.4 0.5 sine1)
 
+m1 $ silence
+
+
+m2 $ striate' 2 (1/16) $ n "[d4*8 e4*8 g5*4 a4*5]/5"
+|=| rampatk "0.4"
+|=| velocity (slow 24 $ scale 0.2 0.35 sine1)
+
+m3
+$ slow 2.5
+$ (|+| n "c2")
+$ stack [
+n "[[c5 e6 g4 f4*2 f5*3]/5 [d7!2, [[d6!2 e6 c6] [d6*2 e6 c6]]/2], ~ a6!2]"
+]
+|=| dur "0.01"
+|=| rampatk "0.1"
+|=| ramprelease (slow 32 $ scale 0.3 0.3 sine1)
+|=| velocity "[0.55 0.63 0.6 0.65]"
+
+|=| rosc1color (slow 6 $ scale 0.0 1 sine1)
+|=| rosc2color (slow 3.3 $ scale 0.0 0.5 sine1)
+
+n "[[c5 e6 g4 f4*2 f5*3]/5 [d7!2, [[d6!2 e6 c6] [d6*2 e6 c6]]/2], ~ a6!2]"
+
+$ n "[[c4*2 g4 a4 f4]/4 [[[[d6 b7]/2 a7 [~ ~ [a6 d7 g7]/3]] g6*3 g6*2]/3 ~ [e5 e4]] [f4 ~ [g5 d5]/2,  [a7 e7]/2] [e6 [d6 ~ c6]]/2]/4"
+
+
+
+
+
+
+
+$ n "[[c4 g4 a4]/2 [g6 ~ [e5 e4]] f4 e6]/4"
+
+
+
+
+
+
+
+
+
 d1
 $ (|+| n "c4")
 $ n "[[c5 e6 g4 f4*2 f5*3]/5 [d7!2, [[d6!2 e6 c6] [d6*2 e6 c6]]/2], ~ a6!2]"
 |=| s "superpiano"
-
-# s "tutorial3" # sustain "0.1"
+|=| room "0.6"
