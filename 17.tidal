@@ -1,0 +1,118 @@
+m1 $ silence
+m2 $ silence
+m3 $ silence
+
+cps 0.5
+
+m1
+$ slowcat [
+  n "[ef4*4, g4 g2 g4 g3]",
+  n "[f4*4, [d5 d4 d3 d2]]",
+  n "[g4*4, bf5 !2 ! !]",
+  n "[c5*4, [c4 c3 c2 c2]]",
+  n "[d4*4, [a5 ! !2 ~]]",
+  n "[f4*4, [ef5 ef4 ef3 ef2]]",
+  n "[bf4*4, [g4 g3 g2 g1]]"
+]
+|=| rampatk (scale 0.0 0.3 $ slow 16 sine1)
+|=| rosc1xmod "[0 0.8 0.9 0.7 0.6]/20"
+|=| ramprelease "0.1"
+
+m3 $ density 0.9 $ stack [
+slowcat [
+  n "[bf6*6 c5*3 d5*6]/3",
+  n "[ef4*6 g4*6]/2",
+  n "[bf5*6 c4*6]/2",
+  n "[d4*4 ef4*4]/2"
+],
+slowcat [
+  n "f5*8",
+  n "ef5*6",
+  n "[d6*6 g6*6]/2",
+  n "g7*8",
+  n "f6*12",
+  n "a6*8"
+]
+]
+
+m2 $ slowcat [
+n "[f5]/2"
+]
+
+d1
+$ stack [
+sound "[bd bd bd [[bd ~ ~ bd] bd]/2]" # end "1"
+|+| speed "0.50" # gain "1",
+sound "~ hc ~ ~" # speed "1.1" # pan "0.4",
+sound "~!3 [~ hc:4]" # speed "1.4" # pan "0.3",
+sound "~!3 [~!2 hc]" # speed "1" # pan "0.8"
+]
+
+
+d1 $ stack [
+$ whenmod 8 3 (density 3)
+$ whenmod 8 3 (density 0.7)
+$ whenmod 12 9 (density 0.5)
+$ whenmod 4 6 (chop 4)
+$ slowcat $ [
+striate 2 $ stack [
+  (whenmod 6 3 (zoom (0, 0.2)))
+  $ (whenmod 8 4 (zoom (0, 0.5)))
+  $ sound "bd:3*4",
+sound "hc:3*8" # speed "0.6",
+sound "hc:2*6" # speed "0.3",
+sound "hc:4*8" # speed "0.9"
+],
+sound "bd:3*6",
+striate' 12 (1/8)
+$ (whenmod 6 3 (zoom (0, 0.2)))
+$ (whenmod 8 4 (zoom (0, 0.5)))
+$ stack [
+sound "bd:5*6",
+sound "hc:3*6" # speed "0.6",
+sound "hc:2*3" # speed "0.3",
+sound "hc:4*4" # speed "0.9"
+],
+striate' 2 (1/2) $ stack [
+sound "bd:5*4",
+sound "hc:3*3" # speed "0.6",
+sound "hc:2*3" # speed "0.3",
+sound "hc:4*6" # speed "0.9"
+],
+sound "bd:3*6"
+]
+]
+
+
+
+
+
+
+m3 $ slowcat [
+
+]
+
+
+
+m2 $ slowcat [
+n "[f5]/2"
+]
+
+m2 $ slow
+
+
+  n "c4 d4 ef4 f4 g4 bf4",
+  n "c4 d4 ef4 f4 g4 bf4"
+
+
+
+
+
+  n "f4 g4 bf4",
+  n "f4 g4 bf4",
+  n "ef4 f4 g4 bf4",
+  n "ef4 f4 g4 bf4",
+  n "d4 ef4 f4 g4 bf4",
+  n "d4 ef4 f4 g4 bf4",
+  n "c4 d4 ef4 f4 g4 bf4",
+  n "c4 d4 ef4 f4 g4 bf4"
