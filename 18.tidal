@@ -1,0 +1,10 @@
+m1 $ striate 3 $ density 3 $ slowcat [
+  n $ density 1.8 $ "[f4 g4 bf4]",
+  n $ density 1.8 $ "[f4 g4 bf4]",
+  n "ef4 f4 g4 bf4",
+  n "ef4 f4 g4 bf4",
+  n "d4 ef4 f4 g4 bf4",
+  n "d4 ef4 f4 g4 bf4",
+  n "c4 d4 ef4 f4 g4 bf4",
+  n "c4 d4 ef4 f4 g4 bf4"
+]

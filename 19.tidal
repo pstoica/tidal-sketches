@@ -1,0 +1,60 @@
+d3
+$ stut 3 0.1 0.1
+$ slow 2
+$ sound "ps1"
+|=| speed "0.45"
+|=| begin (scale 0.2 0.5 $ slow 16 sine1)
+|=| end (scale 0.3 0.6 $ slow 16 sine1)
+|=| pan (scale 0.4 0.6 $ slow 16 sine1)
+|=| gain (scale 0.8 1.2 $ slow 32 tri1)
+|=| shape (scale 0.0 0.2 $ slow 18 tri1)
+
+
+d1
+$ stut 3 0.1 0.1
+$ slow 2
+$ sound "ps1"
+|=| speed "1.8"
+|=| begin (scale 0.2 0.5 $ slow 16 sine1)
+|=| end (scale 0.3 0.6 $ slow 16 sine1)
+|=| pan (scale 0.0 1 $ slow 4.7777 tri1)
+|=| gain (scale 0.4 1.0 $ slow 64 tri1)
+|=| shape (scale 0.0 0.2 $ slow 18 tri1)
+|=| loop "2"
+
+
+d1 $ silence
+
+d1
+$ sound "ps1"
+|=| speed "0.45"
+|=| begin (scale 0.6 0.4 $ slow 16 sine1)
+|=| end (scale 0.45 0.35 $ slow 4.3333 sine1)
+|=| pan "0.5"
+|=| gain "0.4"
+
+
+d2
+$ whenmod 8 4 (slow 2)
+$ gap 32
+$ slow 2
+$ sound "ps1"
+|=| cut "-1"
+|=| speed "3.6"
+|=| begin (scale 0.5 0.8 $ slow 16 sine1)
+|=| end (scale 0.4 0.1 $ slow 4.3333 sine1)
+|=| loop "4"
+|=| pan "0.3 0.5 0.7 0.6 0.3 0.5"
+|=| gain (scale 0.4 0.7 $ slow 18 sine1)
+
+
+
+d2
+$ slow 4
+$ gap 16
+$ (sound "ps1"
+|=| speed "1.8"
+|=| begin (scale 0.4 0.9 $ slow 32 sine1)
+|=| end (scale 0.1 1 $ slow 68 sine1)
+|=| pan "0.7")
+|=| gain (scale 0.6 1.2 $ slow 5.3333 sine1)

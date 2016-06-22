@@ -15,10 +15,11 @@ $ slowcat [
   n "[bf4*4, [g4 g3 g2 g1]]"
 ]
 |=| rampatk (scale 0.0 0.3 $ slow 16 sine1)
-|=| rosc1xmod "[0 0.8 0.9 0.7 0.6]/20"
-|=| ramprelease "0.1"
+|=| ramprelease "0.2"
 
-m3 $ density 0.9 $ stack [
+|=| rosc1xmod "[0 0.8 0.9 0.7 0.6]/20"
+
+m1 $ density 0.9 $ stack [
 slowcat [
   n "[bf6*6 c5*3 d5*6]/3",
   n "[ef4*6 g4*6]/2",
@@ -107,7 +108,7 @@ m2 $ slow
 
 
 
-
+d1 $ slowcat [
   n "f4 g4 bf4",
   n "f4 g4 bf4",
   n "ef4 f4 g4 bf4",
@@ -116,3 +117,4 @@ m2 $ slow
   n "d4 ef4 f4 g4 bf4",
   n "c4 d4 ef4 f4 g4 bf4",
   n "c4 d4 ef4 f4 g4 bf4"
+]
