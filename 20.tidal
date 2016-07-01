@@ -1,0 +1,20 @@
+cps (0.6)
+
+m1 $ (|+| n "+5") $ slow 2 $ striate 6 $ slowcat [
+  n "d4 ef4 f4 g4 bf4",
+  n "c4 d4 ef4 f4 g4 bf4"
+]
+
+m2
+$ (|+| n "+17")
+$ slow 3
+$ striate 6
+$ slowcat [
+  n "d4 ef4 f4 g4 bf4",
+  n "c4 d4 ef4 f4 g4 bf4"
+]
+
+m2 $ silence
+
+
+m1 $ silence

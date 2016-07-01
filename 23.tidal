@@ -1,0 +1,10 @@
+m1
+$ stack [
+n "c5*8" # velocity (scale 0.5 0.9 $ slow 8 sine1),
+n "a5*7" # velocity (scale 0.1 0.5 $ slow 26 sine1),
+n "b5*5" # velocity (scale 0.1 0.5 $ slow 40 sine1),
+n "e3*9" # velocity (scale 0.1 0.8 $ slow 32 sine1),
+n "f3*10" # velocity (scale 0.5 0.8 $ slow 20 sine1)
+]
+
+n "[c5*8, a5*12]" # velocity "0.7"

@@ -1,0 +1,49 @@
+cps (0.6)
+
+m1 $ silence
+m2 $ silence
+m3 $ silence
+
+  sound "bd [~ bd]/2 [bd bd*2] bd",
+
+d1 $ whenmod 6 4 (rev) $ whenmod 8 4 (striate 2) $ stack [
+  sound "hc [hc hc*2] ~ ~" # n "5" # pan "0.2" # speed "0.8" # vowel "e",
+  sound "~ ~ hc [~ hc*3]/2" # n "2" # pan "0.7" # speed "-1.5" # vowel "o",
+  sound "~ ~ ~ cp" # gain "1.2"
+]
+
+m1 $ slow 4 $ n "[a4*8?, d4*16?] [g4*16?, a3*16?] g4*16? e4*16?" # dur "0.5"
+
+m1
+  $ whenmod 9 7 (palindrome)
+  $ whenmod 12 10 (striate' 2 (1/16))
+  $ slow 2
+  $ striate 2
+  $ n "[[[c5 g5 g4 d5 c6]/5]*8, [[g6*2 a7 c6*2 d5*2]/4]*8]" # dur "0.8"
+  # rdelay (scale 0 0.6 $ slow 24 $ sine1)
+  # rdelaytime (scale 0.4 0.6 $ slow 16 $ sine1)
+
+m2 $ whenmod 8 5 (rev) $ n "[c5*8?, [[c4 a5 g5 g4]/4]*8?]" # dur "0.8"
+
+m3 $ n "[c5*8?, [[c4 a5 g5 g4]/4]*8?]" # dur "0.8"
+
+
+m1 $ jux (zoom (0, 0.5) . density 4 . (|+| n "+12"))
+  $ n "c4 [d5 [g5 d6 a5 a5]/4] e5 f4"
+
+m2 $ n "[c4 e4 d4 [~ a4]]/4" # dur "0.8"
+
+m3 $ jux (rev . density 1.5 . (|+| n "+24"))
+  $ n "[[e5 e5 c5 d5]/4, [[c4 a5 g5 g4]/4]]" # dur "0.8"
+
+d1
+$ stack [
+  sound "[~ ho*2]/2 ho*4 ho ~" # n "2" # speed "4.0" # end "0.8"
+]
+
+k1 $ (|+| n "+36") $ stack [
+  midinote "0 0 [0 [~ ~ 0*2]/3] 0",
+  midinote "[~ ~ ~ 10*4]/4",
+  midinote "[6!5 [6 6*2]/2 6]",
+  midinote "2 [~ [~ ~ ~ 2]/2]"
+]

@@ -1,0 +1,8 @@
+cps 1
+
+d1 $ s "[super808, [hc hc*2 hc]]" # n (irand 5) # voice "1"
+
+d2 $ every 4 (echo (negate 3/32)) $ n "c5*4" # s "supernoise"
+  # accelerate "-2" # speed "1" # sustain "0.1 ! ! 1" # voice "0.0"
+
+  d2 $ echo ((1/16)) $ s "hc" # n "c5" # voice "0.5"

@@ -1,0 +1,32 @@
+cps (1.9)
+
+m1 $ slow 2 $ stack [
+ n "[f4 [~ g4] [af4 c3]/2 [bf4, [[ef5*2 af5*2]/2 g5*2]/2] [~ c4] [~ ef4]]/2"
+] # dur "1"
+
+d1 $ stack [
+  sound "[bd ~ ~ ~ ~ ~ ~ ~ bd ~ ~ [bd ~ ~ bd*1]]/12" # n "4" # gain "1.0",
+  sound "birds3*1" # gain "1.2" # pan "[0.6 0.8]" # speed "-1.0",
+  ((1/64) <~)
+    $ sound "birds3*3" # gain "1.0" # pan "[0.2 0.3]" # speed "-2.0" # accelerate "4",
+  sound "hc:6*3" # gain "0.6" # pan "[0.3 0.4]" # speed "[-1.2 -1.4 -0.9]",
+  sound "[~ hh hh*2]/2"
+    # n "3" # gain "1.0" # pan "[0.7 0.4]" # speed "[1.9 1.4 5.9]"
+]
+
+m2 $ slow 4 $ n "g4 ! [~ [c4, g4] ~ [df3, af4]]/4 ef4"
+
+m2
+  $ n "[[[c5 c4*3]/2] [f4*2 af4]/2 [bf3*3 df4*3]/2 [df4*6 ef5*4]/2]/4"
+
+
+m2 $ slow 4 $ stack [
+ n "[f4 [~ g3] [af4 c3]/2 [[bf4 ~]/2, [[af4 df4*2]/2 g4]/2] [~ af3*4] [~ ef4]]/2"
+  # rampatk (scale 0.0 0.2 $ slow 64 $ sine1)
+] # dur "1"
+
+
+m2 $ stack [
+  n "[[c4!3 bf4!3]/8 ~ [~ ~ [df3 [ef3, [~ ef3]] df3 c3]/4 ~ ~ ~ ~ ~]/8 [~ df4]/2]"
+  # rampatk (scale 0.0 0.2 $ slow 64 $ sine1)
+]
