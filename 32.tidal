@@ -1,0 +1,32 @@
+bd $ n "c3"
+
+sd $ n "[f3*2 ~ ~]/3 c4 [~ g5]/2 c3"
+
+ch $ n "c3 [c3 c3*2 c3 ~]/4 c3 c3 [c3 ~]/2 [c3 c3 c3 ~]/4 [c3 ~ ~]/3 c3"
+
+cy $ n "[~ [[~ c3]/2 ~ c3*2 c3]/4 ~ c3]"
+
+oh
+  $ n "[~ [c3 c3 ~ ~]/4]"
+
+cp $ n "~ ~ ~ [c3 c3 c3 c3*2]/4"
+
+rs $ n "[c3 c3 ~ [c3*2 c3]/2]/2"
+
+
+
+bd $ silence
+sd $ silence
+rs $ silence
+cp $ silence
+bt $ silence
+lt $ silence
+mt $ silence
+ht $ silence
+ch $ silence
+oh $ silence
+cy $ silence
+cb $ silence
+m1 $ silence
+m2 $ silence
+m3 $ silence

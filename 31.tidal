@@ -1,0 +1,49 @@
+cps (0.95)
+
+m1
+  $ slow 2
+  $ n "[ef3 af4]/2 [df3 ef4 af6]/2 [af3 bf4]/2 [gf4 bf5 af4]/2"
+  # velocity (scale 0.4 0.8 $ slow 5.555 $ sine1)
+
+m2
+  $ n "[ef3 df5]/2 [af4 [ef5 af5]/2]/2 [gf4 [df5 gf5]/2]/2"
+  # velocity (scale 0.2 0.4 $ slow 9.555 $ sine1)
+
+m3
+  $ n "[ef4 ! ! df4]/4"
+  # velocity (scale 0.3 0.6 $ slow 10.222 $ sine1)
+
+cy $ n "[~ ~ [~ c3] [~ c3]]/4"
+
+ch $ n "c3*2"
+
+oh $ n "[~ [~ ~ ~ c3]]/2"
+
+lt $ n "[~ [~ ~ ~ c3]]/2"
+
+bt $ n "[~ [~ [~ c3]]/2 ~ [~ c3]]/4" # velocity "0.4"
+
+bd $ n "[c3 ~ c3 [~ [~ c3]]/2]"
+
+sd $ n "c3*2"
+
+
+sd $ silence
+
+
+
+bd $ silence
+sd $ silence
+rs $ silence
+cp $ silence
+bt $ silence
+lt $ silence
+mt $ silence
+ht $ silence
+ch $ silence
+oh $ silence
+cy $ silence
+cb $ silence
+m1 $ silence
+m2 $ silence
+m3 $ silence

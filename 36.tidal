@@ -1,0 +1,36 @@
+m1
+  $ every 2 (jux (|+| n "+12"))
+  $ n "[df4 df4 af4]/3 [gf4 df6 gf4]/3 [af4] bf4"
+
+m1
+  $ every 2 (jux (|+| n "+12"))
+  $ n "[bf4 df4 ef4 f4]/4 [bf4 df5 ef4]/3 [af4 f5]/2 bf4"
+
+
+m2 $ n "gf4 [df4 af4 bf4 [ef4 f4]/2 gf4]/5 gf4 gf4" # velocity "0.5"
+
+m2
+  $ n "[af3 df3 bf3]/3 [df4 ef4]/2 f4 [df4 gf4]/2"
+
+m2 $ silence
+
+m3
+  $ jux (((1/4) <~) . (slow 0.5) . (|+| n "+24") . (|=| dur "0.01") . (|=| velocity "0.5"))
+  $ n "[df2 [ef1 bf1]/2 gf1 af1]/8"
+  # velocity (scale 0.5 0.6 $ slow 8 $ sine1)
+
+m3 $ silence
+
+oh $ n "[~ c3]" # velocity "0.3"
+
+
+m1 $ n "c3"
+
+bd $ n "[[c3*2]/2 ~]/2" # velocity "0.2"
+
+
+ch $ silence
+
+sd $ n "~ [[c3 ~ c3] ~ c3]/3"
+
+sd $ silence

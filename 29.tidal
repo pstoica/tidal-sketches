@@ -1,0 +1,64 @@
+cps (0.9)
+
+bd
+  $ slowspread ($) [id, id, id, density 1.5]
+  $ slow 2
+  $ slowcat [
+    n "c3*2",
+    n "c3 [c3 [c3 ~ ~ c3]]/2"
+  ]
+
+oh $ slow 2 $ n "c3*2"
+
+ch
+  $ slowspread ($) [id, density 1.5, slow 2, chop 2]
+  $ n "c3*12"
+  # velocity (scale 0.3 0.7 $ slow 5.777 $ sine1)
+
+cy $ n "[~ ~ ~ [c3 c3*2]/2]"
+
+
+cp $ n "~ [c3 ! ! [c3 ~ c3*2]]/4"
+
+
+
+m1
+  $ jux (slow 0.5 . (|+| n "+12"))
+  $ n "[[e3 c3 d4 e4]/4 [a2 f2]/2 e3 a3 a4 e5]/6 [g3 d3 e4 g4 d3 d4]/6 ~"
+  # rampdecay (scale 0.2 0.5 $ slow 8.3333 $ sine1)
+  # rampatk (scale 0.0 0.3 $ slow 13.333 $ sine1)
+  # ramprelease (scale 0.2 0.3 $ slow 3.333 $ sine1)
+  # rreverb (scale 0.2 0.5 $ slow 12.333 $ sine1)
+
+m2
+  $ jux (density 1.333 . (|+| n "+24"))
+  $ n "[[c3 a4]/2 [c4 g5]/2 [g5 e4]/2 [g4 e5]/2 [c4 d5]/2]/5"
+  # rosc1type (scale 0.0 1 $ slow 16.333 $ sine1)
+  # rosc2type (scale 0.0 1 $ slow 32.333 $ sine1)
+  # rosc1range (scale 0.1 0.5 $ slow 4 $ sine1)
+  # rosc2range (scale 0.1 0.6 $ slow 6 $ sine1)
+
+m2 $ n "e3*8"
+  # ramprelease (scale 0.3 0.7 $ slow 10.333 $ sine1)
+  # rosc1type (scale 0.0 1 $ slow 16.333 $ sine1)
+  # rosc2type (scale 0.0 1 $ slow 32.333 $ sine1)
+  # rosc1range (scale 0.4 0.8 $ slow 4 $ sine1)
+  # rosc2range (scale 0.4 1 $ slow 6 $ sine1)
+
+
+
+bd $ silence
+sd $ silence
+rs $ silence
+cp $ silence
+bt $ silence
+lt $ silence
+mt $ silence
+ht $ silence
+ch $ silence
+oh $ silence
+cy $ silence
+cb $ silence
+m1 $ silence
+m2 $ silence
+m3 $ silence

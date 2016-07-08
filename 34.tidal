@@ -1,0 +1,98 @@
+cps (0.5)
+
+bd $ n "[[e3 [~ [~ ~ c3 c3]]]/2 [~ ~ ~ c3*2]/3]"
+
+sd $ n "[~ [~ ~ c3*2 ~]/4 ~ [~ c3]]"
+
+cp $ n "[[~ ~ ~ [c3*4]]/4 [~ e3 c3*3]/3 ~ [~ ~ ~ c3]/4]"
+
+ch $ n "[[c3 c3 [~ c3*6]]/3 [c3 ~ c3*2]/3 [c3*4 ~ c3*4]/3 c3*8]"
+
+ch $ n "[[c3*2 c3*4]/2 [~ e3*2 [c3*3 c3*6]]/2]"
+
+oh $ n "c3*4"
+
+cy $ n "[[e3*2 [~ e3*1] e3*2 [~ e3*2]]/4]"
+
+
+
+bd $ n "[c4 c4 c4 ~]/4 [~ ~ ~ [~ ~ ~ [c4]]/4]"
+
+sd $ n "~ [b3 b4]/2"
+
+cp $ n "[[~ [c3 c3*2]/2 [~ ~ c3*2]/3 ~] c3]"
+
+ch $ n "[c3 ! ! c3 ! ! [c3 c3*2]/2 [c3 ! ! c3*2]/4]"
+
+cy $ n "[~ c4]*2" # velocity (scale 0 0.4 $ slow 16 $ sine1)
+
+cy $ silence
+
+m1 $ silence
+
+m1
+  $ every 4 (jux (density 2 . (|+| n "+12")))
+  $ stack [
+    n "[[[d3 d3*2]/2 [[g3 g2*2 e3]/3 [e2 g2 a2]/3 [e3 g2 a2]/3 d4] [a3 b3] b3]/4 [g3 g3 [g3 a3] a3]/4 [b3] [d5 a3]]/1",
+    n "[[[~ [c3 d3]/2] d4] [~ [g4 a4]/2]/2 [e3 b4]/2 [a4 d4 g4 a4]/4]"
+  ]
+  # velocity "1"
+  # rampatk (scale 0.0 0.05 $ slow 16 $ sine1)
+  # ramprelease (scale 0.2 0.5 $ slow 16 $ sine1)
+  # rsub (scale 0.0 1.0 $ slow 32 $ sine1)
+
+m1 $ silence
+
+m2
+  $ n "[[g3 [[a4 b4] g4]/2] [d3 [~ e3]/2] [c3 [a3 ~]/2] b3]/8"
+  # velocity "1" # dur "3.5"
+  # rlforate (scale 0 0.3 $ slow 13 $ sine1)
+  # rlfopitch (scale 0.45 0.55 $ slow 3.33 $ sine1)
+  # rosc1range (scale 0.05 0.55 $ slow 3.33 $ sine1)
+
+m2 $ silence
+
+m2
+  $ every 2 (jux (density 0.5 . (|+| n "+36")))
+  $ n "[[b2 c2 a3]/3 [[c3 d4]/2 d5] [[[c3 c4]/2 ~]/2 d4] [[~ g4]/2 g3]]/2"
+  # velocity "1"
+  # dur "0.5"
+
+m3
+  $ n "[[b6 a6]/2 [~ [d6 c6]/2] [[d6 c6]/2] [a6]/2 g6 a6 b7 ~]/1"
+  # velocity "1" # dur "0.6"
+  # rlforate (scale 0.3 0.5 $ slow 13 $ sine1)
+  # rlfopitch "0.45"
+  # rosc1range (scale 0.05 0.7 $ slow 16 $ sine1)
+
+
+  # rampatk (scale 0.0 0.2 $ slow 8.444 $ sine1)
+  # ramprelease (scale 0.0 0.2 $ slow 10.444 $ sine1)
+
+
+  $ n "[[d3 [[b4 b4] g4]/2] [d4 [~ 43]/2] [c3 [a3 ~]/2] b3]/4"
+
+
+
+
+m2 $ silence
+
+
+  n "[[[c3 g3]/2 [a3 g3]/2 d3 [e3 a4]]/4, [c3 d3 f3 g3]/3]"
+  # velocity "1"
+
+bd $ silence
+sd $ silence
+rs $ silence
+cp $ silence
+bt $ silence
+lt $ silence
+mt $ silence
+ht $ silence
+ch $ silence
+oh $ silence
+cy $ silence
+cb $ silence
+m1 $ silence
+m2 $ silence
+m3 $ silence

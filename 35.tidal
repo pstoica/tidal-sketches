@@ -1,0 +1,83 @@
+cps (0.9)
+
+bd
+  $ n "[~ ~ [[c3 ~ ~]/3 [~ c3*3 ~]/3 ~]/3] [~ ~ [c3 ! ! ~]/4]"
+
+bd $ silence
+
+bd
+  $ every 12 (const $ n "c3*12")
+  $ n "c3 [~ c3 c3]/3 [~ ~ c3]/3 [[c3 ~ c3*2]/3 c3 c3*2]/3 ~ !"
+  # velocity "0.2"
+
+oh
+  $ every 6 (const $ n "c3*12")
+  $ n "[c3 c3*2 [~ c3]]/3 c3 [c3*2 c3*2 c3]/3"
+  # velocity (scale 0.1 0.8 $ slow 46 $ sine1)
+
+oh
+  $ n "[[[~ c3]/2 c3*2]/2 c3*2 [c3*1 c3*2 [~ c3]]/3]/2"
+
+oh
+  $ every 6 (density 1.5)
+  $ n "~ [~ ~ c3 c3 ~ c3]/6"
+  # velocity (scale 0.1 0.5 $ slow 16 $ sine1)
+
+ch
+  $ every 2 (|+| n "+18")
+  $ n "[[~ ~ c3*3 ~]/4 c3 [~ ~ c3]/3] [~ ~ c3]"
+  # synth2 "[0.6 0.5 0.1]/3"
+  # velocity (scale 0.1 0.5 $ slow 16 $ sine1)
+
+ch $ silence
+
+bd $ n "[[c3 ~ c3*2]/3 [~ [~ c3]]/2 [c3 [c3 c3 ~ ~ ~ ~]]/2 ~]/4"
+
+sd $ n "~ [[~ c3] ~ [c3 ~ ~]/3]/3 [~ c3 ~ c3*2]/4"
+  # velocity (scale 0.2 0.8 $ slow 16 $ sine1)
+
+sd $ n "[~ ~ [~ c3] ~]/4 [[[~ ~ c3]/3 c3] ~ [c3 c3*2 ~]/3]/3 [~ c3 ~ c3*4]/4"
+  # velocity (scale 0.2 0.8 $ slow 16 $ sine1)
+
+cy
+  $ n "~ [[c3*2 [~ c3*6] [~ c3*4]]/3 ~ ~]/3"
+  # synth1 "1"
+  # synth2 "[0.6 0.5 0.7]/3"
+  # synth3 (scale 0 1 $ slow 16 $ sine1)
+  # synth5 "[0.3 0.7 0.4]/3"
+  # synth4 "[0.3 0.7 0.4]/3"
+  # velocity (scale 0.1 0.8 $ slow 36 $ sine1)
+
+m1 $ n "ef4*6 [[~ gf3*3 df3] ~ ~]/3"
+  # rlpcutoff (scale 0.2 0.6 $ slow 8 $ sine1)
+
+m1 $ silence
+
+
+m2 $ n "ef4*12?"
+  # ramprelease (scale 0.0 0.2 $ slow 32 $ sine1)
+  # velocity (scale 0.2 0.8 $ slow 36 $ sine1)
+
+
+m3 $ n "[[ef3 gf2 gf2 gf3]/4 [gf2 ef3]/2]*6"
+  # velocity (scale 0.0 0.5 $ slow 12 $ sine1)
+
+m3 $ n "ef4*6 [[~ gf3*3 df3] ~ ~]/3"
+  # rlpcutoff (scale 0.2 0.6 $ slow 8 $ sine1)
+
+m2 $ silence
+
+m2 $ n "[~ [d5 g5 b6]/3] [~ [a5 c4 d4 e4]/4] [b5 c4 d5 b5 d5 c6]/6 [c5]"
+
+m2
+  $ n "[[d2 d2 e2 e2 g2 g2]/3 [a3 ~ a3 ~ d3 ~]*2 [g3 a3 [[[a4 [c5 d5]/2] [g4 b6]]/2]*2]]/2 [~] [~]"
+
+m2
+  $ n "[[d3 e3 g4] ~ [c4 a3 d4]]/3 [~ ~ c3*2]/3 [~ ~ d3 g3]"
+
+
+m1 $ silence
+m2 $ silence
+m3 $ silence
+
+bd $ silence

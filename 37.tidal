@@ -1,0 +1,27 @@
+cps (0.9)
+
+bd $ silence
+
+bd $ n "[~ df3]/2 [[~ df3]/2 [~ df3]/2]"
+
+ch $ n "df3*4"
+
+m1 $ n "[[f4]*4, df3*8]"
+
+m1 $ silence
+
+m3 $ n "bf4 c5 ef5 gf5"
+
+m3 $ silence
+
+m2 $ stack [
+  n "df3 ef4 gf4 [bf4 f5]/2 f4 df4",
+  n "f5 [gf5 af4 ef4]/3 df6 [af6 ef6 af6]/3 [ef5 bf6 ef5]/3 df6"
+]
+
+m3 $ stack [
+  n "[[~ [ef4 af5]/2] f4]/2"
+]
+
+
+sd $ n "[~ ~ ~ [~ ~ [df3 ~]/2 df3]]/2"

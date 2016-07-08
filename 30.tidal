@@ -1,0 +1,74 @@
+cps (0.95)
+
+bd
+  $ slowspread ($) [id, id, id, ((3/4) <~)]
+  $ slowcat [
+    n "c3 [c3 [~ c3]]/2 ~ !"
+  ]
+  # velocity (scale 0.2 0.8 $ slow 20.555 $ sine1)
+
+cp
+  $ n "[~ c3]"
+  # velocity (scale 0.2 0.8 $ slow 10.555 $ sine1)
+
+sd
+  $ slowcat [
+    n "~ ~ c3 ~",
+    n "c3*2 ~ c3 ~",
+    n "~ c3*2 c3 ~",
+    n "c3 ~ c3*2 ~"
+  ]
+  # velocity (scale 0.2 0.6 $ slow 10.555 $ sine1)
+
+oh
+  $ slowcat [
+    n "~ c3 ~ [~ [~ c3]]/2",
+    n "~ ~ ~ [c3 c3*2]/2",
+    n "[c3*8 c3*4]/2 ~ ~ ~",
+    n "~ ~ c3*4 ~"
+  ]
+  # velocity (scale 0.2 0.9 $ slow 18.555 $ sine1)
+
+cy $ n "[~ [c3 c3 c3 [c3 ~ ~ c3]]/4]"
+  # synth4 (scale 0.2 0.6 $ slow 16 $ sine1)
+  # velocity (scale 0.2 0.9 $ slow 7.555 $ sine1)
+
+ch
+  $ slowcat [
+    n "~ ~ c3 ~",
+    n "c3*2 ~ c3 ~",
+    n "~ c3*2 c3 ~",
+    n "c3 ~ c3*2 ~"
+  ]
+  # velocity (scale 0.0 0.5 $ slow 5.555 $ sine1)
+
+m1
+  $ slow 2
+  $ n "[ef3 af4]/2 [df3 ef4 af6]/2 [af3 bf4]/2 [gf4 bf5 af4]/2"
+  # velocity (scale 0.4 0.8 $ slow 5.555 $ sine1)
+
+m2
+  $ n "[ef3 df5]/2 [af4 [ef5 af5]/2]/2 [gf4 [df5 gf5]/2]/2"
+  # velocity (scale 0.2 0.4 $ slow 9.555 $ sine1)
+
+m3
+  $ n "[ef4 ! ! df4]/4"
+  # velocity (scale 0.3 0.6 $ slow 10.222 $ sine1)
+
+
+
+bd $ silence
+sd $ silence
+rs $ silence
+cp $ silence
+bt $ silence
+lt $ silence
+mt $ silence
+ht $ silence
+ch $ silence
+oh $ silence
+cy $ silence
+cb $ silence
+m1 $ silence
+m2 $ silence
+m3 $ silence

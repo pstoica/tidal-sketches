@@ -1,0 +1,48 @@
+bd $ n "c3"
+
+cp $ n "[~ ~ ~ [~ c3]]/4 ~ c3 [~ [~ ~ c3 ~]]/2"
+
+ch $ n "~ ~ c3 [[~ c3 ! !]/4 ~ c3 ~]"
+
+sd $ n "~ [[c3 [~ e3 ~ g3]]/2 [~ c3]/2]/2"
+
+cy $ n "[~ [[~ c3]/2 ~ c3*2 c3]/4 ~ c3]"
+  # synth1 (scale 0 0.8 $ slow 35.555 $ sine1)
+  # synth3 (scale 0.4 0.8 $ slow 16 $ sine1)
+
+rs $ n "~ [~ c3]"
+
+m1
+  $ every 12 (density 2 . (|+| n "+12"))
+  $ every 8 (density 3 . (|+| n "-12"))
+  $ n "a3 [~ ~ [~ d4]]/2 [~ [[e4 c4 a5]/3 ~ g5]/3]" # dur "0.4"
+  # rosc1color (scale 0 1 $ slow 15.555 $ sine1)
+  # rosc2color (scale 0 1 $ slow 25.555 $ sine1)
+
+m2
+  $ every 32 (density 3 . (|+| n "+12"))
+  $ n "[a4 a5 [[g4 g5] [e4 e5] [a4 a5]]/3 e4 e5 d4 d5 c4 c5 g4 g5]"
+  # dur "0.1"
+
+m3
+  $ n "c4"
+  # rosc1color (scale 0 1 $ slow 9.555 $ sine1)
+  # rosc2color (scale 0 1 $ slow 7.555 $ sine1)
+  # velocity (scale 0 0.5 $ slow 32 $ sine1)
+
+
+bd $ silence
+sd $ silence
+rs $ silence
+cp $ silence
+bt $ silence
+lt $ silence
+mt $ silence
+ht $ silence
+ch $ silence
+oh $ silence
+cy $ silence
+cb $ silence
+m1 $ silence
+m2 $ silence
+m3 $ silence

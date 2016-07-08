@@ -3,6 +3,7 @@ cps (0.6)
 m1 $ silence
 m2 $ silence
 m3 $ silence
+k1 $ silence
 
   sound "bd [~ bd]/2 [bd bd*2] bd",
 
