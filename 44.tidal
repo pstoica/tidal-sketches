@@ -1,0 +1,5 @@
+cps (120/120)
+
+m1 $ n "g5 a5 c5 d5 g5 f5" # velocity "1"
+
+m1 $ silence

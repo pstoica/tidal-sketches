@@ -1,0 +1,48 @@
+m1
+  $ striate 2
+  $ slow 4
+  $ zoom (0, 0.5)
+  $ n "[[[[c3 f4] [a3 g3] [c3 f3] [e3 d4]]/4 g4 b4] [g2 a2 d3], b6 b6 d6 d5]" # velocity "1"
+
+m3
+  $ striate 2
+  $ density 2
+  $ (|+| n "-12")
+  $ zoom (0, 0.5)
+  $ n "[[[e4 a3 e4 c4 [d3, d4] e4]/6 g4 b4] [g2 a2 d3], b6 b6 d6 d5]" # velocity "1"
+
+m2 $ (|+| n "+12") $ n "[[c4 d4 e4 [f4, f5]]/4 ~ ~ d4 e4 g3 [g4 b4]/2 d5]/4"
+  # velocity "1"
+  # dur "0.5"
+
+m2
+  $ striate 2
+  $ density 1
+  $ (|+| n "+24") $ n "[~ [c5*2 ~] [d5*2 ~] [e6 ! ! [~!3 e6!3]/8]]/4"
+  # velocity "1"
+  # dur "0.5"
+
+bd
+  $ striate 2
+  $ n "[~ [c3*2 ~] ~ ~]/4"
+
+rs
+  $ striate 2
+  $ n "[~ ~ [c3*2 ~] ~]/4"
+
+sd
+  $ striate 2
+  $ n "[~ ~ ~ [c3 ! ! [~!3 c3!3]/8]]/4"
+
+ch $ n "~ ~ ~ [c3 ! ! c3*2]/4"
+  # dur "0.1"
+  # velocity "1"
+
+cy $ n "~ ~ c3 ~"
+
+cp $ n "~ [~ ~ ~ c3]/4 ~ c3" # dur "1"
+
+m2 $ n "[g4 ]"
+
+
+cy $ silence

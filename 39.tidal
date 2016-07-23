@@ -1,0 +1,46 @@
+cps (1.1)
+
+bd $ n "c3"
+
+cp $ silence
+oh $ silence
+cy $ silence
+sd $ silence
+rs $ silence
+
+bd $ n "[c3 [~ c3] [~ ~ ~ c3*2]/4 ~]"
+
+cp $ n "[~ ~ ~ c3]"
+
+oh $ n "[~ c3]*2"
+
+cy
+  $ whenmod 8 6 (const $ n "~")
+  $ n "~ [c3]"
+
+rs
+  $ whenmod 8 4 (const $ n "~")
+  $ n "[~ [~ c3]/2 ~ [~ c3 c3]/3] [c3]"
+
+
+m1 $ n "c3*2 ~ ~"
+
+m1 $ silence
+m3 $ silence
+
+m1 $ n "[[e3 df3 af3 df3]/4 [~ gf3] [~ ~ ~ ef3*2]/4 ~]"
+
+m1 $ n "[[~ ~ df4] af3 ~ [bf4 df4 gf4]]/4"
+
+m2 $ n "[[e3 df3 af3 df3]/4 [~ gf3] [~ ~ ~ ef3*2]/4 ~]"
+
+m3 $ n "[[e3 df3 af3 df3]/4 [~ gf3] [~ ~ ~ ef3*2]/4 ~]"
+
+
+sd $ n "~ ~ [c3 ~]/2 [c3 ~]/2"
+
+rs $ n "[~ [~ ~] [c3 c3 c3 ~]/4 [~ [~ c3]/2]]"
+
+rs $ silence
+
+sd $ silence

@@ -1,0 +1,54 @@
+cps (120/120)
+
+
+bd $ n "[[~ ~ ~ [c3 ~]/2]/4 [~ c3]/2]"
+
+rs $ n "~ [~ ~ [~ c3*2]/2 ~]/4"
+
+cp $ n "~ ~ ~ [~ ~ c3 [c3 ~]/2 c3 [~ c3]/2]/6"
+
+ch $ n "c3*2"
+
+sd $ n "c3*2"
+
+ch $ silence
+
+oh $ n "c3*3"
+
+
+cy $ n "[~ ~ c3*4 c3*4]/16"
+
+oh $ silence
+
+m1
+  $ n "[[gf5 af6 ef6 gf6]/4 [af5 [bf5 df4 af4 gf4]/4 ~ ~]]"
+
+m2 $ n "[ef1 af1 bf1]"
+
+m2
+  $ n "[[df4, f4] [af4, c4] [bf4, df4] [gf4, ef5]]/8"
+  # dur "0.4"
+  # velocity "0.8"
+
+m3
+  $ n "[[df4 bf4 [f4 ef5]/2]/3 ! [ef4 af5 af5]/3 ! [f4 ef4 df4]/3 ! [af4 df5]/2 !]/2"
+
+
+
+m2 $ silence
+
+m3 $ silence
+
+m3
+  $ stack [
+    n "[[df5 ef5 f5 [bf6 af6]/2]/4 [bf5 [df5 ef4 gf4 af5]/4 ~ ~]]"
+      # velocity (scale 0.2 0.8 $ slow 8 sine1),
+    n "[ef1 af1 bf1 gf1]/8" # dur "0.4" # velocity "0.8"
+  ]
+  # rlforate (scale 0.2 0.5 $ slow 12.33 $ sine1)
+
+
+
+
+  $ n "[df7*3 ef6*6 f6*3]/3"
+  # dur "0.1"

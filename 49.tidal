@@ -1,0 +1,23 @@
+cps (140/120)
+
+m1
+  $ slow 1.25
+  $ jux (slow 2 . (|+| n "+24") . rev . (# dur "0.2") . zoom (0, 0.5))
+  $ n "[[[bf2 bf1 ef1 ef2]/4 [c2 c2 g2 g2]/4 d2 bf2 ef3]]" # dur "0.5" # velocity "1"
+
+m2
+  $ n "[[bf4 bf4] [f4 ~ ef4 ef5] [af4 af3 f4 ef4] [c4 ~ ~ ef4]]/16"
+  # dur "0.5"
+
+m3 $ n "[bf4 [bf4 g4]/2 [af4 d4]/2 bf4]"
+
+bd $ n "c3"
+
+m3 $ silence
+
+bd $ silence
+
+
+m3 $ silence
+m2 $ silence
+m1 $ silence

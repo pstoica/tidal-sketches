@@ -1,0 +1,106 @@
+cps (150/120)
+
+bd $ n "c1"
+
+sd $ n "[c1 ~ ~ ~ ~ ~]/2"
+
+rs $ n "[~ c1 ~ ~ ~ c1]/2"
+
+cp $ n "[~ ~ c1 ~ c1 ~]/2"
+
+bd $ n "[~ ~ ~ c1 ~ ~]/2"
+
+ch $ n "[c3 c3 c3 [c3 c3 c3 c3*2]/4]"
+
+oh $ n "[c3 c3 c3 [c3 c3 c3 c3*2]/4]"
+
+bd $ silence
+oh $ silence
+
+ch $ silence
+
+m1
+  $ n "[df4*2 ef4*2 c4*2 [[bf3 !] [af4 af3]]/2]/8"
+  # dur "2"
+  # velocity "0.8"
+
+ch $ n "c3*4"
+
+
+ch $ n "[~ [~ c3*2 c3*2 c3*2]/4]*2"
+
+
+sd $ n "~ [c3 c3 c3 [c3 c3*2]]/4"
+
+
+-- 1
+cp $ n "[~ ~ [c3 ~ ~ c3] ~]/2"
+  # velocity (scale 0.0 0.8 $ slow 16 $ sine1)
+
+ch $ n "c3"
+
+sd $ n "[~ ~ ~ [~ ~ ~ c3]]/2"
+
+oh $ n "[c3]"
+
+cy $ n "[~ ~ c3 c3]/4 ~ ~ [[~ ~ ~ [~ c3]]/4]"
+
+cy $ silence
+
+rs $ n "~ c3"
+
+m1
+  $ slow 2
+  $ slowcat [
+    n "~ af3 ~ [~ af3]",
+    n "df3 [gf4 af5] [~ af6] [c4 af5]",
+    n "ef4 [df4 ~ ~ df4] [~ gf4] [bf3 af4]",
+    n "c3 [f4 ~ ~ f4] [~ af4] [~ af3]"
+  ]
+  # dur "0.2"
+  # velocity "0.8"
+
+m1
+  $ n "[[[bf3 ~ bf3 bf3] bf3*4] [df4*4] [ef4 [~ ef4]/2 ef4 ef4] [[af4 ~ ~ af4] af3*6]]/8"
+  # dur "0.5"
+  # velocity "0.8"
+
+m2
+  $ n "[[af5*2 gf5*2]/2 [bf5*2 [ef5*2 df6*2]/2] [gf5*2 af6*2] [c5*2 [~ ef6*2]/2]]/2"
+  # dur "2"
+  # velocity (scale 0.4 0.8 $ slow 8 $ sine1)
+
+m3
+  $ n "[[~ af5 ~ ~] [~ ~ [gf5 f5] ~] [~ ~ c5 [[bf5 f6]/2, df6]] [df5*1 af5*1]/2]/8"
+  # dur "2"
+  # velocity "0.8"
+
+m3 $ silence
+
+--2
+m1
+  $ n "[df4*2 ef4*2 c4*2 [[bf3 !] [af4 af3]]/2]/8"
+  # dur "2"
+  # velocity "0.8"
+
+m3
+  $ n "[[~ af5 af5] [~ gf5 f5] [~ c5 c5] [df5*1 af5*1]/2]/8"
+  # dur "2"
+  # velocity "0.8"
+
+
+bd $ silence
+sd $ silence
+rs $ silence
+cp $ silence
+bt $ silence
+lt $ silence
+mt $ silence
+ht $ silence
+ch $ silence
+oh $ silence
+cy $ silence
+cb $ silence
+m1 $ silence
+m2 $ silence
+m3 $ silence

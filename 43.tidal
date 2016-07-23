@@ -1,0 +1,44 @@
+cps (120/120)
+
+-- 4:36
+m1
+  $ jux (striate 3 . rev . (every 4 $ density 2))
+  $ n "[df4 c6 af5 [ef6 f6]/2 [f6 ! gf6 !]/4 [af6 bf6]/2]/2"
+  # dur "0.5"
+  # velocity "0.8"
+
+m1
+  $ jux (striate 3 . rev . (every 4 $ density 2))
+  $ n "[[df4 af4 bf4 df4]/4 c6 af5 [ef6 f6]/2 [f6 ! gf6 !]/4 [af6 bf6]/2]/2"
+  # dur "0.5"
+  # velocity "0.8"
+
+
+
+
+
+
+-- SCRATCH
+
+ch $ n "c3*3"
+
+bd $ n "[c3 c3 c3 c3 c3 c3]/4"
+
+m3
+  $ n "[[a5*2 d5*2]/2 [[e4*2 f4*2]/2 [c5*2 a4*2]/2] [f5*2 a6*2] [c*2 [~ a4*2]/2]]/2"
+  # dur "2"
+  # velocity (scale 0.4 0.8 $ slow 8 $ sine1)
+
+m3
+  $ (|+| n "-12")
+  $ n "[af5 bf5 [af5 gf5]/2 ~ ~ ~]/4"
+  # dur "0.2"
+  # velocity "0.8"
+
+
+
+
+
+m1 $ silence
+m2 $ silence
+m3 $ silence

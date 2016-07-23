@@ -1,0 +1,38 @@
+cps (110/120)
+
+m1 $ silence
+
+bd $ n "c3"
+
+bd $ silence
+
+sd $ n "c3(2,8)"
+
+
+
+sd $ n "c3"
+
+bd $ n "c3"
+
+cp $ n "c3(3,8)"
+
+cp $ n "~ c3 ~ ~"
+
+ch $ n "[c3 ~ c3 c3]/4 ~ [c3 [~] c3*2 c3]/4 ~"
+
+cp $ silence
+
+[[a5 ~ a5 a5]/4 [g5 g5 g5 g5]/4]/8
+
+a5 g5 c5
+
+
+m1 $ silence
+
+m1
+  $ (|+| n "+0") $ n "~ g4 [[a5 ~ [~ ~ g5 a5] g5 ~ g5 ~ ~ c5 ~ c5 e5 ~ [d5 e5] e4]/16 [c4 c4 c4 ~]/4] ~"
+  # velocity "1" # dur "0.2"
+
+m2 $ n "[g4 g4 a4 a4, b5 b5 c5 c5]"
+
+m2 $ n "g5"

@@ -1,0 +1,84 @@
+bd $ n "~ ~ [~ [c3]/2] [c3 ~ ~ ~]/4"
+
+m2 $ n "c3"
+
+ch $ n "[~ c3]*4"
+
+ch $ silence
+
+
+sd $ n "c3"
+
+sd $ n "[~ [~ c3]/2 ~ c3] ~ ~ ~"
+
+cp $ n "~ [~ ~ [~ ~ c3 ~]/4 c3]"
+
+cp $ n "~ [~ c3 [~ ~ c3 ~]/4 ~]"
+
+sd $ silence
+
+cy $ n "c3*8"
+
+
+m1
+  $ n "df3 [[df3 ~]/2 [[ef3 ~]/2 ef4!]]/2 df3"
+  # velocity "{0.5 0.3 0.4 0.6 0.7}*8"
+
+m1 $ n "[[ef3 bf3 bf3 df3]/4]*3"
+
+m1
+  $ n "[[[[[c3 gf5] [c5 bf6 ef5 df5]/4 [df3 df4] ef3]/4]*2 [[~ [df3 ef3]/2]] [~ bf4 ~ ~] [df5 ~ ~ af3]]/2]"
+
+m2
+  $ whenmod 12 4 (const $ n "~")
+  $ stack [
+    n "~ ef5 [gf3 df4 ef4 [bf4 bf3]/2]/4 ~",
+    n "df5 [~ ~ ~ [ef3 bf4 gf5 [bf4 bf3]/2]/4] ~ ~"
+  ]
+
+m3
+  $ whenmod 12 6 (const $ n "~")
+  $ striate' 2 (1/16)
+  $ n "gf4*2 [~ [bf4 ef4 ef4]/3] [bf2*3 df5]/2 gf4"
+
+m2 $ n "df3 [[df3 ~]/2 [[ef3 ~]/2 ef4!]]/2 df3"
+  # velocity "{0.5 0.3 0.4 0.6 0.7}*8"
+
+
+m1 $ silence
+
+m2 $ silence
+
+m3 $ silence
+
+
+
+
+
+
+
+
+
+m1 $ n "[~ c3]"
+
+m2
+  $ n "[df3 [df4] [~ [gf4 ~]/2] [~ bf4]]/2"
+
+m2
+  $ jux (density 0.25 . (|+| n "+24"))
+  $ stack [
+    n "[~ df3 df3 df3]/4 ef4 [gf4 gf4 ~]/3 [bf4 f5]/2 f4 df4"
+  ]
+
+
+m1 $ silence
+
+
+m2
+  $ jux (density 0.25 . (|+| n "+24"))
+  $ stack [
+    n "df3 ef4 gf4 [bf4 f5]/2 f4 df4"
+  ]
+
+
+m2 $ n "[~ c3]"
