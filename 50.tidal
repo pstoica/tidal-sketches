@@ -1,0 +1,6 @@
+m2
+  $ every (3) (jux (density 2 . (|+| n "+24")))
+  $ (|+| n "-12") $ n "[af5 af3 df4 df5 f4 f4 f6 f3]/4"
+
+
+m2 $ silence

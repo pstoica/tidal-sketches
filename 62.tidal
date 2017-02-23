@@ -1,0 +1,20 @@
+bps (90/120)
+
+let beginend bpat durpat = (begin bpat) # (end $ (+) <$> bpat <*> durpat)
+
+let gtfo p = (const $ sound "~") p
+
+d1 $ stack [
+sound "z:10" # release "5" # beginend "0.5" "0.1",
+sound "[z:8]" # release "5" # beginend (scale 0.1 0.5 $ slow 8 $ sine1) "0.05" # speed "[0.5 1 [-2, 0.5]]",
+within (0, 0.5) (slow 1.5) $ every 3 (|*| speed "0.5") $ iter 16 $ whenmod 9 8 (chop 4) $ sound "[z:8]" # release "5" # speed "2" # beginend (scale 0.1 0.5 $ slow 4 $ sine1) (scale 0.01 0.2 $ slow 16 $ sine1),
+within (0, 0.25) (density 1.5) $ every 4 (striate 8) $ sound "[z:10 z:9 z:8]/3" # release "5" # speed "-2" # beginend (scale 0.3 0.8 $ slow 8 $ sine1) (scale 0.01 0.2 $ slow 64 $ sine1) # gain "0"
+]
+
+
+d2 $ stack [
+  slowspread ($) [(|=| coarse "24"), slow 4, striate 3, (|=| shape "0.5"), density 4, gtfo, rev, (|*| speed "2")] $ density 8 $ sound "x:4" # beginend (scale 0.3 0.8 $ slow 16 $ sine1) (scale 0.01 0.2 $ slow 8 $ sine1) # accelerate "-16",
+  every 4 (striate 3) $ sound "x:3*2" # release "8" # beginend (scale 0.2 0.5 $ slow 8 $ sine1) (scale 0.05 0.2 $ slow 16 $ sine1) # speed "4"
+] # gain "0.8"
+
+d2 $ silence

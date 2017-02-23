@@ -1,0 +1,107 @@
+bps (100/120)
+
+let beginend bpat durpat = (begin bpat) # (end $ (+) <$> bpat <*> durpat)
+
+d1 $ stack [
+every 4 (density 0.5)
+$ every 3 (|*| speed "-2")
+$ striate 2
+$ chop 4
+$ foldEvery [3] (striate 2)
+$ foldEvery [2, 5] (|*| speed "-1")
+$ sound "z:2*5"
+|=| speed "[0.5 2 [-2, 1]]*4"
+|=| beginend ("0.5") ("0.05")
+|=| pan (scale 0.2 0.7 $ slow 16 $ sine1)
+|=| cutoff (scale 3000 6000 $ slow 8 $ sine1)
+|=| crush "[6 8]/8"
+|=| gain "0.0",
+sound "z*12"
+|=| beginend ("0.4") ("0.05")
+|=| pan (scale 0 0.5 $ slow 8 $ sine1)
+|=| gain "0.2",
+striate 4
+$ sound "z*8"
+|=| speed "0.5"
+|=| beginend ("0.2") ("0.08")
+|=| pan "0.7"
+|=| gain "0.3"
+] # cutoff (scale 1000 6000 $ slow 32 $ sine1)
+
+
+hush
+
+
+d1 $ stack [
+chop 4 $ sound "[z:3*2 ~]"
+|=| speed "[0.5 0.5 -2 2 -1]/5"
+|=| pan (scale 0.7 0.2 $ slow 32 $ sine1)
+|=| cutoff (scale 6000 3000 $ slow 4 $ sine1)
+|=| shape "[0.5 0.7 0.8]/3"
+|=| gain (scale 0.0 0.5 $ slow 8 $ sine1)
+|=| accelerate "-20.9"
+|=| delay "0.2"
+|=| delayfeedback "0.6"
+|=| delaytime "0.2"
+|=| beginend ("0.1") ("0.04"),
+sound "[x:2, x:1*3] x:3*4 x:2*5"
+|=| speed "[4 -1 2]/5"
+|=| pan (scale 0.2 0.7 $ slow 16 $ sine1)
+|=| cutoff (scale 3000 6000 $ slow 8 $ sine1)
+|=| crush "[4 10 12 4 6 14]/8"
+|=| accelerate "-15.9"
+|=| gain (scale 0.0 0.3 $ slow 8 $ sine1)
+|=| beginend ("0.4") ("[0.1 0.3 0.4]/5")
+|=| delay "0.3"
+|=| delayfeedback "0.2"
+|=| delaytime "0.1"
+]
+
+
+d1 $ density 2 $ (|*| speed "2") $ density 1 $ stack [
+sound "bd [bd ! ! bd*2]/4",
+sound "[ho ho ~ [ho ho*2]/2]"
+|=| accelerate "-1.9"
+|=| speed "0.5"
+|=| gain "0.5"
+|=| pan (scale 0.3 0.8 $ slow 4 $ sine1),
+sound "~ ~ sn:3",
+foldEvery [3, 5] (striate 2)
+$ sound "hc*12?"
+|=| speed "0.5 1 0.9 -0.9"
+|=| accelerate "-4.9"
+|=| gain (scale 0.5 0.8 $ slow 16 $ sine1)
+|=| pan (scale 0.2 0.8 $ sine1)
+] |=| accelerate "-9.5" |=| cutoff (scale 2000 5000 $ slow 32 $ sine1)
+|=| room "0.2"
+|=| gain "0.0"
+
+d2 $ (|*| speed "-0.5") $ stack [
+sound "z:6" # beginend (scale 0.3 0.9 $ slow 16 $ sine1) "0.1" # shape (scale 0.1 0.5 $ slow 8 $ sine1) # crush "8 16 12" # pan (scale 0 0.5 $ slow 8 $ sine1),
+sound "z:6*3" # speed "0.5 1 -1 2" # beginend (scale 0.3 0.9 $ slow 32 $ sine1) "0.05" # pan (scale 0.5 1 $ slow 8 $ sine1),
+density 8 $ (sound "z:6" |=| speed "2" # beginend (scale 0.3 0.9 $ slow 128 $ sine1) "0.8" # pan (scale 0.5 1 $ slow 8 $ sine1))
+] |=| gain "0.8"
+
+hush
+
+bps (90/120)
+
+d1
+$ chop 4
+$ slowspread ($) [(|*| speed "-1"), (|*| speed "1"), id, id, rev, (|=| begin "0.2"), (|*| speed "-2")]
+$ (sound "z:7*6")
+|=| beginend (scale 0.5 0.8 $ slow 32 $ sine1) (scale 0.03 0.08 $ slow 32 $ sine1)
+|=| loop "1"
+|=| cutoff (scale 0 6000 $ slow 4 $ sine1)
+|=| gain "0.1"
+
+d1 $ stack [
+sound "z:1"
+  |=| beginend "0.5" "0.5"
+  |=| speed "[[1, 0.97] [0.5, 0.495] [0.98, 1]]/3"
+  |=| attack "0.8"
+  |=| release "[3 4 5 1]/4"
+]
+
+
+hush

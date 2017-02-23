@@ -1,0 +1,32 @@
+cps (115/120)
+
+m1 $ silence
+
+m1
+  $ density 2
+  $ n "[ef5] [g5 af4]/2 af5 bf6 d5 ef5"
+  # dur "0.1"
+
+m1
+  $ every 12 (jux (|+| n "+24"))
+  $ n "[[c3 c3 d3 d3]/4 [d5 e5 g4]/3 [fs4 a5]]"
+  # dur "1.0"
+  # velocity "0.7 0.3 0.2 0.1"
+  # rampatk "0"
+  # rlpcutoff (scale 0.3 0.5 $ slow 32 sine)
+
+m1
+  $ slow 2
+  $ n "c3 [c4] [g4 d5] [g5 g4] [d4 a5] [d5 a6] [a3 c3] [a4 f5]"
+  # rosc1xmod "0.5 0.2 0.7 1.0 0.3 0.4 0.5 0.1 1.4"
+  # rosc1color (density 2 "0.8 0.5 0.6 1.0 0.3")
+  # velocity "0.8"
+
+m2
+  $ striate 3
+  $ whenmod 16 12 (density 2)
+  $ n "[c3 d3 g4 [a4 g4]/2 [c3, c2] [f5 [~ a3]] [f4 g3]]/2"
+  # rosc1color (scale 0.5 0.8 $ slow 32 tri1)
+  # rosc2color (scale 0.5 0.8 $ slow 12 tri1)
+  # rlpcutoff (scale 0.5 0.8 $ slow 8 tri1)
+  # velocity (scale 0.5 1.0 $ slow 16 sine1)

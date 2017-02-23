@@ -1,0 +1,62 @@
+cps (93/120)
+
+cps (63/120)
+
+m1
+  $ slow 0.5
+  $ n "[a2 d2 d1 d2]/4 [e1 a2 a1 c2]/4 [a3] [d1 d1 d2 d3]/4"
+  # dur "0.01"
+
+m1
+  $ n "[[c3 f2 g2 f2] [[g3!15 d3 f3 a3!15]/64]]*4"
+
+m2
+  $ n "[[a2 a2 a2 a2] [g3!15 d3!15 f3!15 a3!15]/64]*4"
+  # velocity "1"
+
+m1 $ silence
+m2 $ silence
+m3 $ silence
+
+m3
+  $ (|+| n "+0")
+  $ n "[a3*16 a3*16 g2*16 g2*16 f2*16 f1*16 e1*16 e2*16]/8"
+  # velocity "1"
+  # dur "1"
+
+
+  $ (|+| n "-12")
+  $ n "[c3*4 c3*4 f2*4 f2*4 g2*4 g2*4 f2*4 f2*4]/8"
+
+  $ n "[c3*4 c3*4 f2*4 f2*4 g2*4 g2*4 f2*4 f2*4]/8"
+
+m1
+  $ slow 2
+  $ n "g2 [g3 g3 b3 f3]/4 ~ [d2 [a2 f2]/2]/2 ~ ~"
+  # dur "0.01"
+
+
+bd $ n "c3"
+
+cp $ n "~ ~ [c3 c3 c3 c3*2]/4 ~"
+  $ velocity "1"
+
+cy $ n "~ ~ ~ c3"
+
+cp $ n "~"
+
+oh $ n "~ [~ c3]"
+
+sd $ n "~"
+
+ch $ n "c3*8" # velocity "0.2 0.3"
+
+
+m1 $ silence
+
+
+oh $ silence
+cy $ silence
+bd $ silence
+cp $ silence
+ch $ silence

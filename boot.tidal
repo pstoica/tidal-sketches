@@ -82,3 +82,4 @@ let rip a b p = within (0.25, 0.75) (slow 2 . rev . stut 8 a b) p
     chooseMidi root xs pat = (|+| note root) $ (|+| note (choose xs)) $ note pat
     chooseMidi' root xs ranges pat = (|+| note (choose ranges)) $ shift $ chooseMidi root xs pat
     runMidi xs len = (xs !!) <$> (run $ fromIntegral $ len)
+    beginend bpat durpat = (begin bpat) # (end $ (+) <$> bpat <*> durpat)

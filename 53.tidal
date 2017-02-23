@@ -1,0 +1,45 @@
+m1
+  $ every 8 (density 2)
+  $ every 12 (jux (|+| n "+24"))
+  $ n "[df3 [~!3 ef3!3]/8] ~ [ef2, bf2 af3] [[f4!3 ef4!3 df4!3 af2!3]/16, bf4]"
+  # dur "0.2"
+  # velocity "0.7 0.3"
+  # rampatk (scale 0.0 0.2 $ slow 16 sine)
+  # rlpcutoff (scale 0.4 0.7 $ slow 32 sine)
+
+m2
+  $ (|+| n "+12")
+  $ n "[df3 bf3 bf3 af3]/8"
+  # dur "4"
+  # velocity "1"
+
+m3 $ n "ef3"
+
+m3
+  $ whenmod 16 12 (density 4)
+  $ whenmod 8 2 (slow 1.5)
+  $ (|+| n "+12")
+  $ whenmod 32 16 (const $ n "[df3 af3] [gf3 gf4] [df3 gf3] [ef3 ef2]" # dur "1")
+  $ n "[[ef3 bf3 df3] [af3 gf3 bf3] [af4 gf4 bf3] [ef4 gf4 af3]]*1"
+  # dur "0.1"
+  # rdelay (scale 0.0 1 $ slow 32 sine)
+  # rlpcutoff (scale 0.3 0.6 $ slow 16 sine)
+
+m1 $ silence
+
+ch
+  $ every 8 (density 1.5)
+  $ n "c3*8"
+  # velocity "0.3 0.5 0.2 0.8"
+
+sd
+  $ every 12 (density 1.5)
+  $ n "c3*8"
+  # velocity "0.9 0.2 0.5 0.3"
+
+bt $ n "c3 ~ ~ [~ [~ c3]/2]"
+
+ht $ n "~ ~ [[~ c3] ! c3 !]/4 [[~ c3] [~ c3] ~ ~]"
+  # velocity (scale 0.0 1 $ slow 16 sine1)
+
+lt $ silence

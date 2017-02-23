@@ -1,0 +1,29 @@
+cps (110/120)
+
+m1
+  $ whenmod 16 12 (jux (rev . slow 3 . (|+| n "+12")))
+  $ n "[g4 c4]/2 [a3 a2]/2 [g3 g4]/2 [d3 d4]/2 [g3 a4]/2 [e4 fs4]/2 c5 [a4 fs5]/2 [b3 g4]/2 [d4 fs4]/2"
+  # rosc1color "0 0.2 0.1 0.2 0.25"
+  # rosc2color "0 0.2 0.1"
+  # rosc1type "[0.4 0.4 0.5 0.6 0.4]/8"
+  # rosc2type "[0.1 0.3 0.5 0.9 0.6]/4"
+  # rosc1 (scale 0.1 0.9 $ slow 77 sine1)
+  # rosc2 (scale 0.1 0.4 $ slow 32 sine1)
+  # rsub (scale 0.3 0.8 $ slow 8 sine1)
+  # rampatk (scale 0 0.2 $ slow 16 sine1)
+  # rampsustain (scale 0 0.5 $ slow 16 sine1)
+  # rnoise (scale 0 0.2 $ slow 32 sine1)
+  # rlpcutoff (scale 0.4 0.9 $ slow 32 sine1)
+
+m3
+  $ whenmod 8 4 (jux (rev . density 3.5 . (|+| n "+12")))
+  $ n "[g3 g2 a2 a3 b3 b4 c2 c3]/8" # dur "0.5"
+  # rosc1type "[0.4 0.4 0.5 0.6 0.4]/8"
+  # rosc2type "[0.4 0.4 0.5 0.6 0.4]/8"
+  # rampatk (scale 0.2 0.3 $ slow 16 sine1)
+  # velocity (scale 0.2 0.4 $ slow 32 sine1)
+  # rlpcutoff (scale 0.2 0.3 $ slow 32 sine1)
+
+
+
+m2 $ n ""

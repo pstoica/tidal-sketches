@@ -1,0 +1,33 @@
+cps (140/120)
+
+m1
+  $ every 12 (jux (|+| n "+24"))
+  $ n "[[c3 c3 d3 d3]/4 [d5 e5 g4]/3 [fs4 a5]]"
+  # dur "1.0"
+  # velocity "0.7 0.3 0.2 0.1"
+  # rampatk "0"
+  # rlpcutoff (scale 0.3 0.5 $ slow 32 sine)
+
+
+m2
+  $ every 18 (striate 3)
+  $ every 8 (density 1.5)
+  $ every 6 (jux (|+| n "+12"))
+  $ every 2 (|+| n "-12")
+  $ n "[e3 g5 a4]"
+  # dur "1.0"
+  # velocity "0.7 0.3 0.2 0.4"
+  # rampatk (scale 0.0 0.2 $ slow 16 sine)
+  # rlpcutoff (scale 0.6 0.8 $ slow 32 sine)
+
+
+m3
+  $ every 6 (striate 2)
+  $ every 12 (jux (|+| n "+24") . rev)
+  $ every 4 (|+| n "+12")
+  $ n "[g5 a5 fs4 fs4 d4 d4]"
+  # velocity "0.5 0.8 0.3 0.4"
+
+m1 $ silence
+m2 $ silence
+m3 $ silence

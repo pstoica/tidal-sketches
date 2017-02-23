@@ -1,0 +1,43 @@
+m1
+  $ (|+| n "-12")
+  $ n "[e5 e3 e5 e4]/4 [d2 f2 f3 [c3 d3 a3 g3]/4]/4 [a3 a3 a4 a5]/4"
+  # velocity "1"
+  # dur (scale 0.01 0.1 $ slow 16 $ sine1)
+
+m1
+  $ (|+| n "-12")
+  $ n "[a3 g3 g3 e3]/4 [c4 a2 e3 b3]/4 [d4 d4 a4 a3]/4 a2"
+  # velocity "1"
+  # dur (scale 0.001 0.01 $ slow 16 $ sine1)
+
+m1
+  $ whenmod 8 5 (jux (density 1.5 . (|+| n "+24")))
+  $ (|+| n "-12")
+  $ n "[a3 g3 g3 e3]/4 [c4 a2 e3 b3]/4 [d4 d4 a4 a3]/4 a2"
+  # velocity "1"
+  # dur (scale 0.001 0.01 $ slow 16 $ sine1)
+
+m2
+  $ whenmod 20 15 (jux (density 0.5 . (|+| n "+24")))
+  $ n "[a2 b2 b2 d2]/4 ~ g2 [d2 e2]/4"
+  # dur "0.01"
+
+m3
+  $ slow 2
+  $ (|+| n "+12")
+  $ n "[a3 b3 f3 d4]/4" # velocity "1" # dur "1"
+
+bd $ n "c3 [~ c3 ~ c3*2]/4" # velocity "0.15" # dur "1"
+
+sd $ n "~ ~ ~ [~ c3]" # velocity "0.4 0.6"
+
+cp $ n "~ ~ ~ c3"
+
+cy $ n "~ c3"
+
+oh $ n "~ c3"
+
+ch $ n "c3*4" # velocity "0.2 0.3"
+
+
+ch $ silence
