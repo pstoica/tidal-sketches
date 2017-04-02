@@ -1,0 +1,62 @@
+cps (80/120)
+
+let beginend bpat durpat = (begin bpat) # (end $ (+) <$> bpat <*> durpat)
+
+d1
+$ every 2 ((1/24) <~)
+$ every 3 ((1/12) <~)
+$ every 4 ((1/9) <~)
+$ every 3 (|*| speed "-2")
+$ every 10 (chop 5)
+$ stack [
+s "m*4"
+|=| n "4"
+|=| pan "0.5"
+|=| gain "0.9"
+|=| beginend (scale 0 0.5 $ slow 32 $ sine1) "0.4",
+s "[m]/2"
+|=| n "6"
+|=| beginend (scale 0 0.5 $ slow 32 $ sine1) "0.4"
+|=| pan (scale 0 1 $ slow 32.99999 $ sine1)
+|=| gain "0.9",
+s "[m]/4"
+|=| n "6"
+|=| beginend (scale 0 0.8 $ slow 32 $ sine1) "0.2"
+|=| release "5"
+|=| pan (scale 1 0 $ slow 13.99999 $ sine1)
+|=| gain "0.9"
+|=| speed "1 1 -1 2"
+]
+
+d1
+$ slow 4
+$ every 3 ((1/12) <~)
+$ every 4 ((1/9) <~)
+$ every 15 (striate 8)
+$ striate 2
+$ every 8 (slow 2.3333)
+$ every 13 (|=| speed "-1")
+$ every 5 (|*| speed "2")
+$ (|*| speed "0.5")
+$ stack [
+s "[m*4 1]/2"
+|=| n "0*4 1"
+|=| beginend "0.0 0.1 0.2" "0.4"
+|=| speed "2 0.5 1 0.98765 2"
+|=| pan (scale 0.2 0.8 $ rand)
+|=| release "5"
+|=| gain "0.9",
+s "m"
+|=| n "5"
+|=| beginend "0.2" "0.8",
+every 3 ((1/3) <~)
+$ s "m/2"
+|=| n "5"
+|=| beginend "0.0 0.1 0.2" "0.5 0.5 0.7"
+|=| release "4"
+|=| speed "[0.25, 0.5] 0.5 [-0.5, 2] -0.25 2"
+|=| pan (scale 0 1 $ slow 64 $ rand)
+|=| gain "0.5 0.8 0.7"
+]
+
+d1 $ silence

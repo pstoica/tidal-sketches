@@ -1,0 +1,118 @@
+cps (104/120)
+
+let beginend bpat durpat = (begin bpat) # (end $ (+) <$> bpat <*> durpat)
+
+d1 $ stack [
+every 5 ((1/12) <~)
+$ every 2 (|*| speed "-0.5")
+$ every 4 ((1/16) <~)
+$ every 3 (density 1.33)
+$ s "[sleep]*3" # n "[0, 2]" # beginend "[0 0.1 0.2 0.3 0.4]/5" (scale 0.01 0.03 $ slow 14 $ sine1) # pan "[0.1 0.2 0.8 0.4 0.2 0.5]/3" # speed "1 -0.5 -1 -2" # coarse "[1 [2, 1] [[2 2]/2, 6]]"
+]
+
+
+d1
+$ every 5 ((1/24) <~)
+$ every 9 ((1/8) <~)
+$ every 7 ((1/15) <~)
+$ every 6 ((1/14) <~)
+$ every 2 ((1/9) <~)
+$ every 3 ((1/11) <~)
+$ every 4 ((1/13) <~)
+$ whenmod 5 2 (|*| speed "-1")
+$ whenmod 6 3 (|*| speed "[2, -0.5]")
+$ whenmod 8 6 (jux (slow 1.5))
+$ every 5 (|=| accelerate "1.3")
+$ every 3 (|=| accelerate "-1.3")
+$ every 1 (|*| speed "-0.5")
+$ every 9 (slow 5.1111)
+$ every 7 (slow 5.1111)
+$ every 5 (slow 1.1111)
+$ every 3 (slow 1.3333)
+$ slow 40
+$ stack [
+sound "[~ sleep]*8" # n "2" # beginend "0.1" (scale 0.01 0.03 $ slow 8 $ sine1) # pan (scale 0.3 0.7 $ slow 32 $ sine1) # speed "0.5 -0.5" # coarse "[1 2]/3",
+sound "[~ sleep ~]*16" # n "2" # beginend (scale 0.05 0.8 $ slow 64 $ sine1) (scale 0.01 0.03 $ slow 8 $ sine1) # pan "[0.2 0.9]*16" # coarse "[1 2 6]/8",
+sound "[~ sleep ~]*12" # n "2" # beginend (scale 0.01 0.4 $ slow 32 $ sine1) (scale 0.01 0.03 $ slow 8 $ sine1) # pan "[0.2 0.9]*16" # speed "-2" # coarse "[2 4]/4"
+] # n "[4, 5, 0]" # attack "0.1"
+
+
+
+
+
+
+
+
+
+d1 $ silence
+
+d1 $ stack [
+s "[sleep]*4" # n "0" # beginend "[0 0.5 0.1 0.3 0.2]/2" "0.05 0.05 0.1" # pan "[0.2 0.7 0.3 0.9]/2" # release "5" # gain (scale 0.6 0.9 $ slow 44 $ sine1)
+]
+
+
+d1
+$ stack [
+whenmod 8 4 (slow 1.2222)
+$ sound "sleep*4" # n "3" # speed "[0.5 1 -0.5]/2" # beginend (scale 0.1 0.9 $ slow 64 $ sine1) "0.01" # accelerate "1.2" # coarse "[1 2 4]/4" # gain (scale 0.3 0.9 $ slow 128 $ sine1) # pan "[0.9 0.3]*4",
+sound "sleep*12" # n "3" # speed "[2 1 -1]/2" # beginend (scale 0.1 0.9 $ slow 64 $ sine1) "0.01" # accelerate "1.2" # coarse "[1 2 4]/4" # gain (scale 0.7 0.9 $ slow 32 $ sine1) # pan "[0.3 0.9]*4",
+sound "sleep*18" # n "3" # speed "[-2 1 -1]*2" # beginend (scale 0.5 0.9 $ slow 12 $ sine1) "0.01" # gain (scale 0.7 0.9 $ slow 14 $ sine1) # pan "[0.3 0.9]*3"
+] |=| speed "0.5"
+
+d1 $ silence
+
+
+d1
+$ every 5 ((1/24) <~)
+$ every 9 ((1/8) <~)
+$ every 7 ((1/15) <~)
+$ every 6 ((1/14) <~)
+$ every 2 ((1/9) <~)
+$ every 3 ((1/11) <~)
+$ every 4 ((1/13) <~)
+$ whenmod 5 2 (|*| speed "-1")
+$ whenmod 6 3 (|*| speed "[2, -1]")
+$ whenmod 8 6 (jux (slow 1.5))
+$ every 5 (|=| accelerate "1.1")
+$ every 3 (|=| accelerate "-1.1")
+$ every 9 (slow 5.1111)
+$ every 7 (slow 5.1111)
+$ every 5 (slow 1.1111)
+$ every 3 (slow 1.3333)
+$ slow 12
+$ stack [
+sound "sleep(4,5)" # n "2" # beginend (scale 0 0.5 $ slow 64 $ sine1) "0.3" # decay "4" # pan "[0.3 0.9]*3" # release "32",
+sound "sleep(5,8)" # n "2" # beginend (scale 0.1 0.8 $ slow 64 $ sine1) "0.3" # decay "4" # pan "[0.3 0.5 0.9]*2" # release "32"
+] |=| speed "-0.5"
+
+
+
+d1
+$ every 7 ((1/15) <~)
+$ every 6 ((1/14) <~)
+$ every 2 ((1/9) <~)
+$ every 3 ((1/11) <~)
+$ every 4 ((1/13) <~)
+$ stack [
+s "sleep*12" # n "2" # beginend (scale 0 0.5 $ slow 64 $ sine1) "0.01" # gain (scale 0.6 1 $ slow 32 $ sine1) # pan "[0.7 0.3]*4",
+s "sleep*8" # n "2" # beginend (scale 0.5 0.9 $ slow 128 $ sine1) "0.01" # gain (scale 0.7 1 $ slow 7 $ sine1) # speed "[-1 1]*8" # pan "[0.2 0.8]*8",
+s "sleep*9" # n "2" # beginend (scale 0.0 0.9 $ slow 48 $ sine1) (scale 0.01 0.05 $ sine1) # gain (scale 0.7 1 $ slow 13 $ sine1) # speed "[-1 1]*8" # pan "[0.4 0.6]*8",
+s "sleep*6" # n "2" # beginend (scale 0.0 0.3 $ slow 48 $ sine1) (scale 0.01 0.05 $ sine1) # gain (scale 0.7 1 $ slow 7 $ sine1) # speed "[0.5 -0.5]*8" # pan "[0.4 0.6]*8",
+s "sleep*24" # n "2" # beginend (scale 0.0 0.3 $ slow 48 $ sine1) (scale 0.001 0.03 $ sine1) # gain (scale 0.7 1 $ slow 9 $ sine1) # speed "[2 -2]*8" # pan "[0.4 0.6]*8",
+s "sleep*18" # n "2" # beginend "0.6 0.5" (scale 0.01 0.03 $ sine1) # gain (scale 0.7 1 $ slow 17.333 $ sine1) # speed "[4 -4 0.5 0.5]*8" # pan "[0.4 0.6]*7",
+s "sleep*13" # n "2" # beginend "[0.1 0.3 0.6 0.5]/16" (scale 0.01 0.01 $ sine1) # gain (scale 0.7 0.9 $ slow 4 $ sine1) # speed "[1 -1 2 -2 0.5]*8" # pan (scale 0.1 0.9 $ slow 32 $ sine1)
+] # speed "1"
+
+d1 $ silence
+
+d1 $ s "sleep*12" # n "2" # beginend (scale 0 0.5 $ slow 32 $ sine1) (scale 0.01 0.03 $ slow 13 $ sine1) # attack "0.4" # release "0.7"
+
+hush
+
+
+d1
+$ slow 12
+$ stack [
+sound "sleep(4,5)" # n "2" # beginend (scale 0 0.5 $ slow 64 $ sine1) "0.3" # decay "4" # pan "[0.3 0.9]*3" # release "32",
+sound "sleep(5,8)" # n "2" # beginend (scale 0.1 0.8 $ slow 64 $ sine1) "0.3" # decay "4" # pan "[0.3 0.5 0.9]*2" # release "32"
+] |=| speed "-0.5"

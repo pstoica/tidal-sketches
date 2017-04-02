@@ -1,0 +1,25 @@
+cps (110/120)
+
+let beginend bpat durpat = (begin bpat) # (end $ (+) <$> bpat <*> durpat)
+
+d1 $ stack [
+s "liv*4" # n "0" # beginend (scale 0 0.5 $ slow 64 $ sine1) "0.1" # decay "1" # gain "0.5" # pan "[0.2 0.1 0.3 0.9 0.8 0.7]/4" # speed "-0.5 1 0.5 -1",
+s "liv*16" # n "0" # beginend (scale 0.1 0.7 $ slow 128 $ sine1) "0.01" # decay "4" # gain "0.5" # pan (scale 0.2 0.8 $ slow 32 $ sine1) # speed "0.25 0.5 -0.5 0.25",
+every 3 (|*| speed "-4") $ s "liv*16" # n "0 2" # beginend "[0 0.2 0.3 0.31 0.5 0.8 0.2 0.45 0.98]/9" (scale 0.05 0.3 $ slow 16 $ sine1) # release "4" # gain "0.5" # pan "[0.1 0.9]*9" # speed "0.25 0.5 -0.5 0.25"
+]
+
+d1
+$ every 9 (slow 1.111111)
+$ every 3 (slow 1.5)
+$ every 3 ((1/16) <~)
+$ every 9 ((1/9) <~)
+$ every 5 (|*| speed "-0.5")
+$ every 1 (|*| speed "0.5")
+$ stack [
+s "[liv*4]/4" # n "2" # beginend "0.3 0.5 0.4 0.1 0.3 0.4 0.9" "0.1" # release "5",
+s "[liv]*4" # n "2" # beginend "[0.3 0.1 0.3]/4" "0.2" # release "5" # speed "-0.5 [-2 2] 2" # pan "0.1 0.3 0.7 0.9" # gain "1",
+s "[liv]/2" # n "0" # beginend "[0.0 0.1 0.3]/4" "0.2" # release "5" # speed "-0.5 [-0.5 0.5] 1" # pan "0.1 0.3 0.7 0.9" # gain "1",
+s "[liv]*16" # n "0 2" # beginend "[0.0 0.5 0.7 0.1 0.3]/4" "0.05 0.1 0.01" # release "5" # speed "2 0.5 [1, -1] -2" # pan "[0.1, 0.7] 0.3 0.7 [0.3, 0.9]" # gain "1"
+]
+
+hush

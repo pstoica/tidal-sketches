@@ -1,0 +1,41 @@
+cps (60/120)
+
+let beginend bpat durpat = (begin bpat) # (end $ (+) <$> bpat <*> durpat)
+
+d1
+$ every 9 (slow 5)
+$ foldEvery[3, 4] (slow 5)
+$ every 9 ((1/8) <~)
+$ every 5 (|*| speed "-0.5")
+$ every 1 (|*| speed "-1")
+$ stack [
+s "[hop]*3"
+|=| n "0"
+|=| beginend "[0 0.1 0.2 0.3 0.4]/5" (scale 0.01 0.03 $ slow 14 $ sine1)
+|=| attack (scale 0 0.5 $ slow 16 $ sine1)
+|=| release (scale 2 4 $ slow 19.555 $ sine1)
+|=| gain (scale 0.7 0.9 $ slow 32 $ sine1)
+|=| pan "[0.1 0.2 0.8 0.4 0.2 0.5]/3"
+|=| speed "-2 1 -1 2",
+s "hop*8"
+|=| n "0"
+|=| speed "1 -0.5 -1 2"
+|=| beginend "[0.1 0.2 0.7 0.9]" "0.1"
+|=| pan (scale 0.3 0.7 $ slow 17 $ sine1)
+|=| gain (scale 0.5 0.6 $ slow 32 $ sine1),
+s "hop*12"
+|=| n "0"
+|=| speed "0.5 -0.5 -1 2"
+|=| beginend (scale 0 0.5 $ slow 32 $ sine1) "0.05"
+|=| pan (scale 0.9 0.1 $ slow 13 $ sine1)
+|=| gain (scale 0.5 0.7 $ slow 32 $ sine1),
+s "hop*13"
+|=| n "0"
+|=| speed "-2"
+|=| beginend (scale 0.5 0.9 $ slow 4 $ sine1) "0.01"
+|=| pan "0 0.2 0.3 0.9 0.7 0.8"
+|=| gain (scale 0.6 0.8 $ slow 32 $ sine1)
+] |=| n "0 1 1" # attack "20" # gain "0.1"
+
+
+hush

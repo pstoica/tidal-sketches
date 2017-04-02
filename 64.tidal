@@ -1,0 +1,45 @@
+bps (120/120)
+
+d1 $ stack [
+every 3 (density 2)
+$ gap 4
+$ jux (rev . density 1.5 . (|*| speed "0.5"))
+$ every 3 (0.1 <~)
+$ every 16 (0.5 <~)
+$ every 8 (0.333 <~)
+$ every 16 (striate 3)
+$ every 8 (palindrome)
+$ every 13 (|*| speed "-1")
+$ every 6 (|*| speed "2")
+$ s "[t1, t1*3] t2 t3 [t4, t2] t5"
+|=| n (irand 8)
+|=| end "0.1"
+] # room (scale 0.5 1 $ slow 64 $ sine1)
+
+d1
+$ every 10 (slow 8)
+$ every 5 (slow 1.99999)
+$ every 12 (gap 2)
+$ every 4 (density 1.22222)
+$ every 3 (chop 2)
+$ every 4 ((1/4) <~)
+$ whenmod 5 10 (|=| accelerate "-4")
+$ every 4 (0.333 ~>)
+$ every 10 (0.125 <~)
+$ degradeBy 0.2
+$ jux (rev)
+$ whenmod 8 16 (|*| speed "-0.8")
+$ every 2 (|=| coarse (choose [2, 4, 8, 5, 3]))
+$ every 8 (|=| crush (choose [2, 4, 8, 16, 1]))
+$ stack [
+s "t1(1,3)" # n "1 2",
+s "t3(3,5)" # n (irand 10),
+s "t2(4,5)" # n (choose [2, 3, 4, 1]),
+s "t6(5,8)" # n "1 2 3 4 5 6 7 8" # pan (choose [0.25, 0.3, 0.4]) # speed "10",
+every 3 (|=| speed "-2") $ s "t4(6,8)" # n "1 2",
+density 3 $ s "t5(3,4)" # n "1 2 3" # pan "0 0.3 0.9" # gain "0.8",
+density 4 $ s "t7(6,5)" # n "1 2 3" # pan "0.9 0.3 0.9" # gain "1",
+every 5 (|=| speed "-0.5") $ every 3 (density 8) $ s "t8(6,5)" # n "1 2 3 4" # pan (scale 0.3 0.9 $ slow 8 $ sine1) # gain "1"
+]
+
+hush
