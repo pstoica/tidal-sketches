@@ -1,0 +1,72 @@
+cps (120/60)
+
+let gtfo = const $ s "~"
+    beginend bpat durpat = (begin bpat) # (end $ (+) <$> bpat <*> durpat)
+
+d1 $ stack [
+  every 8 (const $ s "909*2") $ s "909" # gain "1.0",
+  s "~ ps_clack" # speed "[1 1 -1 1]/16",
+  s "~ ~ ~ [~ ps_chime]/2" # gain (scale 0.7 1 $ slow 32 sine1) # pan "[0.3 0.7]/4",
+  s "~ ps_clap" # gain (scale 0.5 1 $ slow 16 sine1) # cutoff (scale 4000 22000 $ slow 32 $ sine1),
+  gtfo $ slow 4 $ s "ps_noise" # n (irand 2) # release (scale 0.3 0.8 $ slow 32 sine1) # pan (scale 0.2 0.8 $ slow 13 sine1)
+] # orbit "0"
+
+
+d1 $ stack [
+  (every 8 (const $ s "[~ 909 [909]/16 ~]") $ s "[909]") # cutoff "80" # gain "[0.8 0.7]/2" # release "0.4",
+  (every 8 (const $ s "[~ ps_clap]/16 ps_clap") $ s "~ ps_clap")
+    |=| attack "0.05"
+    |=| speed "[2 4]"
+    |=| release "0.09"
+    |=| cutoff "8000"
+    |=| gain "[0.8 0.6 0.8 0.7]/4"
+    |=| pan "[0.3 0.7]/2",
+  s "ps_noise*3" # n "0" |=| release "0.5" |=| hcutoff (scale 8000 20000 $ slow 8 saw1) |=| gain (scale 0.5 1 $ slow 32 $ sine1) |=| pan (scale 0.1 0.9 $ slow 13 sine1),
+  s "ps_clap*4" # hcutoff "8000" # speed "0.9 0.8 -1 -1.2" |=| gain (scale 0 0.5 $ slow 22 $ sine1) |+| gain "0.1 0.2" # pan "0.2 0.8"
+]
+
+d2 $ stack [
+  slow 8 $ s "anx"
+    |=| n "2"
+    |=| speed "[0.5 -0.5]/8"
+    |=| cut "1"
+    |=| pan "0.5",
+  slow 7 $ s "anx"
+    |=| n "3"
+    |=| speed "1"
+    |=| cut "2"
+    |=| gain (scale 0.8 1.4 $ slow 32 $ sine1)
+    |=| pan "0.2",
+  jux ((|=| n "16") . (density 2) . (|=| speed "-1"))
+  $ s "anx*12"
+    |=| n "7"
+    |=| speed "1"
+    |=| coarse "1 2 0"
+    |=| hcutoff (scale 0 8000 $ slow 8 $ sine1)
+    |=| gain (scale 0.5 1.2 $ slow 32 $ sine1)
+    |=| beginend (scale 0 0.9 $ slow 4 $ sine1) "0.003"
+    |=| pan (scale 0.1 0.9 $ slow 32 $ sine1),
+  s "[~ ~ ~ anx]/16"
+    |=| n "3"
+    |=| speed "-2"
+    |=| coarse "0 1 2"
+    |=| cut "4"
+    |=| gain (scale 0.3 1.2 $ slow 32 $ sine1)
+    |=| pan "0.8",
+  s "anx*3"
+    |=| n "16"
+    |=| speed "[1, 2]"
+    |=| coarse "0 1 2"
+    |=| cut "5"
+    |=| slow 4 (begin (listToPat [0,0.2..0.8]))
+    |=| hcutoff (scale 0 2000 $ slow 8 $ sine1)
+    |=| release "0.3"
+    |=| gain (scale 0.8 1.4 $ slow 4 $ sine1)
+    |=| pan "[[0.2 0.4]/2 [0.6 0.8]/2]*2"
+] # orbit "1"
+
+hush
+
+d2 $
+
+hush

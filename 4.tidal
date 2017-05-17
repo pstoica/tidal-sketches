@@ -1,0 +1,74 @@
+    $ n (toScale sc (
+      "[<6 -2 1 -6 0 -2 5> ~ <2 3> [2 <6 3>] <4 10 9 7 6 4 2 5> 5 ~ <7 5 3 2>]"
+      + "[0, ~ 7]"
+    ))
+
+      "<0 -4> <1 [2 5] 3> ~ <6 4 -4> <0 1 5>" + "[0 2]"
+
+  k1
+    $ n (toScale sc (
+      "rw"
+    ))
+    |=| op1 (scale 0.5 1 $ slow 8 $ sine1)
+    |=| op2 (scale 0.3 1 $ slow 16 $ sine1)
+    |=| op3 (scale 0.0 1 $ slow 4 $ sine1)
+    |=| op4 (scale 0.0 1 $ slow 14 $ sine1)
+    |=| velocity "0.3"
+    |=| dur (scale 0.2 0.3 $ slow 16 $ sine1)
+
+
+hush
+
+do
+  let sc = Scales.mixolydian
+  d1
+    $ stack [
+      (whenmod 12 8 (const $ s "<<~ bsh_kick> bsh_kick>") $ whenmod 8 4 (const $ s "<bsh_kick(2,8,2)>") $ s "<bsh_kick(3,8,1)>") # n "1" # gain "1.3",
+      s "hc(2,5)" # attack "0.2",
+      whenmod 8 4 (stut 4 0.4 (-0.2)) $ s "bsh_ch(2,8)" # gain (slow 16 $ scale 1 2 sine1) # n (irand 4) # pan "0.1 0.5 0.9" # attack "0.5" # speed "0.9",
+      s "bsh_ride(3,8)" # gain "1" # n (irand 4) # pan (scale 0.2 0.8 $ slow 32 $ sine1) # attack "2.5" # speed "<0.5 -0.5 1 1.5>",
+      s "hc(5,8)" # pan "0.8" # attack "0.2" # speed "1.2",
+      s "~ bsh_sn ~ ~" # n "<0 1 2 3 4>" # gain "1.5"
+    ] # orbit "0"
+  d2
+    $ stack [
+      s "rw(5,8)"
+        |=| n "2"
+        |=| gain "2"
+        |=| pan (scale 0.2 0.8 $ slow 32 $ sine1)
+        |=| speed "0.5"
+        |=| release "0.6"
+        |=| beginend (slow 32 $ scale 0 0.5 sine1) "0.01",
+      s "<rw(3,8) rw(2,8) rw(1,8) rw(2,8)>"
+        |=| n "2"
+        |=| gain "1.8"
+        |=| crush (choose[10, 14, 12, 16])
+        |=| pan (scale 0.3 0.7 $ rand)
+        |=| speed "1"
+        |=| attack (scale 0 0 $ slow 32 $ sine1)
+        |=| release "<0.3 0.5 0.3 0.8>"
+        |=| beginend (slow 16 $ scale 0 0.5 sine1) "0.1"
+    ] |=| orbit "1"
+  d3
+    $ stack [
+      s "<rw(13,16)>"
+        |=| n "2"
+        |=| gain (slow 4 $ scale 1 1.4 sine1)
+        |=| speed "-4"
+        |=| crush "16"
+        |=| coarse "4"
+        |=| crush (choose[10, 8, 12, 16])
+        |=| hcutoff (scale 3000 6000 rand)
+        |=| pan (scale 0.1 0.9 rand)
+        |=| release "0.4"
+        |=| beginend (slow 4 $ scale 0 0.5 sine1) "0.01",
+      s "rw*12"
+        |=| n "2"
+        |=| gain "1.7"
+        |=| pan (scale 0.2 0.8 $ slow 32 sine1)
+        |=| speed "2"
+        |=| attack "1"
+        |=| release "0.5"
+        |=| beginend (slow 32 $ scale 0.5 0.9 $ sine1) "0.01"
+        |=| orbit "2"
+    ]

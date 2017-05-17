@@ -1,0 +1,104 @@
+cps (120)
+
+do
+  let sc = Scales.dorian
+  k1
+    $ n (toScale sc ("[0 <-7 -4 -4> <-8 -6 -9> <-6 -5 -3>]/3" + "[0]"))
+    |=| velocity (scale 0.1 0.5 $ rand)
+    |=| dur "1.5"
+  k2
+    $ n (toScale sc ("0 <1 5 7> <3 4 1> <5 2 1>" + "<0 7 5 3 0 7 4 5>"))
+    |=| dur "1.5"
+    |=| macro1 (slow 16 $ scale 0.0 0.2 $ sine1)
+  k3
+    $ slow 1.5
+    $ n (toScale sc ("0 -7 -4 [[<4 3 6 1> -4] <5 3>]"))
+    |=| dur "1.2"
+    |=| macro1 (slow 12 $ scale 0.0 0.5 $ sine1)
+
+do
+  d1
+    $ stack [
+    stut 8 (0.2) (0.4) $ s "forest*6"
+      |=| n "1"
+      |=| up "-3"
+      |=| attack "0.05"
+      |=| release "0.1"
+      |=| gain (scale 0.5 1 $ slow 7 $ sine1)
+      |=| accelerate "<-0.2 0.2 0>"
+      |=| pan (scale 0.2 0.8 $ slow 32 $ sine1)
+      |*| speed "<-1 1 1>"
+      |=| beginend (scale 0.04 0.4 $ slow 32 $ sine1) "0.1",
+    stut 4 (0.5) (-0.9) $ s "forest*3"
+      |=| n "1"
+      |=| up "-3"
+      |=| release "<0.7 0.3>"
+      |=| gain (scale 0.5 1 $ slow 13 $ sine1)
+      |=| pan "<0.3 0.8>"
+      |*| speed "-1"
+      |=| beginend "<0.4 0.2 0.1 0.8 0.9 0.3 0.5 0.2>" "0.1",
+    every 4 (stut 4 0.5 (-0.9)) $ s "forest*12"
+      |=| n "2"
+      |=| up "-3"
+      |=| attack "0.9"
+      |=| gain (scale 0.5 1 $ slow 16 $ sine1)
+      |=| pan (scale 0.2 0.8 $ rand)
+      |*| speed "-1"
+      |=| beginend (scale 0 0.25 $ slow 32 $ sine1) "0.05",
+    s "forest"
+      |=| n "<1 2>"
+      |=| up "-3"
+      |*| speed "2"
+      |=| pan (scale 0.2 0.8 $ rand)
+      |=| gain (scale 0.5 1 $ slow 9 $ sine1)
+      |=| hcutoff (scale 0 8000 $ slow 16 $ sine1)
+      |=| attack "0.5"
+      |=| release "6"
+      |=| beginend (scale 0 0.25 $ slow 32 $ sine1) "0.4"
+    ]
+
+do
+  d1
+    $ stack [
+    s "808bd*3" # n "7",
+    s "bsh_oh*3" # pan (scale 0.2 0.8 $ slow 32 $ sine1)
+      |=| speed (scale 0.9 1 $ slow 16 $ sine1)
+      |=| gain "1.2"
+      |=| n "0",
+    spread ($) [id, slow 1.5, slow 4, jux (striate 3 . (|*| speed "2"))]
+      $ s "808hc(8,12)" # n "7"
+      |=| gain (scale 0.5 1 $ slow 16 $ sine1),
+    spread ($) [id, slow 1.5, fast 2, jux (striate 3 . (|*| speed "-1"))] $
+    s "~ <808sd*2 808sd*2 808sd 808sd(4,8)>"
+      |=| gain (scale 0.5 1 $ rand)
+      |=| pan (scale 0.2 0.8 $ rand)
+      |=| n "<3>",
+    spread ($) [id, slow 1.5, stut 8 0.5 (-0.2), fast 3, jux (striate 8), rev]
+    $ s "808oh*3"
+      |=| speed (scale 1 4 $ slow 32 $ sine1)
+      |=| pan (scale 0.2 0.8 $ rand)
+      |=| n "<1 2 3 4 5 6>"
+      |=| gain "0.8",
+    spread ($) [id, slow 1.5, ((1/8) <~), stut 4 0.5 (-0.2)] $
+    s "<forest(4,5) forest(9,12) forest*3>"
+      |=| n "<1 1 2>"
+      |=| up "-3"
+      |=| pan (scale 0.2 0.8 $ rand)
+      |=| gain (scale 0.5 1 $ slow 9 $ sine1)
+      |=| release "0.4"
+      |=| beginend "0 0.5 0.3 0.8" "0.1",
+    spread ($) [id, fast 1.5, stut 4 0.5 (-0.2)]
+    $ s "forest"
+      |=| n "<1>"
+      |=| up "-3"
+      |*| speed "2"
+      |=| pan (scale 0.2 0.8 $ rand)
+      |=| gain (scale 0.5 1 $ slow 9 $ sine1)
+      |=| hcutoff (scale 0 8000 $ slow 16 $ sine1)
+      |=| attack "0.2"
+      |=| release "8"
+      |=| beginend "<0.3 0.2 0.1 0.7 0.8 0.6 0.1>" "0.4"
+    ]
+
+
+hush

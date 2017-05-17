@@ -1,0 +1,35 @@
+cps (10/120)
+
+let beginend bpat durpat = (begin bpat) # (end $ (+) <$> bpat <*> durpat)
+
+d1
+$ stack [
+every 8 (|*| speed "[-1]")
+  $ density 2
+  $ s "wake(5,8)"
+  |=| n "[7 8 9 10 11]*4"
+  |=| beginend (scale 0.0 0.8 $ slow 96 $ sine1) "0.4"
+  |=| attack (scale 0 0.2 $ slow 5 $ sine1)
+  |=| release (scale 0.05 0.3 $ slow 16 $ sine1)
+  |=| gain (scale 0.5 1 $ slow 32 $ sine1)
+  |=| gain "0"
+  |=| pan "0.1 0.3 0.5 0.7 0.9"
+  |=| speed "[-1, 0.5] 1 -1 [2, -0.5]",
+s "wake(10,6)"
+  |=| n "[8, 7]"
+  |=| beginend (scale 0 0.8 $ slow 64 $ sine1) "0.05"
+  |=| gain "0.0"
+  |=| release (scale 0.05 0.5 $ slow 16 $ sine1)
+  |=| speed "-2 2 -2 0.5"
+  |=| pan "0.2 0.3 0.7 0.9",
+s "wake*12"
+  |=| n "[8 7 9]"
+  |=| beginend "[0.3 0.5 0.9 0.7 0.1 0.1 0.3]*3" "0.1"
+  |=| gain "1"
+  |=| attack "0.1"
+  |=| release "0.3"
+  |=| speed "-1 1 -1 1"
+  |=| pan "0.2 0.3 0.7 0.9"
+]
+
+d1 $ silence

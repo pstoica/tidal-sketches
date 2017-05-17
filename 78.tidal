@@ -1,0 +1,102 @@
+let beginend bpat durpat = (begin bpat) # (end $ (+) <$> bpat <*> durpat)
+    gtfo p = (const $ sound "~") p
+
+d1
+  $ iter 6
+  $ s "rw*16"
+  |=| n "0"
+  |=| beginend (scale 0 0.5 $ slow 4 $ sine1) "0.01"
+  |=| orbit "0"
+
+d2
+  $ stack [
+    s "rw*32"
+      |=| speed "[1, 2]"
+      |=| beginend (scale 0 0.9 $ slow 32 $ sine1) "0.01"
+    ,
+    iter 8
+    $ s "rw*6"
+    |=| n "0"
+    |=| speed "[1 -1]"
+    |=| attack "0.3"
+    |=| beginend (scale 0 0.9 $ slow 32 $ sine1) "0.1"
+    |=| pan "[0.3 0.8]/3"
+  ]
+  |=| orbit "1"
+
+d3
+  $ iter 2
+  $ s "rw*3"
+  |=| n "0"
+  |=| speed "0.5"
+  |=| beginend (scale 0 0.9 $ slow 32 $ sine1) "0.01"
+  |=| orbit "2"
+
+-- another
+cps (105/120)
+
+d1
+  $ stack [
+    s "bd(3,8)" # gain "0.9",
+    s "superhat(6,8)" # pan "0.5 0.1 0.8" # sustain "0.2" # gain "0.8 1",
+    whenmod 4 8 (|*| speed "-1") $ s "bsh_sn(3,8,2)" # pan "0.3 0.2 0.8" # attack "0.3" # speed (scale 1 1.3 $ slow 4 $ sine1) # n "0 1 2 3" # gain (scale 0.5 2 $ slow 16 $ sine1)
+  ]
+  |=| orbit "0"
+
+d2
+  $ iter 2
+  $ s "rw(3,8)"
+  |=| n "1"
+  |=| speed "0.5"
+  |=| gain (scale 1.0 1.8 $ slow 32 $ sine1)
+  |=| attack "0.9"
+  |=| beginend (scale 0.5 0.9 $ slow 2 $ sine1) "0.01"
+  |=| orbit "2"
+
+d3
+  $ s "rw(2,8)"
+  |=| n "0"
+  |=| speed "0.5"
+  |=| attack "0.5"
+  |=| release "0.5"
+  |=| gain "1.8"
+  |=| beginend "0.3 0.5 0.2 0.3" "0.01"
+  |=| orbit "1"
+
+d3
+  $ stack [
+    s "<rw*12 rw*8 rw*12 rw*4>"
+    |=| n "2"
+    |=| beginend (scale 0 0.5 $ slow 16 $ sine1) "0.01"
+    |=| release (scale 0.5 1 $ slow 2 $ sine1)
+    |=| hcutoff (scale 0 22100 $ slow 32 $ sine1)
+    |=| gain "1.8"
+    |=| orbit "0",
+    iter 8 $
+    s "<rw*12 rw(9,12) rw(5,8)>"
+    |=| n "2"
+    |=| speed "[2, -1]"
+    |=| beginend (slow 32 $ scale 0 0.4 sine1) "0.01"
+    |+| begin (scale 0 0.4 rand)
+    |=| pan (slow 4 $ scale 0.2 0.8 sine1)
+    |=| attack (slow 16 $ scale 0 0.04 sine1)
+    |=| release (slow 4 $ scale 0.1 1 sine1)
+    |=| accelerate "<0 0> 0.01 <0 -0.02> -0.01"
+    |=| cutoff (scale 4000 22100 $ slow 8 $ sine1)
+    |=| gain (slow 8 $ scale 0.5 1.5 sine1)
+    |=| orbit "1",
+    s "<rw*2 rw*2 rw*2 rw*4>"
+    |=| n "2"
+    |=| speed "-0.5"
+    |=| pan "0.4 0.7 ~"
+    |=| attack "0.7"
+    |=| shape "0.5"
+    |=| cutoff (scale 2000 22100 $ slow 8 $ sine1)
+    |=| accelerate "0.001"
+    |=| coarse "<2 1> <3 2> <1 0 4> <6>"
+    |=| beginend "0 0.3 0.5" "0.01"
+    |=| gain "1.5"
+    |=| orbit "2"
+  ]
+
+  hush

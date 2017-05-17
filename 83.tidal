@@ -1,0 +1,41 @@
+cps (80/120)
+
+do
+  let sc = Scales.major
+  k1
+    $ n (toScale sc ("0 <[5 8 7] [4 13 ~ 11 ~ 9] -3 -4> ~"))
+    |=| velocity (scale 0.1 0.5 $ rand)
+    |=| macro1 (scale 0.0 0.2 $ slow 32 $ sine1)
+    |=| dur "1"
+  k2
+    $ n (toScale sc ("0 ~ <-2 -6> <-5 4>" + "0"))
+    |=| dur "1.5 2"
+    |=| macro1 (scale 0.0 0.2 $ slow 32 $ sine1)
+  k3
+    $ slow 1.5
+    $ n (toScale sc ("0 <-3 -6 5 4>"))
+    |=| dur "1.2"
+    |=| macro1 (slow 12 $ scale 0.0 0.5 $ sine1)
+
+do
+  let sc = Scales.major
+  k1
+    $ n (toScale sc ("0 5 0 5" + "<0 0 -2 -2 -4 -4 2 4>"))
+    |=| velocity (scale 0.1 0.5 $ rand)
+    |=| macro1 (scale 0.0 0.2 $ slow 32 $ sine1)
+    |=| dur "1"
+  k2
+    $ n (toScale sc ("0 ~ <-2 -5 -2 -3> <-5 4>" + "7"))
+    |=| dur "1.5 2"
+    |=| macro1 (scale 0.0 0.2 $ slow 32 $ sine1)
+  k3
+    $ every 2 (rev)
+    $ n (toScale sc ("[[0 2] [11 4] [6 12] [7 13] [9 18] [10 15]]/5"))
+    |=| dur "1.2"
+    |=| macro1 (slow 12 $ scale 0.0 0.5 $ sine1)
+
+    $ n (toScale sc ("0 <-3 -6 5 4>"))
+
+
+
+hush

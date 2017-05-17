@@ -1,0 +1,51 @@
+cps (130/120)
+
+do
+  let sc = Scales.major
+  k1
+    $ sometimes (every 6 (stut' 3 0.1 ((|=| velocity "0.1") . (|=| dur "0.1"))))
+    $ foldEvery [4,5] (fast 1.333)
+    $ every 3 (superimpose (rev . (|+| n "<12 -12>")))
+    $ slow 2 (n (toScale sc "{<0 3> <5 4 1> <4 0 8> <3 -2> <1> <0 -2 -7> <7 -3 -5> <8 -6>}%8" + "[0, ~ ~ 7]"))
+    |=| dur (scale 0.1 0.3 $ slow 4 $ sine1)
+    |=| macro1 (slow 5 $ scale 0.1 0.9 $ sine1)
+    |=| macro2 (slow 16 $ scale 0.0 1 $ sine1)
+    |=| macro3 (slow 4 $ scale 0.0 1 $ sine1)
+    |=| macro4 (slow 16 $ scale 0.0 1 $ sine1)
+    |=| velocity (slow 32 $ scale 0.0 1 $ sine1)
+  k2
+    $ (whenmod 16 8 (fast 1.5)
+    $ slow 2 (n (toScale sc (sometimesBy 0.75 (+ 7) $ "[~ 14 <16 12 10> <18 14 24 20 22>] [<2 1 7> <5 7> <16 20 18>] <4 2 3>"))))
+    |=| macro1 (slow 5 $ scale 0.0 0.9 $ sine1)
+    |=| macro2 (slow 3 $ scale 0.0 1 $ sine1)
+    |=| macro3 (slow 4 $ scale 0.0 1 $ sine1)
+    |=| macro4 (slow 3 $ scale 0 1 $ rand)
+    |=| dur "0.1"
+    |=| velocity (scale 0.4 1 $ rand)
+  d1
+    $ stack [
+      s "{808bd ~ <~ 808bd> ~ ~ <808bd 808bd 808bd ~>}%4"
+        |=| n "4"
+        |=| up "-5 7 <24 12>/2"
+        |=| gain "1",
+      foldEvery [3,5] (fast 2)
+      $ every 3 (stut 4 0.4 (-0.2))
+      $ s "{~ ~ 808sd}%2"
+      |=| pan "{0.3 0.8}%3"
+      |=| n (choose[6,8])
+      |=| gain (slow 8 $ scale 0.8 1 $ sine1),
+      s "808oh*12"
+        |=| n "0 1 2 3"
+        |=| speed "1.5"
+        |=| pan "0.2"
+        |=| gain (scale 0.2 0.8 $ slow 4 $ sine1),
+      every 2 (stut 4 0.5 (0.5))
+      $ whenmod 16 8 (|=| gain "0.5")
+        $ s "808oh*4"
+        |=| n "0 1 2 3"
+        |=| pan "0.4 0.6"
+        |=| speed "1 1.03 0.95"
+        |=| gain (scale 0.5 1 $ slow 32 $ sine1)
+    ]
+
+hush

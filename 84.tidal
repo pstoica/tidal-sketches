@@ -1,0 +1,115 @@
+cps (140/120)
+
+    $ n (toScale sc ("{0 <-4 4> <-6 8>, ~ -3 -6 -9}" + "<0 -7>"))
+
+
+
+do
+  let sc = Scales.minor
+  k1
+    $ n (toScale sc ("[<0 0 -5> <3 -2> <5 3> <4 2>, [14 17 10]*4]/8"))
+    |=| velocity (scale 0.5 1 $ rand)
+    |=| macro1 "<0.2 0.5 0.9 0 1>"
+    |=| macro2 (scale 0.0 0.5 $ slow 8 $ sine1)
+    |=| macro3 (scale 0.0 1 $ slow 16 $ sine1)
+    |=| dur "1"
+  k2
+    $ gtfo
+    $ n (toScale sc ("[<-5 -5 <13 13 13 14> -8> -3 -2 0, <~ [5 7 9 11] ~ [3 4 5 6]>]"))
+    |=| dur "1.5 1"
+    |=| macro1 (scale 0.0 0.0 $ slow 32 $ sine1)
+  k3
+    $ every 2 (rev)
+    $ n (toScale sc ("3 7 4 5" + "7"))
+    |=| dur "1.2"
+    |=| macro1 (slow 12 $ scale 0.0 0.5 $ sine1)
+
+hush
+
+
+do
+  d1
+    $ stack [
+      gtfo $ s "ice*3"
+        |=| n "1"
+        |=| up "-3"
+        |=| pan (scale 0.3 0.7 $ slow 16 $ sine1)
+        |=| gain (scale 0.3 0.5 $ slow 4 $ sine1)
+        |=| release "0.8"
+        |=| attack "0.01"
+        |=| beginend "<0 0.5 0.3 0.7 0.4>" "0.1",
+      gtfo $ s "forest*4"
+        |=| n "2"
+        |=| speed "-2"
+        |=| release "0.5"
+        |=| pan (scale 0.2 0.8 $ rand)
+        |=| beginend "<0 0.2 0.7 0.4>" "0.1",
+      gtfo $ every 2 (stut 4 0.5 (-0.2)) $ s "forest*3"
+        |=| n "1"
+        |=| speed "1"
+        |=| release "0.8"
+        |=| gain (scale 1 1.4 $ slow 8 $ sine1)
+        |=| pan (scale 0.2 0.8 $ rand)
+        |=| beginend "<0.85 0.5 0.24 0.33>" "0.3",
+      gtfo $ s "forest*4"
+        |=| n "1"
+        |=| speed "1"
+        |=| attack "<0.1 0.5 0.2 0.01>"
+        |=| release "0.5"
+        |=| gain "1.4"
+        |=| hcutoff (scale 0 8000 $ slow 8 $ sine1)
+        |=| pan (scale 0.2 0.8 $ rand)
+        |=| beginend (scale 0 0.5 $ slow 16 $ sine1) "0.1",
+      gtfo $ s "forest*3"
+        |=| n "1"
+        |=| speed "2"
+        |=| release "0.9"
+        |=| gain (scale 0.5 1.4 $ slow 4 $ sine1)
+        |=| pan (scale 0.0 1 $ rand)
+        |=| beginend (scale 0 0.8 $ slow 4 $ sine1) "0.1",
+      s "ice*6"
+        |=| n "1"
+        |=| up "-3"
+        |=| pan (scale 0.7 0.3 $ slow 16 $ sine1)
+        |=| gain (scale 0.5 1 $ slow 4 $ sine1)
+        |=| release "0.4"
+        |=| attack "0.01"
+        |=| cut "1"
+        |=| hcutoff (scale 0 4000 $ slow 13 $ sine1)
+        |*| speed "2"
+        |=| beginend "<0 0.2 0.7 0.4>" "0.1",
+      every 4 (stut 8 0.5 (-0.4))
+      $ s "ice*6"
+        |=| up "-3"
+        |=| n "[2, 1]"
+        |=| pan (scale 0.7 0.3 $ slow 16 $ sine1)
+        |=| gain (scale 0.4 1.0 $ slow 17 $ sine1)
+        |=| attack "0.0"
+        |=| release "0.5"
+        |*| speed "-2"
+        |=| beginend (scale 0 0.5 $ slow 8 $ sine1) "0.1"
+    ]
+    |=| orbit "0"
+  d3
+    $ stack [
+      gtfo $ s "bd*2" # gain "0.8",
+      gtfo $ s "bsh_ch(5,8)" # pan "0.2 0.8" # gain "1.5" # speed (scale 0.9 1.5 $ slow 4 $ sine1),
+      gtfo $ jux ((|=| speed "1.5 1.2 -1 -2") . (slow 3)) $ s "808oh*2" # n "1" # pan (scale 0.2 0.8 $ slow 16 $ sine1) # gain (scale 0.8 1 $ slow 16 $ sine1)
+    ]
+    |=| orbit "1"
+
+hush
+
+
+d2 $ silence
+
+  d2
+    $ spread ($) [id, fast 1.5, striate 64, id, stut 4 0.5 (-0.2), (|*| speed "-1"), (|*| speed "4")]
+    $ stack [
+      gtfo $ s "808bd(3,8)" # n "2" # shape "0.5" # gain "1.0",
+      gtfo $ s "808sd*2" # n "4" # gain "1.2",
+      spread ($) [id, jux ((fast 2) . (|*| speed "1.5"))] $ s "bsh_ch*3" # pan (scale 0.2 0.8 $ slow 16 $ sine1),
+      spread ($) [id] $ s "bsh_ch*12" # pan (scale 0.2 0.8 $ slow 8 $ sine1) # speed (scale 0.4 1.5 $ slow 8 $ sine1),
+      spread ($) [id] $ s "bsh_sn(5,8)" # pan "0.2 0.8" # gain "1.5" # n "1" # speed (scale 0.8 2 $ slow 16 $ sine1)
+    ]
+    |=| orbit "1"
