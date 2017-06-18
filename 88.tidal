@@ -1,0 +1,40 @@
+cps (130/120)
+
+d1
+  $ stack [
+    gtfo $ s "hey*8"
+    # n "0 1 2"
+    # beginend (scale 0 0.35 $ slow 8 $ sine1) "0.1"
+    # pan (scale 0.2 0.8 $ rand)
+    # release "0.9",
+    s "hey*4"
+    # n "4"
+    # hcutoff (scale 0 8000 $ slow 32 $ sine1)
+    # beginend (scale 0 0.9 $ slow 16 $ sine1) "0.1"
+    # pan (scale 0.2 0.8 $ rand)
+    # release "0.9",
+    s "hey*6"
+    # n "5"
+    # gain (scale 0.6 1 $ slow 16 $ sine1)
+    # cutoff (scale 0 22000 $ slow 32 $ sine1)
+    # beginend (scale 0 0.5 $ slow 16 $ sine1) "0.1"
+    # pan (scale 0.2 0.8 $ slow 32 $ sine1)
+    # attack "0.01"
+    # release "0.5",
+    sometimes (stut 4 (0.5) (-0.2))
+    $ s "hey*4"
+    # n "2"
+    # speed "-0.5"
+    # gain (scale 0.8 1.4 $ slow 32 $ sine1)
+    # beginend (scale 0 0.5 $ slow 16 $ sine1) "0.1"
+    # pan (scale 0.3 0.7 $ rand)
+    # release "0.9",
+    s "hey"
+    # n "0"
+    # gain "1.2"
+    # cut "1"
+    # speed "0.5"
+    # begin (scale 0 0.5 $ slow 32 $ tri1)
+  ]
+
+  hush

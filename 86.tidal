@@ -1,0 +1,65 @@
+cps (120/120)
+
+
+do
+  d1
+    $ stack [
+      s "som*16"
+      # n "3"
+      # beginend (scale 0 0.9 $ slow 128 $ sine1) "0.1"
+      # gain (scale 0.8 1 $ slow 32 $ sine1)
+      # hcutoff (scale 0 1000 $ slow 16 $ sine1)
+      # pan (scale 0.2 0.8 $ rand)
+      # speed "-1"
+      # release "0.4"
+    ] # orbit "0"
+  d2
+    $ stack [
+      s "som*32"
+      # n "3"
+      # gain (scale 0.8 1.2 $ slow 32 $ sine1)
+      # beginend (scale 0.5 0.9 $ slow 32 $ sine1) "0.1"
+      # release "0.8",
+      spread ($) [id, id, id, stut 4 (0.5) (-0.1)]
+      $ s "som*4"
+      # n "3"
+      # beginend "<0.5 0.2 0.8 0.1 0 0.3 0.4 0.9>" "0.1"
+      |+| begin (scale 0 0.2 $ rand)
+      # pan (scale 0.2 0.8 $ rand)
+      # speed "<2 4 -2 -4>"
+      # release "0.5"
+    ] # orbit "1"
+  d3
+    $ slowspread ($) [palindrome, jux (slow 1.5), (|*| speed "-1"), jux ((fast 2) . (|*| speed "2"))]
+    $ stack [
+      gtfo $ every 4 (stut 4 0.5 (-0.2))
+      $ s "bsh_oh"
+      # hcutoff (scale 0 1000 $ slow 16 $ sine1)
+      # gain "1.6",
+      gtfo $ s "808hc*4"
+      # pan (scale 0.2 0.8 $ rand)
+      # gain "1.2 1",
+      every 4 (stut 4 (0.5) (-0.2))
+      $ s "~ <808sd ~>"
+      # n "1",
+      gtfo $ s "~ 808oh*2"
+      # gain (scale 0.5 1 $ slow 32 $ sine1)
+      # n (choose [0,1,2,3,4]),
+      s "~ bsh_sn*4"
+      # gain "1.2"
+      # pan (scale 0.2 0.8 $ rand)
+      # n (choose[0,1,2,3,4]),
+      gtfo $ s "bsh_ride"
+      # gain "1.3"
+    ] # orbit "2" # hcutoff (scale 0 4000 $ slow 32 $ sine1)
+  d4
+    $ s "909*2"
+    # cutoff (4000)
+
+hush
+
+d1 $ s "sad"
+  # cut "1"
+  # beginend "<0 0.5 0.2 0.8 0.1 0.3>" "0.1"
+
+hush
