@@ -1,0 +1,100 @@
+cps (95/120)
+
+cps(-1)
+
+hush
+
+do
+  let sc = Scales.major
+  k1
+    $ n (toScale sc ("<0 2 ~ 2 0>*8" + "<0 2 4 5 4 2 0 -2>" + "7"))
+    |=| macro1 (slow 8 $ scale 0.75 1 $ sine1)
+    |=| macro2 (slow 8 $ scale 0.0 1 $ sine1)
+    |=| macro3 (slow 32 $ scale 0.2 0.4 $ sine1)
+    |=| dur "2"
+    |=| velocity (scale 0.3 0.7 $ rand)
+  k2
+    $ (every 4 (slow 2)
+    $ n (toScale sc ("<0 3 4 1>*8" + "<0 2 4 7>" + "7")))
+    |=| macro1 (slow 8 $ scale 0.75 1 $ sine1)
+    |=| macro2 (slow 8 $ scale 0.0 1 $ sine1)
+    |=| dur "2"
+    |=| velocity (scale 0.3 0.7 $ rand)
+  k3
+    $ slow 1.5 (
+    n (toScale sc ("<0 3 4 -5>*8" + "<0 2 4 7>" + "0 7 -7 -14")))
+    |=| macro1 (slow 8 $ scale 0.75 1 $ sine1)
+    |=| macro2 (slow 8 $ scale 0.0 1 $ sine1)
+    |=| dur "2"
+    |=| velocity (scale 0.3 0.7 $ rand)
+
+do
+  d1
+    $ stack [
+      s "nu*2"
+        |=| n "0"
+        |=| pan (scale 0.3 0.7 $ slow 16 $ sine1)
+        |=| gain (scale 0.9 1.4 $ slow 4 $ sine1)
+        |=| release "0.8"
+        |=| attack "0.1"
+        |=| beginend "<0 0.5 0.3 0.7>" "0.1",
+      s "nu(3,8)"
+        |=| n "0"
+        |=| pan (scale 0.3 0.7 $ slow 16 $ sine1)
+        |=| gain (scale 0.7 1 $ slow 4 $ sine1)
+        |=| release "0.5"
+        |=| attack "0.1"
+        |*| speed "2"
+        |=| beginend (scale 0 0.5 $ slow 8 $ sine1) "0.1",
+      s "nu*4"
+        |=| n "0"
+        |=| pan (scale 0.7 0.3 $ slow 16 $ sine1)
+        |=| gain (scale 0.3 1 $ slow 8 $ sine1)
+        |=| release "0.3"
+        |=| attack "0.1"
+        |*| speed "4"
+        |=| beginend (scale 0 0.5 $ slow 8 $ sine1) "0.1",
+      s "nu*16"
+        |=| n "0"
+        |=| pan (scale 0.2 0.8 $ slow 16 $ sine1)
+        |=| release "0.3"
+        |=| attack "0.0"
+        |*| speed "1"
+        |=| hcutoff (scale 0 8000 $ slow 32 $ sine1)
+        |=| beginend (scale 0 0.8 $ slow 16 $ sine1) "0.01"
+    ]
+
+
+hush
+
+do
+d1
+  $ stack [
+      s "nu*6"
+        |=| n "0"
+        |=| pan (scale 0.3 0.7 $ slow 4 $ sine1)
+        |=| gain (scale 0.9 1.2 $ slow 4 $ sine1)
+        |=| attack "0.2"
+        |=| release "0.9"
+        |*| speed "<1 1 1 -1>"
+        |=| beginend "<0 0.1 0.2 0.8>" "0.2",
+      s "nu*12"
+        |=| n "0"
+        |=| pan (scale 0.3 0.7 $ slow 16 $ sine1)
+        |=| gain (scale 0.9 1.2 $ slow 4 $ sine1)
+        |=| release (scale 0.2 0.8 $ slow 32 $ sine1)
+        |=| attack (scale 0 0.3 $ slow 16 $ sine1)
+        |*| speed "<1 1 1 -1>"
+        |*| speed "2"
+        |=| hcutoff (scale 0 8000 $ slow 4 $ sine1)
+        |=| beginend "<0.3 0.4 0.2 0.1>" "0.2"
+        |+| begin (scale 0 0.2 $ rand),
+      s "nu*6"
+        |=| n "0"
+        |=| pan (scale 0.1 0.9 $ slow 16 $ sine1)
+        |=| gain (scale 0.9 1.4 $ slow 4 $ sine1)
+        |=| release "0.5"
+        |=| attack (scale 0 0.2 $ slow 16 $ sine1)
+        |=| beginend "<0 0.2>" "0.2"
+        |+| begin (scale 0 0.2 $ rand)
+    ]

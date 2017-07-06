@@ -1,5 +1,9 @@
 cps (130/120)
 
+cps(-1)
+
+hush
+
 d1
   $ stack [
     gtfo $ s "hey*8"

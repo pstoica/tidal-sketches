@@ -1,0 +1,148 @@
+cps (1)
+
+cps (-1)
+
+
+hush
+
+d1 $ stack [
+  s "gullibly*32"
+    # beginend (scale 0 0.9 $ slow 128 $ sine1) "0.1"
+    # release "0.5"
+    # pan (scale 0.1 0.9 $ slow 8 $ tri1),
+  s "gullibly*2"
+    # beginend (scale 0 0.5 $ slow 128 $ sine1) "0.5"
+    # speed "0.5"
+    # gain "1.4"
+    # pan (scale 0.9 0.1 $ slow 8 $ sine1)
+    # release "0.9"
+    # attack "0.2",
+  s "gullibly*8"
+    # beginend (scale 0.5 0.8 $ slow 128 $ sine1) "0.2"
+    # speed "0.5"
+    # gain "1.4"
+    # pan (scale 0.1 0.9 $ slow 8 $ sine1)
+    # release "0.9"
+    # attack "0.2",
+  s "gullibly*16"
+    # beginend (scale 0.0 0.3 $ slow 32 $ saw1) "0.2"
+    # speed "4"
+    # gain "1.4"
+    # hcutoff (scale 1000 10000 $ slow 4 $ sine1)
+    # gain (scale 0.3 1 $ slow 32 $ sine1)
+    # pan (scale 0.1 0.9 $ slow 16 $ sine1)
+    # release "0.5"
+    # attack "0.01",
+  s "gullibly"
+    # beginend (scale 0.0 0.3 $ slow 32 $ saw1) "0.5"
+    # speed "1"
+    # gain (scale 0.3 1.0 $ slow 64 $ saw1)
+    # pan (scale 0.1 0.9 $ slow 16 $ sine1)
+] |+| gain "-0.4"
+
+do
+  d1
+    $ stack [
+      s "gullibly*2"
+        |=| n "0"
+        |=| pan (scale 0.3 0.7 $ slow 16 $ sine1)
+        |=| gain (scale 0.9 1.4 $ slow 4 $ sine1)
+        |=| release "0.8"
+        |=| attack "0.1"
+        |=| beginend "<0 0.5 0.3 0.7>" "0.1",
+      s "gullibly(3,8)"
+        |=| n "0"
+        |=| pan (scale 0.3 0.7 $ slow 16 $ sine1)
+        |=| gain (scale 0.7 1 $ slow 4 $ sine1)
+        |=| release "0.5"
+        |=| attack "0.1"
+        |*| speed "2"
+        |=| beginend (scale 0 0.5 $ slow 8 $ sine1) "0.1",
+      s "gullibly*4"
+        |=| n "0"
+        |=| pan (scale 0.7 0.3 $ slow 16 $ sine1)
+        |=| gain (scale 0.3 1 $ slow 8 $ sine1)
+        |=| release "0.3"
+        |=| attack "0.1"
+        |*| speed "4"
+        |=| beginend (scale 0 0.5 $ slow 8 $ sine1) "0.1",
+      s "gullibly*16"
+        |=| n "0"
+        |=| pan (scale 0.2 0.8 $ slow 16 $ sine1)
+        |=| release "0.3"
+        |=| attack "0.0"
+        |*| speed "1"
+        |=| hcutoff (scale 0 8000 $ slow 32 $ sine1)
+        |=| beginend (scale 0 0.8 $ slow 16 $ sine1) "0.01"
+    ]
+
+cps (1)
+
+cps(95/120)
+
+cps (-1)
+
+hush
+
+d1 $ stack [
+  s "gullibly*8"
+  # beginend (scale 0 0.1 $ slow 8 saw1) "0.2"
+  # speed "1"
+  # release "0.5"
+  # pan "0.2"
+  # attack "0.01",
+  s "gullibly*16"
+  # beginend (scale 0.1 0.2 $ slow 16 saw1) "0.2"
+  # pan "0.8"
+  # speed "1"
+  # release "0.5"
+  # attack "0.01",
+  s "gullibly*16"
+  # beginend (scale 0.3 0.5 $ slow 4 saw1) "0.2"
+  # pan (scale 0.3 0.7 $ rand)
+  # speed "0.5"
+  # release "0.5"
+  # gain (scale 0.5 1.4 $ slow 32 $ saw1),
+  s "gullibly*8"
+  # beginend (scale 0.0 0.3 $ slow 4 saw1) "0.1"
+  # pan (scale 0.0 0.3 $ rand)
+  # speed "-2"
+  # release "0.5"
+  # gain (scale 0.3 1.0 $ slow 8 $ saw1),
+  s "gullibly*4"
+  # beginend (scale 0.0 0.3 $ slow 4 saw1) "0.3"
+  |+| begin (scale 0 0.3 $ slow 32 $ saw1)
+  # pan (scale 0.7 1.0 $ rand)
+  # speed "-1"
+  # release "0.9"
+  # attack "0.01"
+  # gain (scale 0.3 1.0 $ slow 8 $ saw1)
+  |+| gain "0.4"
+]
+
+d1 $ stack [
+  s "forest*8"
+    # n "0"
+    # beginend (scale 0 0.5 $ slow 32 $ saw1) "0.3"
+    # release "0.5"
+    # pan (scale 0 0.5 $ slow 4 $ saw1)
+    # hcutoff (scale 0 10000 $ slow 4 $ sine1)
+    # attack (scale 0 0.5 $ saw1)
+    # speed "1",
+  s "forest*8"
+    # n "0"
+    # beginend (scale 0.4 0.5 $ slow 32 $ saw1) "0.5"
+    # pan (scale 0.5 1 $ slow 4 $ tri1)
+    # speed "0.5"
+    # release "0.9"
+    # gain "1.2",
+  s "forest*24"
+    # n "0"
+    # beginend (scale 0.3 0.34 $ slow 32 $ tri1) "0.01"
+    # attack "0.1"
+    # release "0.8"
+    # speed "[1, 0.5]"
+    # gain "1.2"
+]
+
+hush

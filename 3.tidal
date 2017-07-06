@@ -1,0 +1,20 @@
+cps (0.5)
+
+s1 $ stack [
+  stut' (4) (1/8) ((|*| opacity "0.9") . (|*| r "1.1") . (|+| rotate "0.125") ) $
+  (s "poly*4"
+    |=| n (slow 3 $ choose [4,6,8])
+    |=| fillColor (scale 1 12 $ slow 4 $ sine1)
+    # strokeWeight "1"
+    |=| strokeColor "-1"
+    |=| dur "1"
+    # x "[0.1 0.3 0.5 0.7 0.9]"
+    # y (slow 2.1 $ choose [0.1,0.3..0.9])
+    # rotate (slow 4 $ tri1)
+    # r (scale 0.1 0.2 $ slow 2 $ tri1)),
+  s "background"
+    |=| fillColor "0"
+] # colors "527bab:71a5b7:aecffb:9283b5:aeaccb:dbcee4:ffeee5:eef7e8:7ab892:aacda7:bfe291"
+
+
+hush
