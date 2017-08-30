@@ -1,0 +1,81 @@
+bps(150/120)
+bps(160/120)
+bps(80/120)
+
+d1
+  $ whenmod 32 24 (within (0.25, 0.5) (slow 2))
+  $ (stack [
+    whenmod 32 16 (gtfo) $ s "bd*4"
+    # n "69"
+    # release "0.7"
+    # release "1"
+    # n "0"
+    # n "2",
+    whenmod 32 16 (# hpf (scale 0 3000 $ slow 8 $ sine1))
+    $ every 8 (within (0.0, 0.75) (gap 2))
+    $ stack [
+      s "~ ~ <~ germ> [~ ~ <~ ~ ~ germ> <~ germ>]"
+      # pan "0.2 0.2 0.2 0.8"
+      # n "2",
+      whenmod 8 7 (within (0.25, 0.75) (fast 2))
+      $ (whenmod 8 6 ((|*| speed "2") . (slow 2))
+      $ s "germ*16"
+      # speed "[1 1.2]*8"
+      # hpf (scale 0 5000 $ slow 8 $ sine1)
+      # n "3"
+      # gain "[0.9 0.7 0.5 0.7]*4"),
+      whenmod 32 16 (const $
+        s "[~ ho]*4"
+        # release "0.2"
+        # gain "0.9"
+        # n "6"
+        # pan "0.4"
+      ) $ s "~"
+    ]
+  ] # lpf (scale 2000 8000 $ slow 8 $ sine1))
+
+hush
+
+d2 $ silence
+
+d3 $ silence
+
+d2
+$ stack [
+  s "face*16"
+  # release "0.3"
+  # beginend (scale 0 0.25 $ slow 4 $ saw1) "0.1"
+  # pan "0.5"
+  # n "<7>"
+  # shape "0.0"
+  # coarse "8"
+  # speed "[-0.5,1]"
+  # gain "1.3",
+  s "face*32"
+  # attack "0.01"
+  # release "0.7"
+  # beginend (scale 0 0.5 $ slow 32 $ saw1) "0.1"
+  # hpf (scale 0 3000 $ slow 8 $ sine1)
+  # pan "0.7"
+  # n "<3>"
+  # speed "-2"
+  # gain "1.0",
+  gtfo $ s "[~ face]*4"
+  # speed "<1 1 -1 2>"
+  # pan (scale 0.3 0.7 $ slow 16 $ sine1)
+  # shape "0.7"
+  # attack "0.1"
+  # release "0.25"
+  # beginend "<0 0 0 <0.7 0.8>>" "0.2"
+  # n "3",
+  gtfo $ whenmod 32 16 (const $ s "~")
+  $ s "<face(5,16) <face(5,16,0) face(5,8,0) face(9,16,0) face(3,8,0)>>"
+  # attack "0.01"
+  # release "0.4"
+  # beginend "<0.1 0.3 0.5 0.7>" "0.1"
+  # pan "[0.3 0.7]/2"
+  # shape "0.7"
+  # n "<2 3 4 5>"
+  # speed "-2"
+  # gain "1.0"
+]

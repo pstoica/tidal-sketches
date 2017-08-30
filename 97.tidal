@@ -1,0 +1,101 @@
+cps(-1)
+cps(1)
+
+hush
+
+d1 $ stack [
+  s "grady*16"
+    # n "0"
+    # up "-4"
+    |*| speed "1 2 4 -2 -0.5 0.5"
+    # pan (scale 0.2 0.8 $ slow 4 $ sine1)
+    # gain (scale 0.7 1 $ slow 8 $ sine1)
+    # hcutoff (scale 0 5000 $ slow 16 $ sine1)
+    # attack (scale 0.1 0.5 $ slow 8 $ sine1)
+    # release (scale 0.1 0.5 $ slow 8 $ sine1)
+    # beginend (scale 0 0.9 $ slow 4 $ sine1) "0.1",
+  s "grady*8"
+    # n "0"
+    # up "-4"
+    |*| speed "<1 0.5 -2 0.5>"
+    # pan (scale 0.2 0.8 $ slow 4 $ sine1)
+    # gain (scale 0.7 1 $ slow 8 $ sine1)
+    # attack (scale 0.1 0.5 $ slow 8 $ sine1)
+    # release (scale 0.1 0.5 $ slow 8 $ sine1)
+    # beginend (scale 0 0.25 $ slow 64 $ sine1) "0.1",
+  s "grady*12"
+    # n "0"
+    # up "-4"
+    |*| speed "<2 4 -4 -2>"
+    # pan (scale 0.8 0.2 $ slow 3 $ saw1)
+    # gain (scale 0.7 1 $ slow 8 $ saw1)
+    # hcutoff (scale 1000 8000 $ slow 8 $ sine1)
+    # attack "0.1"
+    # release (scale 0.1 0.8 $ slow 8 $ sine1)
+    # beginend (scale 0.25 0.5 $ slow 32 $ sine1) "0.5"
+]
+
+hush
+
+
+hush
+
+d1 $ stack [
+  s "grady*8"
+    # n "0"
+    # up "-4"
+    |*| speed "<0.5, -0.5>"
+    # pan (scale 0.2 0.8 $ slow 4 $ sine1)
+    # gain (scale 0.7 1 $ slow 8 $ sine1)
+    # hcutoff (scale 500 2000 $ rand)
+    # shape (scale 0 0.8 $ slow 2.2 $ rand)
+    # attack (scale 0.1 0.5 $ slow 8 $ sine1)
+    # release (scale 0.1 0.5 $ slow 16 $ sine1)
+    # beginend (scale 0 0.25 $ slow 32 $ sine1) "0.1"
+    # orbit "0"
+]
+
+cps(-1)
+cps(1)
+
+d1 $ stack [
+  s "grady*8"
+    # n "0"
+    # up "-4"
+    |*| speed "<1, -1>"
+    # pan (scale 0.4 0.6 $ slow 2 $ sine1)
+    # gain (scale 0.0 0.8 $ slow 8 $ saw1)
+    # coarse (choose[0,1,2])
+    # attack (scale 0.1 0.5 $ slow 8 $ sine1)
+    # release (scale 0.1 0.5 $ slow 16 $ sine1)
+    # beginend (scale 0 0.25 $ slow 8 $ sine1) "0.1"
+    # orbit "0",
+  s "grady*16"
+    # n "0"
+    # up "-4"
+    |*| speed "<2, 0.5, -0.5>"
+    # pan (scale 0.4 0.6 $ slow 2 $ sine1)
+    # gain (scale 0.0 0.5 $ slow 8 $ sine1)
+    # attack (scale 0.0 0.5 $ slow 8 $ sine1)
+    # release (scale 0.1 0.5 $ slow 16 $ sine1)
+    # beginend (scale 0 0.1 $ slow 8 $ sine1) "0.1"
+    # orbit "1"
+]
+
+d1 $ stack [
+  s "grady*8"
+    # n "0"
+    # up "-4"
+    |*| speed "[1, -0.5]"
+    # pan (scale 0.2 0.8 $ slow 4 $ sine1)
+    # gain (scale 0.7 1 $ slow 8 $ sine1)
+    # hcutoff (scale 500 1000 $ slow 16 $ sine1)
+    # attack "1"
+    # release (scale 0.1 0.4 $ slow 8 $ sine1)
+    |+| release (scale 0.0 0.4 $ slow 9 $ sine1)
+    # beginend (scale 0.2 0.6 $ slow 128 $ sine1) "0.4"
+    # orbit "0"
+]
+
+
+hush

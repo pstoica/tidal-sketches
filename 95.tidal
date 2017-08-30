@@ -1,0 +1,70 @@
+d1 $ stack [
+  s "luv*8"
+    # n "[0 1 2 3]"
+    # speed "2"
+    # hcutoff (scale 0 2000 $ slow 8 $ sine1)
+    # attack (scale 0 0.1 $ slow 16 $ sine1)
+    # pan (scale 0.1 0.9 $ slow 8 $ sine1)
+    # release "0.5"
+    # beginend (scale 0 0.5 $ slow 8 $ sine1) "0.1",
+  s "luv*2"
+    # n "4"
+    # speed "1"
+    # pan (scale 0.3 0.7 $ slow 4 $ sine1)
+    # gain "1.2"
+    # attack (scale 0.1 0.2 $ slow 8 $ sine1)
+    # release "0.8"
+    # beginend (scale 0 0.5 $ slow 16 $ sine1) "0.1",
+  s "luv*6"
+    # n "5"
+    # speed "1"
+    # pan (scale 0.4 0.6 $ slow 4 $ sine1)
+    # gain (scale 0.0 1.2 $ slow 8 $ saw1)
+    # hcutoff (scale 0 1000 $ slow 16 $ sine1)
+    # shape "0.5"
+    # attack "0.1"
+    # release "0.2"
+    # beginend (scale 0 0.5 $ slow 16 $ sine1) "0.1"
+] # orbit "0"
+
+cps (1)
+
+d2 $ stack [
+  s "luv*16"
+    # n "1"
+    # speed "<2 -2>"
+    # pan (scale 0.2 0.8 $ slow 8 $ sine1)
+    # gain (scale 0.9 1.4 $ slow 16 $ sine1)
+    # hcutoff (scale 0 5000 $ slow 16 $ sine1)
+    # shape "0.2"
+    # release "0.5"
+    # beginend (scale 0 0.5 $ slow 8 $ sine1) "0.1"
+] # orbit "1"
+
+d3 $ stack [
+  s "luv*8"
+    # n "6"
+    # speed "4"
+    # pan (scale 0.2 0.8 $ slow 8 $ sine1)
+    # gain (scale 0.0 1.2 $ slow 8 $ saw1)
+    # hcutoff (scale 0 1000 $ slow 16 $ sine1)
+    # shape "0.2"
+    # attack "0.1"
+    # release "0.2"
+    # beginend (scale 0 0.5 $ slow 16 $ sine1) "0.1"
+] # orbit "2"
+
+d4 $ stack [
+  s "luv*16"
+    # n "9"
+    # pan (scale 0.1 0.9 $ slow 8 $ saw1)
+    # speed "2" # pan (scale 0.2 0.8 $ slow 8 $ sine1)
+    # gain (scale 0.2 1 $ slow 8 $ sine1)
+    # hcutoff (scale 0 1000 $ slow 8 $ sine1)
+    # shape "0.2"
+    # attack "0.1"
+    # release "0.2"
+    # beginend (scale 0 0.5 $ slow 16 $ sine1) "0.1"
+] # orbit "3"
+
+hush

@@ -1,0 +1,126 @@
+d2
+$ foldEvery [3,7,13] (slow 2)
+$ whenmod 16 12 (iter 16)
+$ every 3 (|*| speed "-1")
+$ stack [
+  slowspread ($) [id, stut 4 0.5 (-0.3), stut 2 0.5 0.1, slow 2]
+  $ whenmod 16 8 (|*| speed (scale 1 3 $ rand))
+  $ whenmod 8 6 (within (0.25, 0.75) (rev . (stut 8 0.5 (-0.1))))
+  $ whenmod 24 12 (juxBy 0.8 (|*| speed "<0.5 0.25>"))
+  $ sometimes (# room "0.8")
+  $ foldEvery [3,4,5,8,9,10] (|+| n "3")
+  $ sometimesBy 0.3 (# s "<808bd 808sd>")
+  $ sometimesBy 0.8 (# s "808oh")
+  $ sometimesBy 0.5 (# s "clap")
+  $ n (randcat [(run 8), (run 4), (run 3), (run 16)])
+  # pan (scale 0.2 0.8 $ rand)
+  # s "snap"
+  # size (scale 0 1 $ slow 32 $ saw1)
+  # release (scale 0.3 1 $ slow 8 $ rand)
+]
+
+cps(0.85)
+
+d2
+$ every 4 ((1/4) ~>)
+$ every 16 (zoom (0, 0.5) . (stut 8 0.5 (-0.1)))
+$ every 8 (superimpose (|*| speed "0.5"))
+$ stack [
+  every 3 (stut 4 0.3 (-0.1))
+  $ s "<snap*8 snap(3,8) snap*8 snap(5,8)>"
+  # speed (scale 1 2 $ slow 16 $ saw1)
+  # pan (scale 0.2 0.8 $ rand)
+  # n (irand 10),
+  s "~ snap"
+  # pan "0.8"
+  # speed "0.9"
+  # shape "0.8"
+  # n (choose[51]),
+  s "snap(3,8)"
+  # pan "0.2"
+  # n (irand 10),
+  s "808hc*8"
+  # pan (scale 0.2 0.8 $ slow 8 $ saw1)
+  # (every 4 (rev) $ up (run 8)
+  |+| up "<0 0 -3 -5>/2"
+  |*| speed "<1 1 1 0.5>"),
+  s "<808bd(3,8) 808lt(3,8) 808bd(5,8) 808lt(3,8)>"
+  # n "4"
+  # up "<-1 2>"
+  # gain "1.5"
+  # pan (scale 0.2 0.8 $ slow 8 $ saw1),
+  s "~ <~ 808sd>"
+  # n (irand 4)
+  |+| n "3"
+  # pan "0.2"
+  # gain "1.4"
+] # room "0 <0 0.3>" # size "0.3"
+
+d1 $ silence
+d2 $ silence
+
+d2
+  $ every 8 ((zoom (0, 0.25)) . (stut 8 0.5 (-0.1)))
+  $ stack [
+    whenmod 16 8 (gtfo)
+    $ s "[bottle*16?]"
+    # speed (scale 1 2 $ slow 16 $ saw1)
+    # pan "0.2"
+    # gain "0.4",
+    sometimes (stut 8 0.5 0.3)
+    $ s "blip(5,8)"
+    # gain "0.6"
+    # up (choose[0,3,5,7]),
+    s "tabla*4"
+    # pan "[0.2 0.8]*2"
+    # n (irand 8)
+    # gain "0.6",
+    s "bassdm*2"
+    # n (choose[0,1])
+    # gain "0.9",
+    s "snap(3,8)"
+    # pan "0.2"
+    # gain "0.8"
+    # n (irand 15)
+  ] # orbit "1"
+
+d2
+$ every 8 (within (0.5, 1) ((stut 8 0.1 (0.3))))
+$ every 16 (|*| speed "0.5")
+$ stack [
+  s "808bd" # n "6",
+  s "808cy"
+  # n (irand 8)
+  # gain (slow 8 $ sine1),
+  s "<~ ~ ~ 808sd>" # n "6",
+  slowspread ($) [fast 1.5, swingBy (1/3) 2, id, id]
+  $ s "808oh*8"
+  # gain "[1 0.8]*4"
+  # cut "1",
+  sometimesBy 0.1 (# up "12")
+  $ s "jvbass*8"
+  # n (irand 8)
+  # gain "1 0.9 0.7 0.9"
+  # coarse (choose[2,4,8,0])
+]
+
+d1
+  $ every 3 ((8) <~)
+  $ every 5 (slow 2)
+  $ every 8 ((zoom (0, 0.25)) . (stut 8 0.5 (-0.1)))
+  $ stack [
+    s "ice*4"
+    # begin (scale 0 0.5 $ slow 512 $ saw1)
+    # pan "0.2"
+    # accelerate (scale 0 0.01 $ slow 13 $ saw1)
+    # legato "1",
+    s (randcat ["ice*4", "ice*8", "ice(3,8)", "ice(5,8)"])
+    # begin (scale 0.25 0.75 $ slow 256 $ sine1)
+    # pan (choose[0.2,0.3,0.8])
+    # accelerate (scale 0 0.01 $ slow 32 $ saw1)
+    # speed "2"
+    # legato "1"
+  ] # orbit "2" # room (scale 0.3 1 $ slow 8 $ sine1)
+  # size (scale 0.3 1 $ slow 7 $ sine1) # gain "1.0"
+
+hush

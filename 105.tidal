@@ -1,0 +1,29 @@
+bps (160/120)
+
+d1
+$ slowspread ($) [id, id, fast 4, slow 4]
+$ sometimesBy 0.3 (stut 8 0.5 (0.1))
+$ sometimes (|*| speed 2)
+$ sometimes (rev . (|*| speed "-1"))
+$ sometimesBy 0.1 (slow 2)
+$ sometimesBy 0.3 (gap 2)
+$ stack [
+  s "{~ ~ germ}%2" # orbit "2",
+  slowspread ($) [fast 2, fast 4, brak, chop 2]
+  $ s "hc(3,4)*8"
+  # gain "0.7"
+  # n "7"
+  # release "0.4",
+  s "ho*2"
+  # n "5"
+  # gain "0.7"
+  # pan "0.3"
+  # release "0.4",
+  s "germ*16"
+  # n "1"
+  # release "0.2"
+  # pan "0.7"
+  # gain "[0.3 0.6]*4"
+]
+
+cps (-1)

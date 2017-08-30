@@ -1,0 +1,166 @@
+d1 $ stack [
+  s "gutter*8"
+  # begin (scale 0 0.5 $ slow 32 $ tri1)
+  # attack "0.1"
+  # release "0.9"
+  # pan "0.2"
+  # legato "1",
+  s "gutter*4"
+  # begin (scale 0.4 0.7 $ slow 16 $ tri1)
+  # attack "0.1"
+  # release "0.9"
+  # pan "0.8"
+  # legato "1",
+  s "gutter*16"
+  # begin (scale 0.0 0.8 $ slow 16 $ tri1)
+  # release "0.3"
+  # speed "2"
+  # gain "0.8"
+  # legato "1"
+] # n "2"
+
+d1
+$ every 4 (stut 8 0.5 (0.5))
+$ every 9 (|*| speed "-1")
+$ every 5 (within(0,0.5) (|*| speed "2"))
+$ stack [
+  s "gutter"
+  # legato "1"
+  # pan (scale 0.2 0.8 $ slow 8 $ sine1)
+  # coarse "<0 2 4 8>"
+  # begin "<0 0 0 0 0 0 0 0.8>",
+  s "gutter"
+  # legato "1"
+  # speed "0.5"
+  # begin "0.3",
+  s "<gutter ~ ~ ~>"
+  # legato "1"
+  # speed "2"
+  # pan "0.7"
+  # begin "<0.3 0.7>/4"
+] # n "<2 2 2 2 2 2 2 0>"
+
+d2
+$ every 5 (stut 8 0.5 0.3)
+$ slowspread ($) [id, (|*| speed "-0.5"), slow 2, jux (|*| speed 2)]
+$ stack [
+  s "808bd*2"
+  # gain "1.4",
+  s "~ ry30"
+  # pan "<0.3 0.7>"
+  # n "36",
+  swingBy (1/3) 4
+  $ s "ry30*16"
+  # n "55"
+  # pan "0.8"
+  # gain "[0.8 0.3 0.6 0.5]*4"
+  # lpf (scale 4000 10000 $ slow 8 $ sine1),
+  s "~ [~ ~ ~ snap] [snap ~ ~ snap] ~"
+  # pan (scale 0.2 0.8 $ rand)
+  # n (irand 10)
+  |+| n "20"
+] # orbit "1"
+
+
+d1
+$ every 4 (stut 8 0.5 (0.5))
+$ every 9 (|*| speed "-1")
+$ every 5 (within(0,0.5) (|*| speed "2"))
+$ whenmod 16 0 (jux (|*| speed "0.5"))
+$ slow 8
+$ striate 2
+$ fast 2
+$ stack [
+  s "gutter*1"
+  # legato "1"
+  # pan (scale 0.2 0.8 $ slow 8 $ sine1)
+  # gain (scale 0.5 1 $ slow 9 $ sine1)
+  # coarse "<0 2 4 8>"
+  # begin "<0.1 0.0 0.5 0.2>",
+  s "gutter*1"
+  # legato "1"
+  # speed "0.5"
+  # gain (scale 0.5 1 $ slow 5 $ sine1)
+  # begin "<0.7 0.3 0.6 0.6>",
+  s "<gutter*1 ~ ~ ~>"
+  # legato "1"
+  # speed "1"
+  # gain (scale 0.5 1 $ slow 8 $ sine1)
+  # pan "0.7"
+  # begin "0.5"
+] # n "0" |+| begin (scale 0 0.3 $ slow 16 $ saw1) |*| speed "2" # hpf (scale 0 1000 $ slow 8 $ saw1) # size "0.1" # room "0.8"
+
+
+d2
+$ every 8 (stut 4 0.5 0.7)
+$ stack [
+  s "808bd*2"
+  # gain "1.4",
+  s "~ ry30"
+  # pan "<0.3 0.7>"
+  # n "36",
+  s "808oh*8"
+  # slow 5 (n (run 5))
+  # sustain (scale 0.2 0.8 $ slow 8 $ sine1)
+  # pan "[0.3 0.7]*4"
+  # bpf (scale 1000 4000 $ slow 8 $ tri1)
+  # gain "[0.7 1]*2",
+  gtfo $ swingBy (1/3) 4
+  $ s "ry30*16"
+  # n "55"
+  # pan "0.8"
+  # gain "[0.8 0.3 0.6 0.5]*4"
+  # lpf (scale 4000 10000 $ slow 8 $ sine1),
+  gtfo $ s "~ [~ ~ ~ snap] [snap ~ ~ snap] ~"
+  # pan (scale 0.2 0.8 $ rand)
+  # n (irand 10)
+  |+| n "20"
+] # orbit "1"
+
+d1
+$ every 4 (juxBy 0.1 (|*| speed "0.5"))
+$ stack [
+  s "gutter"
+  # n "1"
+  # legato "1"
+  # begin "<0.3 0.3 0.5 0.4>"
+  |+| begin (scale 0 0.2 $ slow 8 $ saw1)
+  # release "2.3",
+  s "gutter"
+  # n "1"
+  # legato "1"
+  # speed "2"
+  # hpf (scale 0 8000 $ slow 8 $ saw1)
+  # begin "0 0 0 0.5"
+  |+| begin (scale 0 0.2 $ slow 8 $ saw1)
+  # release "2.3",
+  s "gutter"
+  # speed "0.5"
+  # legato "1"
+  # begin (scale 0 0.5 $ slow 8 $ tri1)
+] # shape (scale 0 0.5 $ slow 8 $ saw1) # n "0"
+
+d2 $ stack [
+  s "808bd*2"
+  # gain "1.6",
+  s "~ rs rs rs"
+  # gain "1 0.8",
+  s "<~ 808sd*2> <~ 808sd> <~ ~ ~ 808sd> ~"
+  # n (irand 6)
+  # gain "1.34",
+  s "~ snap"
+]
+
+d1 $ stack [
+  s "808bd*2"
+  # gain "1.6",
+  s "~ rs rs rs"
+  # gain "1 0.8",
+  s "<~ 808sd*2> <~ 808sd> <~ ~ ~ 808sd> ~"
+  # n (irand 6)
+  # gain "1.34",
+  s "~ snap"
+]
+
+
+hush

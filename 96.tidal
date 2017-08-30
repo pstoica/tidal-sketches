@@ -1,0 +1,203 @@
+cps (-1)
+
+hush
+
+bps (240/120)
+
+d1 $ stack [
+  s "luv*16"
+    # n "0"
+    # pan (scale 0.1 0.9 $ slow 8 $ saw1)
+    # speed "2" # pan (scale 0.2 0.8 $ slow 8 $ sine1)
+    # gain (scale 0.2 0.7 $ slow 8 $ sine1)
+    # hcutoff (scale 0 1000 $ slow 8 $ sine1)
+    # shape "0.2"
+    # attack "0.1"
+    # release "0.2"
+    # beginend (scale 0 0.5 $ slow 16 $ sine1) "0.1"
+    # orbit "0",
+  s "luv*16"
+    # n "2"
+    # pan (scale 0.3 0.7 $ slow 8 $ saw1)
+    # speed "-1"
+    # pan (scale 0.2 0.8 $ slow 8 $ sine1)
+    # hcutoff (scale 0 1000 $ slow 16 $ sine1)
+    # gain (scale 0.8 1 $ slow 8 $ sine1)
+    # attack "0.01"
+    # release "0.6"
+    # beginend (scale 0 0.5 $ slow 8 $ sine1) "0.1"
+    # orbit "1",
+  s "luv*16"
+    # n "1"
+    # pan (scale 0.1 0.9 $ slow 8 $ saw1)
+    # speed "-0.5"
+    # hcutoff (scale 0 1000 $ slow 16 $ sine1)
+    # pan (scale 0.2 0.8 $ slow 8 $ sine1)
+    # gain (scale 0.8 1.0 $ slow 8 $ sine1)
+    # shape (scale 0 0.6 $ slow 16 $ sine1)
+    # attack "0.1"
+    # release "0.2"
+    # beginend (scale 0 0.9 $ slow 32 $ sine1) "0.1"
+    # orbit "2"
+]
+
+d1 $ stack [
+  s "luv*8"
+    # n "5"
+    # speed "-1"
+    # pan (scale 0.2 0.8 $ slow 8 $ sine1)
+    # gain (scale 0.5 0.9 $ slow 8 $ sine1)
+    # hcutoff "300"
+    # attack "0.05"
+    # release (scale 0.2 0.5 $ slow 8 $ sine1)
+    # beginend (scale 0 0.9 $ slow 16 $ sine1) "0.1"
+    # orbit "0",
+  iter 4 $ (s "luv*8"
+    # n "<3 3 4 4>"
+    # speed "-1"
+    # accelerate (scale (-0.1) 0.1 $ slow 16 $ sine1)
+    # pan (scale 0.2 0.8 $ rand)
+    # gain (scale 0.5 0.9 $ slow 8 $ sine1)
+    # hcutoff (scale 1000 3000 $ slow 8 $ sine1)
+    # release (scale 0.3 0.5 $ slow 8 $ sine1)
+    # beginend (scale 0 0.9 $ slow 16 $ rand) "0.1")
+    # orbit "1"
+]
+
+cps(-1)
+
+cps(1)
+
+hush
+
+d1 $ stack [
+  s "luv*3"
+    # n (choose[6,8])
+    # attack (scale 0 0.1 $ slow 8 $ sine1)
+    # release (scale 0.5 1 $ slow 8 $ rand)
+    # speed (choose[1,2,-2,-1])
+    # coarse (choose[0,2,4])
+    # pan (scale 0.1 0.7 $ rand)
+    # beginend (scale 0 0.9 $ slow 16 $ sine1) "0.1"
+]
+
+
+hush
+
+cps(-1)
+cps(1)
+
+-- LUV THIS ONE
+d1 $ stack [
+  s "luv*16"
+    # n "0"
+    # speed "1"
+    # pan (scale 0.2 0.8 $ slow 8 $ sine1)
+    # gain (scale 0.5 0.9 $ slow 8 $ sine1)
+    # hcutoff "300"
+    # attack "0.1"
+    # release (scale 0.2 0.5 $ slow 8 $ sine1)
+    # beginend (scale 0 0.5 $ slow 128 $ sine1) "0.1"
+    # orbit "0",
+  s "luv*16"
+    # n "1"
+    # speed "0.5"
+    # pan (scale 0.0 0.5 $ slow 16 $ saw1)
+    # gain (scale 0.5 0.9 $ slow 8 $ sine1)
+    # attack "0.1"
+    # release (scale 0.2 0.5 $ slow 8 $ sine1)
+    # beginend (scale 0 0.5 $ slow 64 $ sine1) "0.1"
+    # orbit "1",
+  s "luv*16"
+    # n "2"
+    # speed "-2"
+    # pan (scale 0.5 0.9 $ slow 8 $ saw1)
+    # gain (scale 0.5 0.7 $ slow 8 $ saw1)
+    # attack "0.1"
+    # release (scale 0.2 0.5 $ slow 8 $ sine1)
+    # beginend (scale 0 0.5 $ slow 64 $ sine1) "0.1"
+    # orbit "2",
+  s "luv*8"
+    # n "3"
+    # speed "-0.5"
+    # shape (scale 0 0.8 $ slow 4 $ sine1)
+    # pan (scale 0.9 0.3 $ slow 4 $ saw1)
+    # gain (scale 0.5 0.7 $ slow 4 $ saw1)
+    # hcutoff "500"
+    # attack "0.1"
+    # release (scale 0.2 0.5 $ slow 8 $ sine1)
+    # beginend (scale 0 0.5 $ slow 64 $ sine1) "0.1"
+    # orbit "3"
+]
+
+d1 $ stack [
+  s "luv*16"
+    # n "5"
+    # speed "1"
+    # pan (scale 0.2 0.8 $ slow 8 $ sine1)
+    # gain (scale 0.5 0.9 $ slow 8 $ sine1)
+    # hcutoff "300"
+    # attack "0.1"
+    # release (scale 0.2 0.5 $ slow 8 $ sine1)
+    # beginend (scale 0 0.5 $ slow 128 $ sine1) "0.1"
+    # orbit "0",
+  s "luv*16"
+    # n "6"
+    # speed "4"
+    # hcutoff (scale 0 8000 $ slow 8 $ sine1)
+    # pan (scale 0.2 0.8 $ slow 4 $ saw1)
+    # gain (scale 0.5 0.9 $ slow 8 $ sine1)
+    # attack "0.1"
+    # release (scale 0.2 0.5 $ slow 8 $ sine1)
+    # beginend (scale 0 0.5 $ slow 2 $ saw1) "0.1"
+    # orbit "1"
+]
+
+d1 $ stack [
+  s "gullibly*32"
+    # n "0"
+    # speed "1"
+    # pan (scale 0.2 0.8 $ slow 8 $ sine1)
+    # gain (scale 0.5 0.9 $ slow 8 $ sine1)
+    # hcutoff (scale 100 10000 $ slow 16 $ sine1)
+    # coarse "[0 1 2]/4"
+    # attack "0.1"
+    # release (scale 0.2 0.5 $ slow 8 $ sine1)
+    # beginend (scale 0 0.5 $ slow 128 $ sine1) "0.1"
+    # orbit "0",
+  s "gullibly*16"
+    # n "0"
+    # speed "0.5"
+    # pan (scale 0.2 0.8 $ slow 16 $ sine1)
+    # gain (scale 0.5 0.8 $ slow 5 $ sine1)
+    # hcutoff (scale 100 1000 $ slow 13 $ sine1)
+    # attack "0.1"
+    # release (scale 0.2 0.5 $ slow 8 $ sine1)
+    # beginend (scale 0 0.25 $ slow 64 $ sine1) "0.1"
+    # orbit "1",
+  s "gullibly*8"
+    # n "0"
+    # speed "-0.25"
+    # pan (scale 0.2 0.8 $ slow 9 $ sine1)
+    # gain (scale 0.9 1.0 $ slow 9 $ sine1)
+    # hcutoff (scale 0 100 $ slow 13 $ sine1)
+    # attack (scale 0 0.2 $ slow 32 $ sine1)
+    # release (scale 0.2 0.5 $ slow 8 $ sine1)
+    # beginend (scale 0.0 0.25 $ slow 64 $ sine1) "0.1"
+    # orbit "2",
+  s "gullibly*16"
+    # n "0"
+    # speed "2"
+    # pan (scale 0.2 0.8 $ slow 4 $ sine1)
+    # gain (scale 0.2 0.7 $ slow 8 $ sine1)
+    # cutoff (scale 10000 18000 $ slow 16 $ sine1)
+    # attack "0.2"
+    # release (scale 0.2 0.5 $ slow 8 $ sine1)
+    # beginend (scale 0 0.25 $ slow 64 $ sine1) "0.1"
+    # orbit "3"
+]
+
+
+
+
+hush

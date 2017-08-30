@@ -1,0 +1,46 @@
+cps (0.5)
+
+d1
+  $ stack [
+    s "<face*8 face*4 face*2 face*6>"
+    # n "1 2 3 4 5 6 7 8"
+    # pan (scale 0 0.5 $ slow 8 sine1)
+    # release "1.5"
+    # gain (scale 0.5 1 $ slow 16 $ sine1)
+    # hcutoff (scale 0 2000 $ slow 8 $ sine1)
+    # beginend (scale 0 0.25 $ slow 16 $ tri1) 0.2
+  ] # orbit "0"
+
+d2 $ stack [
+  s "<face*4 face*3 face*8 face*12>"
+  # n "1 2 3 4 5 6 7 8"
+  |*| speed "2"
+  # pan (scale 0.5 1 $ slow 4 sine1)
+  # release "0.8"
+  # gain (scale 0.5 1 $ slow 8 $ sine1)
+  # hcutoff (scale 1000 10000 $ slow 4 $ sine1)
+  # beginend (scale 0 0.5 $ slow 4 $ saw1) 0.2
+] # orbit "1"
+
+d3 $ stack [
+  s "face*16"
+  # n "<2 3 4 5 6 7 8>"
+  |*| speed "<4>"
+  # attack "0.05"
+  # release "0.05"
+  # hcutoff (scale 0 2000 $ slow 4 $ sine1)
+  # beginend (scale 0 0.8 $ slow 8 $ sine1) "0.2"
+] # orbit "2"
+
+d4 $ stack [
+  s "face*8"
+  # n "0"
+  # release "2"
+  # attack "0.1"
+  # beginend (scale 0 0.5 $ slow 64 $ sine1) "0.5"
+] # orbit "3"
+
+cps (0.5)
+cps (0.9)
+
+hush

@@ -1,0 +1,73 @@
+d1
+  $ stack [
+    (every 3 (fast 3) $ s "wtr*16")
+    # pan (scale 0.2 0.8 $ slow 8 $ sine1)
+    # accelerate (scale (-16) 16 $ slow 4.33 $ sine1)
+    # release "0.8"
+    # speed (scale (-4) 8 $ slow 16 $ sine1)
+    # gain (scale 0.5 2 $ slow 8 $ sine1)
+    # hcutoff (scale 0 10000 $ slow 8 $ sine1)
+    # beginend (scale 0.5 0.8 $ slow 32 $ sine1) "0.01",
+    s "wtr*8"
+    # pan (scale 0.8 0.2 $ slow 4 $ sine1)
+    # hcutoff "200"
+    # release "0.2"
+    # speed "-2"
+    # gain "3"
+    # coarse "8"
+    # beginend (scale 0.4 0.55 $ slow 32 $ sine1) "0.01"
+  ] # delaytime (scale 0.1 0.5 $ slow 8 $ sine1)
+  # delay "0.5"
+  # delayfeedback (scale 0 0.5 $ slow 4 $ sine1)
+
+d1 $
+  stack [
+    s "wtr*8"
+    # pan (scale 0.8 0.2 $ slow 4 $ sine1)
+    # hcutoff "1000"
+    # release "0.2"
+    # speed "-2"
+    # gain (scale 0 3 $ slow 17 $ sine1)
+    # beginend (scale 0.4 0.45 $ slow 32 $ sine1) "0.01",
+    s "wtr*6"
+    # pan (scale 0.8 0.2 $ slow 3 $ sine1)
+    # hcutoff "4000"
+    # release "0.5"
+    # speed "-2"
+    # gain (scale 0 3 $ slow 32 $ sine1)
+    # beginend (scale 0.3 0.35 $ slow 16 $ sine1) "0.01",
+    s "wtr*6"
+    # pan (scale 0.8 0.2 $ slow 3 $ sine1)
+    # hcutoff "4000"
+    # release "0.5"
+    # speed "-2"
+    # gain (scale 0 3 $ slow 8 $ sine1)
+    # beginend (scale 0.3 0.35 $ slow 16 $ sine1) "0.01",
+    s "wtr*16"
+    # pan (scale 0.2 0.8 $ slow 9 $ sine1)
+    # hcutoff "10000"
+    # release "0.5"
+    # speed "<-8 -4>"
+    # gain (scale 0.5 3 $ slow 4 $ sine1)
+    # beginend (scale 0.2 0.35 $ slow 32 $ sine1) "0.01"
+] |+| gain "-0.2" # delaytime "1" # delay "1" # delayfeedback "1"
+
+d1 $
+  stack [
+    gtfo $ s "wtr*2"
+    # gain "2"
+    # pan "0.8"
+    # attack "0.1"
+    # release "0.6"
+    # hcutoff "1000"
+    # beginend (scale 0.2 0.4 $ slow 16 $ sine1) "0.01",
+    s "wtr*12"
+    # pan "0.5"
+    # gain "2"
+    # release "0.5"
+    # hcutoff "100"
+    # speed "-4"
+    # beginend (scale 0.7 0.8 $ slow 36 $ tri1) "0.01"
+  ]
+
+hush

@@ -1,0 +1,126 @@
+bps (140/120)
+
+bps (70/120)
+
+
+d1
+$ stack [
+  gtfo $ s "~ <bd:2 ~ ~ [~ germ]> [germ*2] ~",
+  s "<~ bd> <<~ bd> [bd ~ ~ bd]>"
+  # up "-2"
+  # n "2",
+  slowspread ($) [id, jux (# offset 0.1), stut 8 0.2 0.5, stut 8 0.2 0.1]
+  $ s "<germ:1 cp:3>*1" # pan "0.3",
+  slowspread ($) [id, id, stut 8 0.1 (-0.2), chop 2]
+  $ swing 16
+  $ s "<germ*4 germ*4 germ*4 germ*16>"
+  # speed (scale 1 1.5 $ slow 32 $ saw1)
+  # attack "0.1"
+  # n "3"
+  # gain "[0.5 0.4 0.4 0.3]*4"
+  |+| gain "0.05"
+]
+
+d1
+$ stack [
+  s "{~ <bd bd*2> ~ ~ ~}%4"
+  # n "1"
+  # up "-2",
+  s "cp:3 [~ ~ ~ <~ ~ ~ cp:2>]"
+  # pan "0.3",
+  whenmod 4 3 (gtfo)
+  $ swingBy (1/3) 2
+  $ s "hc*8"
+  # pan "[0.3 0.7]*4"
+  # gain "0.5"
+  # up "<0 0 [-2 -1]*4 -3>"
+  # n "0 1 2 3",
+  whenmod 8 7 (gtfo)
+  $ every 3 (stut 4 0.4 0.25)
+  $ every 5 (|*| speed "-1")
+  $ every 4 (fast 2)
+  $ s "~ ho"
+  # gain "0.6"
+  # n "<0 1 2 3>",
+  every 3 (jux (# offset 0.05))
+  $ (every 4 ((stut 8 0.5 (-0.2))))
+  $ s "rs"
+  # n "4"
+]
+
+d1 $ silence
+
+d3 $ slow 4 $ striate 2 $ stack [
+  loopAt 4
+  $ s "burg"
+  # pan "0.7"
+  # gain "0.8"
+  # gain "0"
+  # n "3"
+  # lpf "8000"
+  # cut "1",
+  s "piano*4"
+  # pan "0.3"
+  # gain "2.6"
+  # begin "<0 0.25 0.5 0.75>*2"
+  # n "3"
+  # cut "2",
+  loopAt 2
+  $ s "piano"
+  # pan "0.8"
+  # gain "2.0"
+  # shape "0.4"
+  # n "<5 5 2 3>",
+  whenmod 8 5 (# gain "0") $ (loopAt 8
+  $ s "burg*8"
+  # pan (scale 0.2 0.8 $ slow 4 $ sine1)
+  # gain "0.9"
+  # coarse "2"
+  # begin "<0 0.25 0.5 0.6>*4"
+  # n "3"
+  # n "6"
+  # cut "3"),
+  gtfo $ s "burg*4"
+  # pan "0.5"
+  # hpf (scale 0 3000 $ slow 8 $ sine1)
+  # gain "0"
+  # begin "<0 0.25 0.5 0.75>*2"
+  # n "6"
+  # cut "4"
+]
+
+d2 $ silence
+
+d2 $ whenmod 32 16 (slow 2) $ stack [
+  every 4 (stut 4 0.5 (0.5))
+  $ sometimesBy 0.2 (|*| speed "-0.25")
+  $ every 6 (sometimes (|*| speed "2"))
+  $ foldEvery [2,3] (fast 2) $ (s "piano*16"
+  # begin (scale 0 0.2 $ slow 32 $ sine1)
+  |+| begin (scale 0 0.2 $ slow 8 $ sine1)
+  |+| begin (scale 0 0.1 $ slow 4 $ sine1)
+  |+| begin (scale 0 0.1 $ slow 16 $ sine1)
+  # pan (scale 0.2 0.8 $ rand)
+  # n "<6 3 2 0 1 5 7>"
+  # n (irand 8)
+  # loop (irand 16)
+  # cut (run 16)
+  # gain "3.0"
+  # crush "<14 16 24 24>"
+  # crush "24"
+  # coarse "<1 2 4 0>"
+  # shape "[0 0.2 0.3 0.1]*2"
+  # hpf (scale 0 1000 $ slow 8 $ sine1))
+  # release "0.9"
+]
+
+
+d2 $ silence
+
+d3 $ silence
+
+hush
+
+cps (-1)
+
+hush

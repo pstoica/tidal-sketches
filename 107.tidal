@@ -1,0 +1,106 @@
+bps (140/120)
+
+d1
+  $ whenmod 16 0 ((# up (run 7)) . (fast 2))
+  $ every 5 (chop 2)
+  $ every 3 (stut 4 0.5 (-0.1))
+  $ whenmod 8 4 (stut' 4 (0.5) (|*| speed "0.5"))
+  $ n "0 1 2 3 4"
+  # s "glazz"
+  # pan "[0.3 0.7]"
+  # cut "1 2 3 4"
+  # accelerate "<0 0.25 -0.25 0>"
+
+d1
+  $ whenmod 16 4 ((# up (run 9)))
+  $ whenmod 8 3 (stut 8 0.5 (-0.3))
+  $ foldEvery [2,3] (fast 1.1111)
+  $ foldEvery [3,5,7,9] (|+| n "4")
+  $ every 6 (# hpf "0")
+  $ whenmod 16 8 (|*| accelerate "-1")
+  $ every 4 (fast 2)
+  $ n (irand 4)
+  |+| n "4"
+  # s "glazz"
+  # cut (run 8)
+  # pan (rand)
+  |*| speed "<1 1 -1 2 1>"
+  # hpf (scale 0 3000 $ slow 8 $ sine1)
+  # accelerate (scale 0 (8) $ slow 16 $ saw1)
+  # gain (scale 0 1 $ slow 16 $ saw1)
+  |+| cut "10"
+  # lpf (scale 0 4000 $ slow 8 $ sine1)
+
+d2
+  $ stack [
+    s "<808bd(3,8) 808bd(5,8)>"
+    # gain "[1.5 1.2 1.3 1.5]*2"
+    # orbit "1",
+    s "~ [~ ~ ~ 808bd?] ~ [~ <~ 808bd>/4]"
+    # gain "1.3"
+  ] # n "2" # up "-2"
+
+d3
+  $ stack [
+    s "glazz*8"
+    # n "5"
+    # gain (scale 0 1 $ slow 32 $ saw1)
+    # beginend (scale 0 0.8 $ slow 8 $ sine1) "0.1"
+    # release "0.8"
+    # orbit "2",
+    s "~ glazz/2"
+    # n "15"
+    # pan "0.7"
+    # up "-4"
+    # end "0.1",
+    s "glazz/2"
+    # n "<14 17 13>/2"
+    # pan "0.2"
+    # up "0"
+    # end "0.1"
+    # accelerate (scale 0 (-1) $ slow 8 $ saw1)
+    # release "0.85"
+    # gain "1.3",
+    s "piano"
+    # n "<<3 2> <3 4> <3 5> 7>"
+    # beginend "0" "1"
+    # speed "<0.5 0.5 1 1>"
+    # pan "<0.1 0.3 0.5 0.7>"
+    # gain "2.9"
+    # coarse "2"
+    # hpf (scale 0 500 $ slow 8 $ sine1)
+    # cut "20",
+    s "piano"
+    # n "<1 1 1 4>"
+    # beginend "0" "1"
+    # speed "2"
+    # pan "0.8"
+    # coarse "4"
+    # hpf (scale 500 3000 $ slow 32 $ saw1)
+    # gain "3"
+    # cut "21"
+  ]
+
+d4 $ stack [
+  whenmod 8 4 (swingBy (1/3) 4)
+  $ whenmod 32 16 (gtfo)
+  $ foldEvery [3,4] ((fast 1.5) . (# up "<[0 -1 -2 -3 -4 -5] [-1 0 1 2 3 4]>"))
+  $ s "808oh*8"
+  # n "0"
+  # lpf (scale 3000 18000 $ slow 8 $ sine1)
+  # pan (scale 0.2 0.8 $ slow 8 $ sine1)
+  # release (scale 0.1 1 $ slow 8 $ saw1),
+  sometimesBy 0.2 (stut 8 0.3 0.3)
+  $ every 3 (stut 4 0.3 (-0.01))
+  $ sometimesBy 0.1 (# accelerate "1")
+  $ whenmod 8 4 ((1/4) ~>)
+  $ s "~ <808sd 808sd 808sd [808sd 808sd ~ ~]>"
+  # shape "<0.7 0.2 0.5 0.4>/2"
+  # crush "<8 8 12 8>"
+  # gain "0.9"
+  # up "<4 0>/4"
+  # pan "<0.2 0.5 0.7 0.5>"
+  # n "4"
+] # orbit "3"
+
+hush

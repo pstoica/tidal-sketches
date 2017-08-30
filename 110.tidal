@@ -1,0 +1,84 @@
+bps (150/140)
+
+d1
+$ slowspread ($) [within (0, 0.5) (slow 2), (|*| speed "2"), rev, striate 2, slow 3, zoom (0.5,0.75), (|+| n "30")]
+$ stack [
+  whenmod 16 12 (jux (# speed (scale 0.5 1 $ slow 8 $ sine1)))
+  $ foldEvery [5,7] (fast 1.5)
+  $ every 8 (stut 8 0.5 (-0.1))
+  $ every 3 (stut 3 0.5 0.3)
+  $ slowspread ($) [id, palindrome, gap 4, stut 8 0.3 0.1, (|*| speed "1.5"), id, (|*| speed "[2, 4]"), rev, fast 2 . zoom(0,0.5), fast 2]
+  $ s "ry30(17,20)"
+  # hpf (scale 0 2000 $ slow 16 $ saw1)
+  # n (run 10)
+  # pan (slow 2 $ tri1)
+  |+| n "<10 10 12 15>"
+  # gain (scale 0.3 0.5 $ slow 4 $ saw1)
+  |+| gain (scale 0.4 0.5 $ rand)
+  # room (choose[0.2,0.5,0.9,0.1,0.1,0.2])
+  # size (scale 0 1 $ slow 16 $ sine1)
+  # sustain (scale 0.01 4 $ slow 2 $ saw1),
+  slowspread ($) [jux (fast 1.5 . (|*| speed 4)), rev, stut 8 0.5 0.3, fast 3, striate 8, zoom (0, 0.5) . fast 4]
+  $ swingBy (1/3) 8
+  $ up "0 7 12 8 3 5 7"
+  # s "ry30"
+  # n "3"
+  # loop "4"
+  # pan (scale 0.2 0.8 $ rand)
+  # gain (scale 0.5 1 $ rand)
+  # coarse (choose[0,1,2,4,8])
+] |+| n "<0 10 15 0>" # accelerate "<0 -0.1 0.1 0>" |*| speed (scale 1 1.5 $ slow 8 $ sine1)
+
+d1
+$ zoom (0,0.5)
+$ every 8 (# room "0.8")
+$ whenmod 8 4 (|*| speed (scale 1 0.8 $ slow 8 $ saw1))
+$ slowspread ($) [id, id, fast 2 . zoom (0,0.5), stut 4 0.5 (-0.1)]
+$ every 4 (palindrome)
+$ stack [
+  gtfo $ s "ry30(7,16)"
+  # n "15",
+  s "~ ~ ~ [~ ~ ~ <~ ry30>]"
+  # n "20",
+  swingBy (1/3) 8
+  $ s "ry30(5,8)"
+  # gain "[1 0.8]*4"
+  # n "25"
+  # pan (scale 0.2 0.8 $ slow 8 $ sine1),
+  s "[~ ~ ~ <ry30 [ry30 ~ ~ ry30] ry30*2 ry30>]"
+  # pan "0.8"
+  # n "36",
+  s "~ ~ ~ ry30"
+  # pan "0.8"
+  # n "39",
+  s "ry30(13,16,3)"
+  # n "55"
+  # pan "0.3"
+  # gain "[0.7 0.6]*2"
+] # size "0.5"
+
+d1
+$ every 4 ((within (0.5, 1) (stut 8 0.5 (-0.3))) . fast 4 . zoom(0,0.25))
+$ slowspread ($) [id, jux (slow 2 . (|*| speed 2)), rev, iter 4]
+$ stack [
+  s "808bd*4" # gain "1.5" # shape "0.5",
+  s "~ [~ ~ ~ 808bd] [~ <~ 808bd>] [~ ~ ~ <808bd>]"
+  # n "8"
+  # gain "1.3",
+  s "<808oh*16 808oh*16 808oh*6 808oh*8>"
+  # slow 5 (n (run 5))
+  # sustain (scale 0.1 0.3 $ slow 8 $ sine1)
+  # pan "[0.3 0.7]*4"
+  # bpf (scale 3000 14000 $ slow 8 $ sine1)
+  # gain "[0.7 1]*2",
+  s "~ <~ [~ snap]>",
+  s "~ [808sd, clap]"
+  # n "<2 6>"
+  # room "0.3",
+  s "808hc(13,16)"
+  # pan "0.3"
+  # gain "[1 0.7]*4"
+  # up "{0 0 3 4, 7 7 9 12 16, 19 24 28, 33}"
+] # size "0.9"
+
+hush

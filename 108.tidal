@@ -1,0 +1,48 @@
+d1
+$ whenmod 32 16 (slow 2)
+$ foldEvery [2,3,5] (fast 2)
+$ slowspread ($) [id, stut 8 0.5 (-0.3), (|*| speed "-1"), stut 4 0.5 0.2, stut 8 0.5 0.3]
+$ slowspread ($) [(|+| n "<3 5>"), (|+| n "<2 8>"), (|+| n "<1 4>"), (|+| n "<4 7>")]
+$ whenmod 8 4 (juxBy 0.8 ((|+| n (run 4)) . (|*| speed (scale 0.25 2 $ rand))))
+$ sometimes (# accelerate "<0 -0.2 -0.5 0.3>")
+$ every 8 (fast 2)
+$ every 5 (slow 2)
+$ stack [
+  n "5?",
+  degradeBy (0.1) $ n "~ 9*2"
+  # pan (scale 0.7 0.2 $ slow 4 $ tri1)
+  # speed (scale 0.5 1.5 $ slow 8 $ saw1),
+  n "<~ 7*4>"
+  # pan "0.3",
+  degradeBy (0.3)
+  $ n "3*4"
+  # gain "1 0.5 0.5 0.7"
+  # pan "0.3"
+] # s "glazz" |+| n "<8 3 1 2 0 2 7 5>*8" # legato "1"
+
+d1 $ silence
+
+d1
+$ every 5 (juxBy 0.8 (|*| speed "2"))
+$ slowspread ($) [id, id, (stut 8 0.8 0.5), (stut 4 0.5 (-0.1))]
+$ stack [
+  n "0 2 4 5" # release "0.3",
+  whenmod 8 4 (# attack "0.1") $ n "<0 4 5 2>*8"
+  # pan "0.3"
+  # gain "1 0.3 0.3 0.8"
+  # hpf (scale 0 1000 $ rand)
+  # release "0.8"
+  # speed "2",
+  n "~ 1"
+  # speed "2"
+  # release "0.5"
+  # pan "0.8"
+  # gain "1.0"
+  # begin (scale 0 0.5 $ slow 8 $ sine1)
+] # s "piano" # legato "1" |+| gain "3"
+
+hush
+
+cps(-1)
+
+cps(1)

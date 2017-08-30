@@ -1,0 +1,197 @@
+bps (140/120)
+
+cps (-1)
+
+hush
+
+d1
+$ every 8 (rev)
+$ every 4 (within (0.0, 0.5) (stut 8 0.5 0.2))
+$ whenmod 8 4 (juxBy 0.2 (|*| speed (scale 2 32 $ slow 16 $ saw1)))
+$ (stack [
+  whenmod 32 24 (gtfo) $ s "bd*4"
+  # n "1"
+  # up "0"
+  # gain "1 0.8",
+  whenmod 4 3 (gtfo)
+  $ s "[~ ~ ~ bd] ~ [~ <~ bd>] [~ ~ ~ bd]"
+  # up "<3 5>"
+  # n "7"
+  # release "0.1"
+  # offset "-0.005"
+  # gain "0.9"
+  # orbit "2",
+  s "cp:3 [~ ~ ~ <~ ~ ~ cp:2>]"
+  # release "0.3"
+  # pan "0.3",
+  every 4 (stut 8 0.5 0.2)
+  $ s "~ [~ ~ ~ <808sd ~ 808sd 808sd>]"
+  # n "<1 2 3 4>/2",
+  whenmod 32 16 (gtfo) $ whenmod 16 12 (gtfo)
+  $ every 3 (within (0.5, 1) ((fast 2) . (|*| speed "-1")))
+  $ stack [
+    swingBy (1/2) 2
+    $ s "hc*8"
+    # pan "[0.3 0.7]*4"
+    # gain "0.5"
+    # up "<0 0 [-2 -1]*4 -3>"
+    # release "0.1"
+    # n "0 1 2 3",
+    whenmod 8 7 (gtfo)
+    $ every 3 (stut 8 0.8 0.125)
+    $ every 5 (|*| speed "-1")
+    $ every 4 (fast 2)
+    $ s "~ ho"
+    # release "0.2"
+    # gain "0.6"
+    # n "<0 1 2 3>",
+    every 3 (jux (# offset 0.05))
+    $ (every 4 ((stut 8 0.5 (-0.2))))
+    $ s "rs"
+    # release "0.3"
+    # n "4",
+    every 4 (slow 2)
+    $ swingBy (1/3) 8
+    $ s "808oh*16"
+    # gain "[0.6 0.3]"
+  ],
+  whenmod 4 3 (gtfo)
+  $ s "808oh*4"
+  # n "1"
+  # up "-3"
+  # pan (scale 0.2 0.8 $ slow 8 $ sine1)
+  # gain (scale 0.3 0.5 $ slow 16 $ saw1)
+] # lpf (scale 2500 8000 $ slow 8 $ saw1))
+
+
+d2
+$ stack [
+  loopAt (4)
+  $ s "piano"
+  # cut "0"
+  # n "<2 2 0 1>"
+  # pan "<0.3 0.7>"
+  # gain "2.2",
+  loopAt 2
+  $ s "~ ~ ~ piano?"
+  # cut "1"
+  # n "1"
+  # pan (scale 0.2 0.8 $ slow 8 $ sine1)
+  # begin "<0 0.05 0.6 0.2>"
+  # speed "<1.5 1 1.5 2>"
+  # gain "2",
+  s "~ piano?"
+  # cut "<2 3>"
+  # n "5"
+  # pan (scale 0.2 0.8 $ slow 8 $ sine1)
+  # begin (scale 0.2 0.8 $ slow 8 $ sine1)
+  # speed "<2 3 3 2>"
+  # gain "1.5",
+  gtfo $ loopAt 4
+  $ s "piano?"
+  # cut "4"
+  # n "4"
+  # pan "0.8"
+  # accelerate "-0.01"
+  # gain "2"
+  # speed "<2>",
+  gtfo $ loopAt 8
+  $ s "piano*2"
+  # cut "5"
+  # n "<2 6>*2"
+  # pan (scale 0.2 0.8 $ slow 8 $ sine1)
+  # hpf "0"
+  # begin "0"
+  # coarse "4"
+  # pan "0.8"
+  # speed "4"
+  # gain "2.2"
+]
+
+
+
+d2
+$ every 4 ((# hpf "2000") . (|*| speed "-1"))
+$ stack [
+  gtfo $ s "ice*4"
+  # beginend "<0.7>" "0.1"
+  # n "0"
+  # speed "2"
+  # pan "0.7"
+  # cut "[10 11 12 13]"
+  # loop 2,
+  s "<piano*2 piano*4>"
+  # beginend "<0.3 0.1 0.7 0.2>" "<0.1 0.2 0.05 0.15>"
+  # n "<3 0 3 0 3 0 4 2>"
+  # speed "<2 1 2 1 -1 0.5 4 -0.5>"
+  # pan "[0.3 0.7]*2"
+  # hpf (scale 0 4000 $ slow 4 $ sine1)
+  # cut "[0 1 2 3]"
+  # gain "3"
+  # loop "<4 5 3 2 8 4 2 8>"
+]
+
+d2
+$ every 4 ((# hpf "2000") . (|*| speed "-1"))
+$ stack [
+  gtfo $ s "liv*4"
+  # beginend "<0.7>" "0.1"
+  # n "5"
+  # speed "2"
+  # pan "0.7"
+  # cut "[10 11 12 13]"
+  # loop 2,
+  s "<hop*2 hop*4>"
+  # beginend "<0.3 0.1 0.7 0.2>" "<0.1 0.07 0.05 0.15>"
+  # n "<2 2 2 3>"
+  # speed "<2 1 2 1 -1 0.5 1 -0.5>"
+  # speed "<1 1 1 0.5>"
+  # pan "[0.3 0.7]*2"
+  # hpf (scale 0 6000 $ slow 8 $ sine1)
+  # cut (run 4)
+  # gain "1"
+  # loop "<4 5 3 2 4 4 8 2>"
+] # orbit "1"
+
+d2
+$ every 4 ((# hpf "2000") . (|*| speed "-1"))
+$ stack [
+  gtfo $ s "ice"
+  # cut (run 4)
+  # gain (scale 0.0 1 $ slow 32 $ saw1)
+  # pan "<0.1 0.3 0.5 0.7 0.9>"
+  # speed "<2 -1 1 2>"
+  # begin "<0 0.25 0.5 0.75>"
+  # n "3",
+  gtfo $ s "ice"
+  # cut "[9 10 11 12]"
+  # pan "<0.5 0.3 0.1>"
+  # gain (scale 0.0 1 $ slow 16 $ saw1)
+  # speed "<2 -4 1 -1>"
+  # begin "0 0.1 0.2 0.3"
+  # n "3"
+  # hpf "1000",
+  gtfo $ s "ice*4"
+  # beginend "[0.5 0.2 0.8]" "0.1"
+  # cut "[30 31 32 33]"
+  # speed "1"
+  # loop 3,
+  gtfo $ s "ice*2"
+  # beginend "<0.2>" "0.1"
+  # pan "0.2"
+  # cut "[20 21]"
+  # speed "0.5"
+  # loop 3,
+  swingBy (1/3) 2
+  $ s "ice*4"
+  # beginend "<0.7>" "0.1"
+  # n "0"
+  # speed "2"
+  # pan "0.7"
+  # cut "[10 11 12 13]"
+  # loop 2
+] # orbit "1" # gain "1.0"
+
+d2 $ silence
+
+hush

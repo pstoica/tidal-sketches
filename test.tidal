@@ -6,16 +6,18 @@ do
     $ foldEvery [2,3] (fast 2)
     $ sound "<bd hc> [~]"
 
-
 do
-  d1
-    $ stack [
-      s "nu*16"
-      |=| n "0"
-      |=| release "0.2"
-      |=| attack "0"
-      |=| beginend (scale 0 0.5 $ slow 64 $ sine1) "0.01"
-    ]
+
+hush
+
+d1
+  $ stack [
+    s "nu*16"
+    |=| n "<0 1 2>"
+    |=| release (scale 0.1 0.9 $ slow 8 $ sine1)
+    |=| attack "0"
+    |=| beginend (scale 0 0.5 $ slow 4 $ sine1) "0.01"
+  ]
 
 hush
 

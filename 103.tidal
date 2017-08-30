@@ -1,0 +1,110 @@
+bps (140/120)
+
+d3 $ slow 2 $ stack [
+  s "piano*8"
+  # pan "0.5"
+  # release "0.8"
+  # beginend (scale 0 0.5 $ slow 8 $ sine1) "0.2",
+  s "piano*16"
+  # pan "0.8"
+  # n "2"
+  # speed "2"
+  # release "0.5"
+  # beginend (scale 0 0.5 $ slow 16 $ sine1) "0.1",
+  s "piano*4"
+  # pan "0.2"
+  # n "4"
+  # speed "2"
+  # attack "0.2"
+  # release "0.8"
+  # gain "1.8"
+  # hpf (scale 1000 3000 $ slow 32 $ sine1)
+  # beginend (scale 0 0.7 $ slow 32 $ sine1) "0.3",
+  s "piano*4"
+  # pan "0.8"
+  # n "3"
+  # speed "1"
+  # attack "0.1"
+  # release "0.8"
+  # gain "1.8"
+  # beginend (scale 0 0.7 $ slow 128 $ sine1) "0.3",
+  s "piano*8"
+  # pan "0.5"
+  # n "5"
+  # speed "2"
+  # attack "0.2"
+  # release "0.8"
+  # hpf (scale 1000 3000 $ slow 8 $ sine1)
+  # gain "1.8"
+  # beginend (scale 0 0.7 $ slow 64 $ sine1) "0.3"
+] # orbit "3" # shape "0.5"
+
+d3 $ stack [
+  s "piano*8"
+  # beginend (scale 0 0.5 $ slow 16 $ saw1) "0.2"
+  # pan "0.3"
+  # speed "1"
+  # n "<0 1 2 3>"
+  # gain "1.3",
+  s "piano*16"
+  # beginend (scale 0 0.8 $ slow 8 $ sine1) "0.2"
+  # pan "0.7"
+  # speed "2"
+  # n "<2 3 4 5>"
+  # gain "1.0",
+  s "piano*16"
+  # beginend (scale 0 0.8 $ slow 32 $ sine1) "0.2"
+  # pan "0.5"
+  # speed "2"
+  # release "0.8"
+  # n "0"
+  # gain (scale 1 1.5 $ slow 16 $ sine1)
+] # orbit "3" |+| gain "0.7"
+
+d3 $ stack [
+  gtfo $ loopAt 4 (s "piano")
+  # n "<0 1 2 3>/4"
+  # cut "1"
+  # pan "0.3"
+  # gain "1.8",
+  loopAt 8 (s "piano")
+  # n "<3 4 5 6>/4"
+  # pan "0.7"
+  # cut "2"
+  # gain "1.8",
+  gtfo $ loopAt 2 (s "piano")
+  # n "<0 1 3 4>/2"
+  # pan "0.5"
+  # cut "3"
+  # hpf (scale 0 3000 $ slow 16 $ sine1)
+  # gain "1.4",
+  loopAt 8 (s "piano")
+  # n "<4 5 6 7>/4"
+  # pan "0.5"
+  # cut "4"
+  # gain "1.8",
+  loopAt 4 (s "piano")
+  # n "<2 4 6 1>/4"
+  # pan "0.3"
+  # cut "5"
+  # gain "1.8"
+] # gain "2.5" # orbit "3"
+
+d1 $ stack [
+  s "~ <bd ~ ~ [~ bd]> [bd*2] ~" # n "2" # gain "1.0" # orbit "2",
+  s "808sd:3" # pan "0.3" # lpf (scale 8000 22000 $ slow 16 $ sine1),
+  gtfo $ s "~ ~ ~ [germ ~ germ]" # speed "1.2"
+  # n "2"
+  # pan "0.7"
+  # gain "0.5"
+  # lpf "10000",
+  every 8 (|*| speed "-1")
+  $ whenmod 16 12 (degrade)
+  $ slowspread ($) [id, fast 1.5, (within (0.25, 0.5) (stut 8 0.5 (-0.3))) . (swingBy (1/8) 4), swingBy (1/8) (4)]
+  $ s "808oh:5*8" # release "<0.5 0.1 0.8 1>"
+  # gain "0.7"
+  # lpf (scale 4000 10000 $ slow 8 $ sine1)
+]
+
+
+hush

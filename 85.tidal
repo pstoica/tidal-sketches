@@ -1,5 +1,8 @@
 cps (140/120)
 
+cps(0.9)
+
+cps (-1)
 
 hush
 
@@ -34,6 +37,8 @@ do
       # beginend (scale 0 0.8 $ slow 64 $ sine1) "0.4"
       # release "0.9"
     ] # orbit "0"
+
+hush
 
 do
   d1 $ stack [

@@ -22,6 +22,8 @@ d1 $ s "alright"
 d1 $ silence
 
 
+hush
+
 d1
 $ s "alright*6"
 |=| n "[10 4]*4"

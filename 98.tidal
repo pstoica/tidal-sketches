@@ -1,0 +1,93 @@
+d1 $ stack [
+  gtfo $ s "viz"
+  # n "1"
+  # speed "<1 2>"
+  # gain (scale 0.8 1.3 $ slow 8 $ sine1)
+  # hcutoff (scale 0 1000 $ slow 4 $ sine1)
+  # pan (scale 0.2 0.8 $ slow 4 $ sine1)
+  # beginend "0" "0.4",
+  s "viz*8"
+  # n "2"
+  # speed "1"
+  # gain (scale 0.8 1 $ slow 8 $ sine1)
+  # release "0.8"
+  # beginend (scale 0 0.5 $ slow 4 $ sine1) "0.2"
+]
+
+d2 $ stack [
+  s "viz*8"
+  # n "2"
+  # speed "-0.5"
+  # gain "1.2"
+  # shape (scale 0 0.5 $ slow 16 $ sine1)
+  # release "0.8"
+  # beginend (scale 0 0.5 $ slow 4 $ sine1) "0.1",
+  s "viz*16"
+  # n "2"
+  # speed "-2"
+  # gain "1.0"
+  # pan (scale 0.2 0.8 $ slow 6 $ sine1)
+  # hcutoff (scale 0 1000 $ slow 8 $ sine1)
+  # shape (scale 0 0.1 $ slow 32 $ sine1)
+  # attack "0.01"
+  # release "0.8"
+  # beginend (scale 0 0.8 $ slow 16 $ sine1) "0.1"
+] # orbit "1"
+
+hush
+
+d2 $ stack [
+  s "viz*8"
+  # speed "-1"
+  # gain "1.5"
+  # hcutoff (scale 0 1000 $ slow 16 $ sine1)
+  # pan (scale 0.2 0.8 $ slow 4 $ sine1)
+  # shape (scale 0 0.4 $ slow 16 $ sine1)
+  # release "0.5"
+  # beginend (scale 0 0.5 $ slow 4 $ sine1) "0.1",
+  s "viz*16"
+  # speed "-0.5"
+  # gain (scale 0.5 1 $ slow 9 $ sine1)
+  # pan (scale 0.8 0.2 $ slow 6 $ sine1)
+  # shape (scale 0 0.5 $ slow 32 $ sine1)
+  # attack "0.01"
+  # release "0.8"
+  # beginend (scale 0 0.8 $ slow 16 $ sine1) "0.1",
+  s "viz*16"
+  # speed "-2"
+  # gain (scale 0.5 1.2 $ slow 8 $ sine1)
+  # pan (scale 0.2 0.8 $ slow 6 $ sine1)
+  # shape (scale 0 0.5 $ slow 32 $ sine1)
+  # attack "0.01"
+  # release "0.8"
+  # beginend (scale 0 0.8 $ slow 16 $ sine1) "0.1"
+] # orbit "1" # n "1"
+
+
+d2 $ stack [
+  s "viz*8"
+  # speed "-1"
+  # gain "1.5"
+  # pan (scale 0.2 0.8 $ slow 4 $ sine1)
+  # shape (scale 0 0.4 $ slow 16 $ sine1)
+  # release "0.5"
+  # beginend (scale 0 0.9 $ slow 32 $ sine1) "0.1",
+  s "viz*16"
+  # speed "-0.5"
+  # gain (scale 0.5 1 $ slow 9 $ sine1)
+  # pan (scale 0.8 0.2 $ slow 6 $ sine1)
+  # shape (scale 0 0.5 $ slow 32 $ sine1)
+  # attack "0.01"
+  # release "0.8"
+  # beginend (scale 0 0.9 $ slow 16 $ sine1) "0.1",
+  s "viz*16"
+  # speed "-2"
+  # gain (scale 0.5 1.2 $ slow 8 $ sine1)
+  # pan (scale 0.2 0.8 $ slow 6 $ sine1)
+  # shape (scale 0 0.5 $ slow 32 $ sine1)
+  # attack "0.01"
+  # release "0.8"
+  # beginend (scale 0 0.9 $ slow 24 $ sine1) "0.1"
+] # n "4" # orbit "1"
+
+hush
